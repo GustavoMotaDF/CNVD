@@ -27,25 +27,7 @@ public class pesqusuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        
-        if(Objects.nonNull(req.getParameter("Pesquisar"))){
-            //Tratando editar
-            try{
-                req.setAttribute("usuario",vacinatomadabo.MontarCartao(req.getParameter("usuario")));
-
-            }catch(Exception e){
-                req.setAttribute("erroBD","Sem resultado para a pesquisa!");
-            }
-        }
-        
-        
-        
-        try{     
-    
-        }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+         req.setAttribute("qtdVacina",vacinatomadabo.Relatorio());
         
         req.getRequestDispatcher("jsp/teste.jsp").forward(req, resp);
     
@@ -55,8 +37,8 @@ public class pesqusuario extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try{
-        req.setAttribute("usuarios",usuariobo.getUsuarios()); 
-        req.setAttribute("vacinas",vacinatomadabo.getVacinasTomadas()); 
+        req.setAttribute("qtdVacina",vacinatomadabo.Relatorio()); 
+        
      
         
     

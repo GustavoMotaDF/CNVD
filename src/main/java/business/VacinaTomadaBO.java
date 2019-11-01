@@ -151,6 +151,22 @@ public class VacinaTomadaBO {
         en.close();
         return query.getResultList();
 }
+    public List<VacinaTomada> Relatorio(){
+        
+        
+        List<VacinaTomada> cartaovacinas;
+       
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas) as qtd from VacinaTomada group by vacinas").getResultList();
+        en.getTransaction().commit();
+        
+        en.clear();
+        en.close();
+        
+        return cartaovacinas;
+}
 }
 
 

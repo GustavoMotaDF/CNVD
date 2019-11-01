@@ -13,19 +13,32 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${empty usuario}">
-            <form action="${pageContext.request.contextPath}/pesqusuario" method="post">
-                <input type="text" name="usuario"/>
-                <input type="submit" name="Pesquisar" value="Pesquisar"/>
-                
-            </form>
-        </c:if>
-        <c:if test="${not empty usuario}">
-            <div>${erroBD}</div>
-            <c:forEach var="usuario" items="${usuario}">
-                <input type="text" name="${usuario.idvacinacao}" disabled/>
-                <input type="text" name="${usuario.vacinas.vacina}" disabled/>
-            </c:forEach>
-        </c:if>
+        <form method="get" action="${pageContext.request.contextPath}/pesqusuario" onsubmit="return validarform1(this)"><br>
+                    <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
+                            <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
+                                <caption>***Lista de usuários</caption>
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="hovercoluna">ID</th>
+                                        <th>idVacina</th>
+                                        <th>Nome Vacina</th>
+                                        <th>Quantidade</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <body>
+                                <c:forEach var= "qtdVacina" items="${qtdVacina}">
+                                    <tr>
+                                        <td>${qtdVacina.vacinas.idvacina}</td>
+                                        <td>${qtdVacina.vacinas.vacina}</td>
+                                        <td>${qtdVacina.qdt}</td>
+                                        
+                                    </tr>
+                                </c:forEach>
+                                </body>
+
+                            </table>  
+                        </div> 
+                    </form>
     </body>
 </html>
