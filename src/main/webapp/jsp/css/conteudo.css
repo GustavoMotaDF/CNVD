@@ -1,0 +1,130 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26/06/2019, 16:51:11
+    Author     : gustavo
+*/
+.alinhamento{
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+
+}
+#tabelaconteudo{       
+    float:left; 
+    width: 80%;   
+    display: inline-block;
+}
+.hovercoluna:hover{
+    color:#fa5858;
+}
+
+.botao{
+    float: right;
+    width: auto;
+
+}
+.botaojs{
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 20%;
+    top: -500px;
+}
+
+
+input[type=button]{
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 20%;
+    top: -500px;
+
+}
+
+.escondido{
+    display: none;
+}
+input[type=text]{  
+    width: 70%;    
+}
+input[type=password]{  
+    width: 70%;
+}
+#imgtelainicial{
+    width: 290px;
+    height: 140px;
+}
+#conteudopropriamentedito{
+    position:relative;
+    float: left;
+}
+#imgtext{
+    position: relative;
+    top: 78%;
+    float: right;
+    opacity: 0.8;
+    text-align: center;
+    font-weight: bold;
+    
+}
+#att{
+    position: fixed;
+    top: 20%;
+    float: right;
+    left: 78%;
+    opacity: 0.8;
+    font-weight: bold;
+    
+    text-align: left;
+}
+#tabelaatualizacao{
+   overflow: auto; width: 300px; height: 100px;
+   background-color: white;
+   
+    
+}
+
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+} 
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+    width: 100%;
+    height: 77%;
+}
+
+
+
+
+@media(max-width:600px){
+    #tabelaconteudo{   
+        font-size: 12px;
+    }
+    input[type=button]{
+        font-size: 12px;
+        height: 80%;
+    }
+    #imgtelainicial{
+    width: 160px;
+    height: 85px;
+    }
+    
+    #imgtext{
+        position:absolute;        
+        right: 1%;                
+        text-align: center;
+        
+        
+    }
+    span{
+        font-size: 9px;
+              
+    }
+}

@@ -1,0 +1,91 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05/06/2019, 14:17:13
+    Author     : gustavo
+*/
+
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #A9F5F2;
+  font-family: Comfortaa;
+}
+.selecionado{
+    background-color: #E0F8F1;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-family: Comfortaa;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #E0F8F1;}
+
+ul.topnav li a.active{background-color: #A9F5A9;}
+
+ul.topnav li.right {float: right; background-color: #A9F5A9;}
+
+@media screen and (max-width: 750px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/05/2019, 20:36:54
+    Author     : gustavohenrique.m.s
+*/
+
+
+.conteudo{
+    margin-top: 10%;
+    margin: 10px;
+    
+     border: 5px solid #A9F5F2 ;
+     font-family: Comfortaa;
+}
+
+
+
+
+.submitt:hover{background-color: #E0F8F1;}
+
+input[type=submit] { 
+                     border-radius: 100px; 
+                     align-content: flex-start; 
+                     width: 70%;
+                     background-color: #A9F5F2;  
+                     border:solid 1px black ;
+                     font-size: 16px;
+                     height: 30px;  
+                     font-family: Comfortaa;
+}
+
+
+
+
+#logotipo:logo{
+    
+}
+
+.logo{
+    width:300px;
+}
+
+
