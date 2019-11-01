@@ -107,5 +107,20 @@ public class DoencaBO {
         en.clear();
         en.close();
     }
-    
+    public List<Doenca> Relatorio(){
+        
+        
+        List<Doenca> doencas;
+       
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        doencas = en.createQuery("sefrom Doenca ").getResultList();
+        en.getTransaction().commit();
+        
+        en.clear();
+        en.close();
+        
+        return doencas;
+    }
 }

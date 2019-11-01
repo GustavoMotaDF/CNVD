@@ -24,9 +24,10 @@ public class LoginBO {
 
         em.getTransaction().begin();
 
-        Usuario Login = (Usuario) em.createQuery("SELECT u from Usuario u where u.login =:login and u.senha = :senha").setParameter("login", login).setParameter("senha", senha).getSingleResult();
+        Usuario Login = (Usuario) em.createQuery("from Usuario where login =:login and senha = :senha").setParameter("login", login).setParameter("senha", senha).getSingleResult();
         
         em.getTransaction().commit();
+        em.clear();
         em.close();
 
         return Login;

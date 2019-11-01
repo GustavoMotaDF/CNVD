@@ -11,6 +11,7 @@
 <html lang="pt-br">
      <%-- head --%>
     <title>Vacinar Usuário</title>
+    <script type="text/javascript" src="jsp/js/Cadastro.js"></script>
     <jsp:include page="includes/head.jsp"/>
     <%-- desativa o enter na pagina--%>
     <body onKeyDown="AnalizaTeclas()">
@@ -163,7 +164,7 @@
                                     <br>
                                 </fieldset>
                                 <%-- botao:none acionado via js--%>
-                                <input type="submit" class="escondido "name="alterar" value="Alterar" id="alterar"/>
+                                <input type="submit" class="escondido" name="alterar" value="Alterar" id="alterar" />
                             </form>
 
                             <%-- inicio modal--%>
@@ -175,7 +176,7 @@
                                     <br>
                                     <div style="float: left">
                                         <%-- envia formulario de alteração--%>
-                                        <input type="button" value="Confirmar"  onclick="alterar()" name="alterar" class="btn btn-success"/>
+                                        <input type="button" value="Confirmar"  onclick="alterar()" name="alterar" id="alterar"class="btn btn-success"/>
                                         <%-- fecha modal--%>
                                         <input type="button" value="Revisar"  id="close" name="cancelar"  class="btn btn-danger" onclick="fechar()"/>
                                     </div>                                

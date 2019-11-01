@@ -14,6 +14,7 @@
   <link rel="icon" type="imagem/png" href="jsp/imagens/favicon.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="stylesheet" type="text/css" href="jsp/css/index.css" />
+  
   <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
   <script type="text/javascript" src="jsp/js/Enter.js"></script>
   
