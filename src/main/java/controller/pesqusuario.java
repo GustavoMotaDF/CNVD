@@ -27,7 +27,7 @@ public class pesqusuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         req.setAttribute("qtdVacina",vacinatomadabo.Relatorio());
+         req.setAttribute("qtdVacinas",vacinatomadabo.getVacinasTomadas());
         
         req.getRequestDispatcher("jsp/teste.jsp").forward(req, resp);
     
@@ -36,15 +36,13 @@ public class pesqusuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try{
+       
         req.setAttribute("qtdVacina",vacinatomadabo.Relatorio()); 
         
      
         
     
-        }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+        
         
         req.getRequestDispatcher("jsp/teste.jsp").forward(req, resp);
     }

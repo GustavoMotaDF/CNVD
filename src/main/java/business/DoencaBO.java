@@ -115,7 +115,7 @@ public class DoencaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        doencas = en.createQuery("sefrom Doenca ").getResultList();
+        doencas = en.createQuery("from Doenca ").getResultList();
         en.getTransaction().commit();
         
         en.clear();

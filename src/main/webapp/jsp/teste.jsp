@@ -19,19 +19,21 @@
                                 <caption>***Lista de usuários</caption>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="hovercoluna">ID</th>
-                                        <th>idVacina</th>
+                                        
+                                        <th class="hovercoluna">idVacina</th>
                                         <th>Nome Vacina</th>
                                         <th>Quantidade</th>
                                         
                                     </tr>
                                 </thead>
                                 <body>
-                                <c:forEach var= "qtdVacina" items="${qtdVacina}">
+                                <c:forEach var="qtdVacinas" items="${qtdVacinas}">
                                     <tr>
-                                        <td>${qtdVacina.vacinas.idvacina}</td>
-                                        <td>${qtdVacina.vacinas.vacina}</td>
-                                        <td>${qtdVacina.qdt}</td>
+                                        
+                                        <td>${qtdVacinas}</td>
+                                        
+                                        
+                                        
                                         
                                     </tr>
                                 </c:forEach>

@@ -8,6 +8,7 @@ package business;
 import entity.VacinaTomada;
 import entity.Usuario;
 import entity.Vacina;
+import java.lang.reflect.Array;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,18 +27,18 @@ public class VacinaTomadaBO {
     public List<VacinaTomada> getVacinasTomadas(){
         
         
-        List<VacinaTomada> cartaovacinas;
+        List<VacinaTomada> qtdVacinas;
        
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("From VacinaTomada").getResultList();
+        qtdVacinas = (List<VacinaTomada>)en.createQuery("From VacinaTomada").getResultList();
         en.getTransaction().commit();
         
         en.clear();
         en.close();
         
-        return cartaovacinas;
+        return qtdVacinas;
     
     }
     public void IncluirVacinaTomada(String datavacinacao, String dose, String idusuario, String idvacina){
@@ -159,7 +160,9 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas) as qtd from VacinaTomada group by vacinas").getResultList();
+        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas) as qtd from VacinaTomada vacinas").getResultList();
+               
+
         en.getTransaction().commit();
         
         en.clear();
