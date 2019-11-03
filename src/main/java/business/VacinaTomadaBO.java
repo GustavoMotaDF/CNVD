@@ -32,7 +32,7 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        qtdVacinas = (List<VacinaTomada>)en.createQuery("From VacinaTomada").getResultList();
+        qtdVacinas = en.createQuery("From VacinaTomada").getResultList();
         en.getTransaction().commit();
         
         en.clear();
@@ -160,9 +160,8 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas) as qtd from VacinaTomada vacinas").getResultList();
+        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas)from VacinaTomada vacinas").getResultList();
                
-
         en.getTransaction().commit();
         
         en.clear();
@@ -170,6 +169,8 @@ public class VacinaTomadaBO {
         
         return cartaovacinas;
 }
+
+    
 }
 
 

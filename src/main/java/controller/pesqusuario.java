@@ -27,7 +27,8 @@ public class pesqusuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         req.setAttribute("qtdVacinas",vacinatomadabo.getVacinasTomadas());
+        
+         req.setAttribute("cartaovacinas",vacinatomadabo.Relatorio());
         
         req.getRequestDispatcher("jsp/teste.jsp").forward(req, resp);
     
@@ -36,14 +37,7 @@ public class pesqusuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-       
-        req.setAttribute("qtdVacina",vacinatomadabo.Relatorio()); 
-        
-     
-        
-    
-        
-        
+          req.setAttribute("cartaovacinas",vacinatomadabo.Relatorio());
         req.getRequestDispatcher("jsp/teste.jsp").forward(req, resp);
     }
     

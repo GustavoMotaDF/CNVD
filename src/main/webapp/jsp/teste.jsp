@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="get" action="${pageContext.request.contextPath}/pesqusuario" onsubmit="return validarform1(this)"><br>
+        <form method="post" action="${pageContext.request.contextPath}/pesqusuario" onsubmit="return validarform1(this)"><br>
                     <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
                             <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
                                 <caption>***Lista de usuários</caption>
@@ -27,12 +27,11 @@
                                     </tr>
                                 </thead>
                                 <body>
-                                <c:forEach var="qtdVacinas" items="${qtdVacinas}">
+                                <c:forEach var="cartaovacinas" items="${cartaovacinas}">
                                     <tr>
                                         
-                                        <td>${qtdVacinas}</td>
-                                        
-                                        
+                                        <td>${cartaovacinas}</td>
+                                        <td>${cartaovacinas}</td>
                                         
                                         
                                     </tr>
