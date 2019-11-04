@@ -29,10 +29,8 @@
                                 <body>
                                 <c:forEach var="cartaovacinas" items="${cartaovacinas}">
                                     <tr>
-                                        
-                                        <td>${cartaovacinas}</td>
-                                        <td>${cartaovacinas}</td>
-                                        
+                                        <td>${cartaovacinas["0"].vacinas.vacina}</td>
+                                        <td>${cartaovacinas["1"]}</td>
                                         
                                     </tr>
                                 </c:forEach>
@@ -42,4 +40,5 @@
                         </div> 
                     </form>
     </body>
+    <jsp:include page="includes/imports.jsp"/>
 </html>
