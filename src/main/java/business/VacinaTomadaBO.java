@@ -160,7 +160,7 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("select distinct vacinas, count(vacinas)from VacinaTomada vacinas").getResultList();
+        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina)from VacinaTomada id_vacina group by vacinas").getResultList();
                
         en.getTransaction().commit();
         
