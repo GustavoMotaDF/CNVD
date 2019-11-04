@@ -11,24 +11,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <jsp:include page="includes/head.jsp"/>
     </head>
     <body>
+        <jsp:include page="includes/menusuperior.jsp"/>
+        
         <form method="post" action="${pageContext.request.contextPath}/pesqusuario" onsubmit="return validarform1(this)"><br>
-                    <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
+            <h3>Relatório: Vacinas Mais usadas</h3>
+            <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
                             <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
-                                <caption>***Lista de usuários</caption>
+
                                 <thead class="thead-light">
                                     <tr>
                                         
-                                        <th class="hovercoluna">idVacina</th>
-                                        <th>Nome Vacina</th>
-                                        <th>Quantidade</th>
+                                        
+                                        <th class="hovercoluna">Nome Vacina</th>
+                                        <th class="hovercoluna">Quantidade</th>
                                         
                                     </tr>
                                 </thead>
                                 <body>
                                 <c:forEach var="cartaovacinas" items="${cartaovacinas}">
                                     <tr>
+                                        
                                         <td>${cartaovacinas["0"].vacinas.vacina}</td>
                                         <td>${cartaovacinas["1"]}</td>
                                         
@@ -38,6 +43,9 @@
 
                             </table>  
                         </div> 
+                    </form>
+                    <form>
+                    <input id="imprimir" type="button" value="Salvar/Imprimir" style="" onClick="window.print()"/>
                     </form>
     </body>
     <jsp:include page="includes/imports.jsp"/>
