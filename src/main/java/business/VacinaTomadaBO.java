@@ -120,47 +120,15 @@ public class VacinaTomadaBO {
     }
     
     //TESTE BUSCAR VACINAS TOMADAS POR ID DE USUARIO; RESULTADO TEM QUE SER LISTA
-   public List<VacinaTomada> MontarCartao(String usuario){
+ 
         
-        
-        List<VacinaTomada> cartaovacinas;
-       
-        EntityManager en = emf.createEntityManager();
-        en.getTransaction().begin();
-        
-        cartaovacinas = (List<VacinaTomada>) en.createQuery("Select u from VacinaTomada u where u.usuario=:usuario").setParameter("usuario", usuario).getResultList();
-        en.getTransaction().commit();
-        
-        en.clear();
-        en.close();
-        
-        return cartaovacinas;
-    
-    }
-        
-    
-    
-    //TESTE BUSCAR VACINAS TOMADAS POR ID DE USUARIO; RESULTADO TEM QUE SER LISTA
-    public List encontrarPorNome(String usuario) {
-        EntityManager en = emf.createEntityManager();
-        en.getTransaction().begin();
-        Query query = en.createQuery("Select u from VacinaTomada u where u.usuario=:usuario");
-        query.setParameter("usuario", usuario);
-        en.getTransaction().commit();
-        
-        en.clear();
-        en.close();
-        return query.getResultList();
-}
     public List<VacinaTomada> Relatorio(){
-        
-        
         List<VacinaTomada> cartaovacinas;
        
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina)from VacinaTomada id_vacina group by vacinas").getResultList();
+        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina) as qtd from VacinaTomada id_vacina group by vacinas order by qtd desc ").getResultList();
                
         en.getTransaction().commit();
         
