@@ -85,17 +85,16 @@ public class Cadusuario extends HttpServlet {
                 
                                          req.setAttribute("mensagemSucesso", "USUARIO Cadastrado com sucesso!");
             }catch(Exception e){
-                req.setAttribute("mensagemErro", "Erro ao cadastrar USUARIO" + e.getMessage()+")");
+                req.setAttribute("mensagemErro", "Erro ao cadastrar USUARIO" + e.getCause().getCause()+")");
             }   
             
         }else if(Objects.nonNull(req.getParameter("excluir"))){
             //Tratando exclusão
-            if(usuarioBO.excluirUsuario(req.getParameter("idusuario"))){
-                req.setAttribute("mensagemSucesso", "USUARIO Excluida com Sucesso!");
+            try{ usuarioBO.excluirUsuario(req.getParameter("idusuario"));
+                req.setAttribute("mensagemSucesso", "USUARIO Excluido com Sucesso!");
                 
-            }else{
-                req.setAttribute("mensagemErro", "Erro ao excluir USUARIO!");
-                
+            }catch(Exception e){
+                req.setAttribute("mensagemErro", "Erro ao excluir USUARIO!" + e.getCause().getCause()+")");                
             }
             
         }else if(Objects.nonNull(req.getParameter("editar"))){
