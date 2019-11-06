@@ -16,11 +16,36 @@
     <body>
         <jsp:include page="includes/menusuperior.jsp"/>
         
-        <form method="post" action="${pageContext.request.contextPath}/pesqusuario" onsubmit="return validarform1(this)"><br>
-            
+        <form method="post" action="" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
+            <script>
+                function enviarpesq() {
+                    document.form01.action = '${pageContext.request.contextPath}/pesqusuario';                    
+                    document.form01.submit();
+                }
+                function enviaruser() {
+                    document.form01.action = '${pageContext.request.contextPath}/usuario';
+                    document.form01.submit();
+                }
+                
+                
+                function enviar() {
+                    var formulario = document.getElementById('formulario');
+                    if(document.getElementById('pesqusuario').checked === true) {
+                        formulario.action = "${pageContext.request.contextPath}/pesqusuario";
+                    }
+                     else {
+                        formulario.action = "${pageContext.request.contextPath}/usuario";
+                    }		
+                        formulario.submit();
+                    }
+
+            </script>
             <c:if test="${empty usuarioEditando}">
                 <input type="text" name="usuario"/>
-                <input type="submit" name="pesquisar" value="Pesquisar"/>
+                <input type="submit" name="pesquisar" value="Pesquisar" onClick="enviar();"/><br>
+                
+               PesUsuario: <input type="radio" name="pesqusuario" id="pesqusuario" value="PesqUsuario" />
+                User:<input type="radio" name="user" value="User" id="user"/>
                 
             </c:if>
             

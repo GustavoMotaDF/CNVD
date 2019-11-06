@@ -122,7 +122,7 @@ public class VacinaTomadaBO {
     //TESTE BUSCAR VACINAS TOMADAS POR ID DE USUARIO; RESULTADO TEM QUE SER LISTA
  
         
-    public List<VacinaTomada> Relatorio(){
+    public List<VacinaTomada> RelatorioVacina(){
         List<VacinaTomada> cartaovacinas;
        
         EntityManager en = emf.createEntityManager();
@@ -137,7 +137,21 @@ public class VacinaTomadaBO {
         
         return cartaovacinas;
 }
-
+public List<VacinaTomada> RelatorioSangue(){
+        List<VacinaTomada> cartaovacinas;
+       
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina) as qtd from VacinaTomada id_vacina group by vacinas order by qtd desc ").getResultList();
+               
+        en.getTransaction().commit();
+        
+        en.clear();
+        en.close();
+        
+        return cartaovacinas;
+}
     
 }
 

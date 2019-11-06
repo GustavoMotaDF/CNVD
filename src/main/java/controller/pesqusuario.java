@@ -28,33 +28,17 @@ public class pesqusuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-         if(Objects.nonNull(req.getParameter("pesquisar"))){
-            //Tratando editar
-            try{
-                req.setAttribute("usuarioEditando", vacinatomadabo.MontarCartao(Integer.valueOf(req.getParameter("usuario"))));
-
-            }catch(Exception e){
-                req.setAttribute("erroBD","Sem resultado para a pesquisa!");
-            }
-        }
+         req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
         
-        req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/testeRelatorioUsuario.jsp").forward(req, resp);
     
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-          if(Objects.nonNull(req.getParameter("pesquisar"))){
-            //Tratando editar
-            try{
-                req.setAttribute("usuarioEditando", vacinatomadabo.MontarCartao(Integer.valueOf(req.getParameter("usuario"))));
-
-            }catch(Exception e){
-                req.setAttribute("erroBD","Sem resultado para a pesquisa!");
-            }
-        }
-        req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
+        req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
+          
+        req.getRequestDispatcher("jsp/testeRelatorioUsuario.jsp").forward(req, resp);
     }
     
     

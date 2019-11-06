@@ -274,5 +274,20 @@ public class UsuarioBO {
         return usuario;
         
     }
+    public List<Usuario> RelatorioUsuarioEstado(){
+        List<Usuario> userEstado;
+       
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        userEstado = en.createQuery("select distinct id_estado as Estados, count(id_estado) as qtd from Usuario id_estado group by estado order by qtd desc ").getResultList();
+               
+        en.getTransaction().commit();
+        
+        en.clear();
+        en.close();
+        
+        return userEstado;
+}
 
 }
