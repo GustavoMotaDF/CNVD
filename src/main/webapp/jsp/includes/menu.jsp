@@ -46,6 +46,12 @@
                 <li>
                     <a href="${pageContext.request.contextPath}/relusuario">Relatorio: Usuarios</a>
                 </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/relatorioEstadoUsuario">Relatorio: Usuarios cadastrados por Estado</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/totalvacinastomada">Relatorio: Numero de Vacinas aplicadas</a>
+                </li>
             </ul> 
         </li>
         <li>

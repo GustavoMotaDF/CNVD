@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gustavo
  */
-@WebServlet(name = "pesqusuario", urlPatterns = {"/pesqusuario"})
-public class pesqusuario extends HttpServlet {
+@WebServlet(name = "relatorioEstadoUsuario", urlPatterns = {"/relatorioEstadoUsuario"})
+public class RelatorioEstadoUsuario extends HttpServlet {
         private final UsuarioBO usuariobo = new UsuarioBO();
         private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
 
@@ -30,7 +30,7 @@ public class pesqusuario extends HttpServlet {
         
          req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
         
-        req.getRequestDispatcher("jsp/testeRelatorioUsuario.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);
     
     }
 
@@ -38,7 +38,7 @@ public class pesqusuario extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
           
-        req.getRequestDispatcher("jsp/testeRelatorioUsuario.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);
     }
     
     

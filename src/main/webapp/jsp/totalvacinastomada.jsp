@@ -16,9 +16,9 @@
     <body>
         <jsp:include page="includes/menusuperior.jsp"/>
         
-        <form method="post" action="" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
+        <form method="post" action="${pageContext.request.contextPath}/totalvacinastomada" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
           
-            <script>
+            <%--<script>
                 function enviarpesq() {
                     document.form01.action = '${pageContext.request.contextPath}/pesqusuario';                    
                     document.form01.submit();
@@ -46,7 +46,7 @@
             <h3>Relatório: Vacinas Mais usadas</h3>
             
             <input type="radio" name="pesqusuario" id="pesqusuario" value="PesqUsuario" />
-            <input type="radio" name="user" value="User" id="user"/>
+            <input type="radio" name="user" value="User" id="user"/> --%>
             <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
                             <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
 

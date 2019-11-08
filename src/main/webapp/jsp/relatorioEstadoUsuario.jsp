@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Relatório: Usuarios cadastrados por Estado</title>
         <jsp:include page="includes/head.jsp"/>
     </head>
     <body>
@@ -18,21 +18,16 @@
         
         <form method="post" action="${pageContext.request.contextPath}/pesqusuario" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
           
+            <h3>Relatório: Usuarios cadastrados por Estado</h3>
             
-            
-            
-            <h3>Relatório: Vacinas Mais usadas</h3>
-            
-            
-
             <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
                             <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
                                 
                                 <thead class="thead-light">
                                     <tr>                                        
                                         
-                                        <th class="hovercoluna">Nome Vacina</th>
-                                        <th class="hovercoluna">Quantidade</th>
+                                        <th class="hovercoluna">Estado</th>
+                                        <th class="hovercoluna">Numero de Usuarios</th>
                                         
                                     </tr>
                                 </thead>
