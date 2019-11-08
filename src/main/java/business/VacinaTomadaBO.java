@@ -137,22 +137,22 @@ public class VacinaTomadaBO {
         
         return cartaovacinas;
 }
-public List<VacinaTomada> RelatorioSangue(String Estado){
-        List<VacinaTomada> cartaovacinas;
+public List<VacinaTomada> RelatorioSangue(){
+        List<VacinaTomada> cartao;
        
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina) as qtd from VacinaTomada id_vacina group by vacinas order by qtd desc ").getResultList();
+        cartao= en.createQuery("select u.nome, u.tiposanguineo, u.datanascimento, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose, v.datavacinacao from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado where u.idusuario=14 order by va.vacina").getResultList();
                
         en.getTransaction().commit();
         
         en.clear();
         en.close();
         
-        return cartaovacinas;
+        return cartao;
         
-        select 
+        
 }
     
 }

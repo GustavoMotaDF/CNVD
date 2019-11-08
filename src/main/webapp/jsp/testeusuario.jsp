@@ -16,61 +16,38 @@
     <body>
         <jsp:include page="includes/menusuperior.jsp"/>
         
-        <form method="post" action="" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
-            <script>
-                function enviarpesq() {
-                    document.form01.action = '${pageContext.request.contextPath}/pesqusuario';                    
-                    document.form01.submit();
-                }
-                function enviaruser() {
-                    document.form01.action = '${pageContext.request.contextPath}/usuario';
-                    document.form01.submit();
-                }
-                
-                
-                function enviar() {
-                    var formulario = document.getElementById('formulario');
-                    if(document.getElementById('pesqusuario').checked === true) {
-                        formulario.action = "${pageContext.request.contextPath}/pesqusuario";
-                    }
-                     else {
-                        formulario.action = "${pageContext.request.contextPath}/usuario";
-                    }		
-                        formulario.submit();
-                    }
-
-            </script>
-            <c:if test="${empty usuarioEditando}">
-                <input type="text" name="usuario"/>
-                <input type="submit" name="pesquisar" value="Pesquisar" onClick="enviar();"/><br>
-                
-               PesUsuario: <input type="radio" name="pesqusuario" id="pesqusuario" value="PesqUsuario" />
-                User:<input type="radio" name="user" value="User" id="user"/>
-                
-            </c:if>
-            
-            <c:if test="${not empty usuarioEditando}">]
-            
+        <form method="post" action="${pageContext.request.contextPath}/relatorios" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
+           
             <h3>Relatório: Vacinas Mais usadas</h3>
+            <label>${cartao["0"]["0"]}</label><br>
+            <label>${cartao["0"]["1"]}</label><br>
+            <label>${cartao["0"]["2"]}</label><br>
+            <label>${cartao["0"]["3"]}</label><br>
+            <label>${cartao["0"]["4"]}</label><br>
+            <label>${cartao["0"]["5"]}</label><br>
+            
             <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
-                            <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
+                            <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
 
                                 <thead class="thead-light">
                                     <tr>
                                         
                                         
-                                        <th class="hovercoluna">Nome Vacina</th>
-                                        <th class="hovercoluna">dose</th>
-                                        <th class="hovercoluna">dataVacinação</th>
+                                        <th class="hovercoluna">Nome</th>
+                                        <th class="hovercoluna">Vacina</th>
+                                        <th class="hovercoluna">Dose</th>
+                                        <th class="hovercoluna">Data de aplicação</th>
                                         
                                     </tr>
                                 </thead>
-                                body>
-                                <c:forEach var="usuarioEditando" items="${usuarioEditando}">
+                                
+                                <c:forEach var="cartao" items="${cartao}">
                                     <tr>
                                         
-                                        <td>${usuarioEditando}</td>
-                                        <td>${usuarioEditando}</td>
+                                        <td>${cartao["0"]}</td>
+                                        <td>${cartao["6"]}</td>
+                                        <td>${cartao["7"]}</td>
+                                        <td>${cartao["8"]}</td>
                                         
                                     </tr>
                                 </c:forEach>
@@ -78,7 +55,7 @@
 
                             </table>  
                         </div> 
-                     </c:if>
+                     
             </form>
                     
                

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import business.DoencaBO;
 import business.VacinaBO;
+import business.VacinaTomadaBO;
 
 /**
  *
@@ -21,15 +22,19 @@ import business.VacinaBO;
 @WebServlet(name = "Relatorios", urlPatterns = {"/relatorios"})
 public class Relatorios extends HttpServlet {
     
-    private VacinaBO vacinaBO = new VacinaBO();
-    private DoencaBO doencaBO = new DoencaBO();
-
+    private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("vacinas",vacinaBO.getVacinas());
-        req.setAttribute("doencas",doencaBO.getDoencas());
-        req.getRequestDispatcher("jsp/relatoriovd.jsp").forward(req, resp);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
+        
+         req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
     }
-    
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
+        
+         req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
+    }
 
 }

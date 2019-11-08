@@ -254,7 +254,7 @@ public class UsuarioBO {
         Usuario usuario;
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
-        usuario = (Usuario) en.createQuery("SELECT u from Usuario u where u.cpf =:cpf").setParameter("cpf", cpf).getSingleResult();
+        usuario = (Usuario) en.createQuery("SELECT idusuario from Usuario u where u.cpf =:cpf").setParameter("cpf", cpf).getSingleResult();
         en.getTransaction().commit();
         en.clear();
         en.close();

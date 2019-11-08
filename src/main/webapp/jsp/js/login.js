@@ -27,4 +27,26 @@ document.addEventListener('keypress', function(e){
 		return false;
 	}
         
+                function enviarpesq() {
+                    document.form01.action = '${pageContext.request.contextPath}/pesqusuario';                    
+                    document.form01.submit();
+                }
+                function enviaruser() {
+                    document.form01.action = '${pageContext.request.contextPath}/usuario';
+                    document.form01.submit();
+                }
+                
+                
+                function enviar() {
+                    var formulario = document.getElementById('formulario');
+                    if(document.getElementById('pesqusuario').checked === true) {
+                        formulario.action = "${pageContext.request.contextPath}/pesqusuario";
+                    }
+                     else {
+                        formulario.action = "${pageContext.request.contextPath}/usuario";
+                    }		
+                        formulario.submit();
+                    }
+
+            
 }

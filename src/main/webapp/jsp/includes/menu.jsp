@@ -67,7 +67,7 @@
             <a href="${pageContext.request.contextPath}/cadvacinatomada" class="cadcartao">Vacinar Usuario!</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/pesqusuario" class="cadcartao">Cartão de Vacina</a>
+            <a href="${pageContext.request.contextPath}/cartaodevacina" class="cadcartao">Cartão de Vacina</a>
         </li>
     </ul>
 </nav>
