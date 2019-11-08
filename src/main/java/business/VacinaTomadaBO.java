@@ -137,7 +137,7 @@ public class VacinaTomadaBO {
         
         return cartaovacinas;
 }
-public List<VacinaTomada> RelatorioSangue(){
+public List<VacinaTomada> RelatorioSangue(String Estado){
         List<VacinaTomada> cartaovacinas;
        
         EntityManager en = emf.createEntityManager();
@@ -151,6 +151,8 @@ public List<VacinaTomada> RelatorioSangue(){
         en.close();
         
         return cartaovacinas;
+        
+        select 
 }
     
 }
