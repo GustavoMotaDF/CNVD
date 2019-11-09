@@ -31,17 +31,13 @@
                         <form action="${pageContext.request.contextPath}/cadcampanha" method="post" name="formulariocadastro" class="conteudo" onsubmit="return validarform(this)" >
                             <fieldset id="tabelaconteudo">
                                 <legend>Cadastro de Campanha</legend>
-
-                                <%-- Descrição da campanha --%>
-                                <label for="descricaocampanha" class="alinhamento"><b>Descrição: </b></label>
-                                <textarea style="width: 70%!important" name="descricaocampanha" id="descricaocampanha" placeholder="Descrição da campanha" required="Preencha o campo!"></textarea>
-                                
-                                <span class="style1">*</span>
                                 <br>
-                                <br>
+                                <hr> 
+                                <h5><i>Estado da Campanha</i></h5>   
+                               
                                 <%-- Estado do Usuario --%>
-                                <label for="estadousuarios" class="alinhamento">Estado da Campanha:</label>
-                                <select name ="estadousuarios" id="estadousuarios" required="Selecione!" style="width: 70%; height: 30px;">
+                                
+                                <select class="estadousuarios"name ="estadousuarios" id="estadousuarios" required="Selecione!" style="width: 70%; height: 30px;">
                                     <option value="">Selecione o Estado...</option>   
                                     <option value="1">Acre</option>
                                     <option value="2">Alagoas</option>
@@ -73,14 +69,149 @@
                                     
                                 </select>
                                 <span class="style1">*</span>
+                                <hr> 
+                                
+                                 <%-- Data inicio --%>
+                                <hr> 
+                                <h5><i>Data Inicio da Campanha</i></h5>
+                                <label for="diainicio" style="font-weight: bold;">Dia Inicio: &nbsp;</label>
+                                <select class="diainicio" name="diainicio" id="diainicio" style="width: 20%; height: 30px;">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+
+                                </select>                             
                                 <br>
-                                <label for="datacampanha" class="alinhamento" >Data inicio:</label>
-                                <input type="date" name="datacampanha" id="datacampanha" style="width: 70%; height: 30px;"/>
+                                <label for="mesinicio"style="font-weight: bold;">Mês Inicio:</label>
+                                            <select class="mesinicio" name="mesinicio" id="mesinicio" style="width: 20%; height: 30px;">
+                                                <option value="">Selecione o mês...</option>                                
+                                                <option value="Janeiro">Janeiro</option>
+                                                <option value="Fevereiro">Fevereiro</option>
+                                                <option value="Março">Março</option>
+                                                <option value="Abril">Abril</option>
+                                                <option value="Maio">Maio</option>
+                                                <option value="Junho">Junho</option>
+                                                <option value="Julho">Julho</option>
+                                                <option value="Agosto">Agosto</option>
+                                                <option value="Setembro">Setembro</option>
+                                                <option value="Outubro">Outubro</option>
+                                                <option value="Novembro">Novembro</option>
+                                                <option value="Dezembro">Dezembro</option>
+
+                                            </select><br>
+                                <label for="anoinicio"style="font-weight: bold;" >Ano Inicio:</label>
+                                            <select class="anoinicio" name="anoinicio" id="anoinicio" style="width: 20%; height: 30px;">
+                                                <option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                            </select>  
                                 <span class="style1">*</span>
                                 <br>
-                                <label for="datacampanhafim" class="alinhamento" >Data final:</label>
-                                <input type="date" name="datacampanhafim" id="datacampanhafim" style="width: 70%; height: 30px;"/>
+                                 <hr> 
+                                <hr> 
+                                <h5><i>Descrição da Campanha</i></h5>
+                                <%-- Descrição da campanha --%>
+                                <textarea style="width: 70%!important" name="descricaocampanha" id="descricaocampanha" placeholder="Descrição da campanha" required="Preencha o campo!"></textarea>
                                 <span class="style1">*</span>
+                                <hr>
+                               <%-- Vacina da campanha --%> 
+                               <hr> 
+                                <h5><i>Vacina da Campanha</i></h5>
+                                <select class="vacinacampanha" name="vacinacampanha" id="vacinacampanha" style="width: 70%; height: 30px;">
+                                    <c:forEach var="vacinacampanha" items="${vacinacampanhas}">
+                                        <option value="${vacinacampanha.idvacina}">${vacinacampanha.vacina}</option>
+                                    </c:forEach>
+                                </select>
+                                <hr> 
+                                <hr>
+                                <h5><i>Data final da Campanha</i></h5>
+                                  <%-- Data fim --%>
+                                <label for="diafim" style="font-weight: bold;" >Dia Final: &nbsp;</label>
+                                <select class="diafim" name="diafim" id="diafim" style="width: 20%; height: 30px;">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+
+                                </select> <br>
+                                <label for="mesfim" style="font-weight: bold;">Mês Final:</label>
+                                            <select class="mesfim" name="mesfim" id="mesfim" style="width: 20%; height: 30px;">
+                                                <option value="">Selecione o mês...</option>                                
+                                                <option value="Janeiro">Janeiro</option>
+                                                <option value="Fevereiro">Fevereiro</option>
+                                                <option value="Março">Março</option>
+                                                <option value="Abril">Abril</option>
+                                                <option value="Maio">Maio</option>
+                                                <option value="Junho">Junho</option>
+                                                <option value="Julho">Julho</option>
+                                                <option value="Agosto">Agosto</option>
+                                                <option value="Setembro">Setembro</option>
+                                                <option value="Outubro">Outubro</option>
+                                                <option value="Novembro">Novembro</option>
+                                                <option value="Dezembro">Dezembro</option>
+                                            </select><br>
+                                <label for="anofim" style="font-weight: bold;" >Ano Final:</label>
+                                            <select class="anofim" name="anofim" id="anofim" style="width: 20%; height: 30px;">
+                                                <option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                            </select>    
+                                
+                                <span class="style1">*</span>
+                                 <hr>
                                 <br>
                                 <br>
                             </fieldset>
@@ -278,6 +409,21 @@
         </div>
         </div>
         <jsp:include page="includes/imports.jsp"/>
+                <script>
+            $(document).ready(function () {
+                $(".anoinicio").select2();
+                $(".anofim").select2();
+                $(".mesinicio").select2();
+                $(".mesfim").select2();
+                $(".diainicio").select2();
+                $(".diafim").select2();
+                $(".estadousuarios").select2();
+                $(".vacinacampanha").select2();
+                
+
+            });
+        </script>
+
     </body>
 </html>
 

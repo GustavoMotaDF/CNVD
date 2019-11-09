@@ -6,6 +6,7 @@
 package controller;
 
 import business.CampanhaBO;
+import business.VacinaBO;
 import java.io.IOException;
 import java.util.Objects;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CadCampanha extends HttpServlet {
 
     private final CampanhaBO campanhabo = new CampanhaBO();
+    private final VacinaBO vacinabo = new VacinaBO();
     String mensagemErro = null;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -79,6 +81,7 @@ public class CadCampanha extends HttpServlet {
     }
         try{
             req.setAttribute("campanha", campanhabo.getCampanhas());
+            req.setAttribute("vacinacampanhas",vacinabo.getVacinas());
             
         }catch(Exception e){
             mensagemErro = "Erro ao listar Campanhas "+ e.getMessage();
@@ -91,6 +94,8 @@ public class CadCampanha extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             req.setAttribute("campanha", campanhabo.getCampanhas());
+                        req.setAttribute("vacinacampanhas",vacinabo.getVacinas());
+
             
         }catch(Exception e){
             mensagemErro = "Erro ao listar Doencas "+ e.getMessage();
