@@ -30,9 +30,14 @@ public class CadCampanha extends HttpServlet {
         try{
             
         campanhabo.IncluirCampanhas(req.getParameter("descricaocampanha"),
-                                    req.getParameter("estadousuarios"),
-                                    req.getParameter("datacampanha"),
-                                    req.getParameter("datacampanhafim"));
+                                    req.getParameter("estadousuarios"),                                                                       
+                                    req.getParameter("vacinacampanha"),
+                                    req.getParameter("diainicio"),
+                                    req.getParameter("mesinicio"),
+                                    req.getParameter("anoinicio"),
+                                    req.getParameter("diafim"),
+                                    req.getParameter("mesfim"),
+                                    req.getParameter("anofim"));
         req.setAttribute("mensagemSucesso","Campanha adicionada com sucesso!" );
         
         
@@ -57,11 +62,16 @@ public class CadCampanha extends HttpServlet {
     }else if(Objects.nonNull(req.getParameter("alterar"))){
             //Tratando alterar            
             try{
-            campanhabo.alterarCampanha(req.getParameter("idcampanha"),
-                                    req.getParameter("descricaocampanha"),
-                                    req.getParameter("estadousuarios"),
-                                    req.getParameter("datacampanha"),
-                                    req.getParameter("datacampanhafim"));
+            campanhabo.alterarCampanha( req.getParameter("idcampanha"),
+                                        req.getParameter("descricaocampanha"),
+                                        req.getParameter("estadousuarios"),                                                                       
+                                        req.getParameter("vacinacampanha"),
+                                        req.getParameter("diainicio"),
+                                        req.getParameter("mesinicio"),
+                                        req.getParameter("anoinicio"),
+                                        req.getParameter("diafim"),
+                                        req.getParameter("mesfim"),
+                                        req.getParameter("anofim"));    
             req.setAttribute("mensagemSucesso", "Alterado com Sucesso!");
             }catch(Exception e){
             req.setAttribute("mensagemErro", "Erro ao Alterar "+e.getMessage());

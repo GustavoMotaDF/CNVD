@@ -67,11 +67,9 @@
             
         </div>
         <br>
-        <div class="container" style="
-               box-shadow: 0 0 1em black;">
+        <div class="container" style=" box-shadow: 0 0 1em black;">
             <h3>Informações do cartao</h3><br>
-                
-            <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
+            <div style="margin-bottom: 10px;">
                 <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
 
                                 <thead class="thead-light">
@@ -94,10 +92,11 @@
                                         
                                     </tr>
                                 </c:forEach>
-                                
-
+                                    
                 </table>  
-            </div> 
+                <br>
+                
+            </div>
             
         </div>
        

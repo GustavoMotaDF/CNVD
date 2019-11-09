@@ -32,29 +32,44 @@ public class Campanhas implements Serializable {
     @Column(name="NOME_CAMPANHA")
     private String descricaocampanha;
     
-    @Column(name="DATA_CAMPANHA")
-    private String datacampanha;
-    
-    @Column(name="DATA_CAMPANHA_FIM")
-    private String datacampanhafim;
+    @Column(name="DIA_INICIO")
+    private String diainicio;
+    @Column(name="DIA_FIM")
+    private String diafim;
+    @Column(name="MES_INICIO")
+    private String mesinicio;
+    @Column(name="MES_FIM")
+    private String mesfim;
+    @Column(name="ANO_INICIO")
+    private String anoinicio;
+    @Column(name="ANO_FIM")
+    private String anofim;
     
     @ManyToOne
     @JoinColumn(name="ID_ESTADO")
     private Estado estadousuarios;
+    
+    @ManyToOne
+    @JoinColumn(name="ID_VACINA")
+    private Vacina vacinacampanha;
 
     public Campanhas() {
     }
 
-    public String getDatacampanhafim() {
-        return datacampanhafim;
+    public Campanhas(Long idcampanha, String descricaocampanha, String diainicio, String diafim, String mesinicio, String mesfim, String anoinicio, String anofim, Estado estadousuarios, Vacina vacinacampanha) {
+        this.idcampanha = idcampanha;
+        this.descricaocampanha = descricaocampanha;
+        this.diainicio = diainicio;
+        this.diafim = diafim;
+        this.mesinicio = mesinicio;
+        this.mesfim = mesfim;
+        this.anoinicio = anoinicio;
+        this.anofim = anofim;
+        this.estadousuarios = estadousuarios;
+        this.vacinacampanha = vacinacampanha;
     }
 
-    public void setDatacampanhafim(String datacampanhafim) {
-        this.datacampanhafim = datacampanhafim;
-    }
     
-    
-
     public Long getIdcampanha() {
         return idcampanha;
     }
@@ -71,12 +86,52 @@ public class Campanhas implements Serializable {
         this.descricaocampanha = descricaocampanha;
     }
 
-    public String getDatacampanha() {
-        return datacampanha;
+    public String getDiainicio() {
+        return diainicio;
     }
 
-    public void setDatacampanha(String datacampanha) {
-        this.datacampanha = datacampanha;
+    public void setDiainicio(String diainicio) {
+        this.diainicio = diainicio;
+    }
+
+    public String getDiafim() {
+        return diafim;
+    }
+
+    public void setDiafim(String diafim) {
+        this.diafim = diafim;
+    }
+
+    public String getMesinicio() {
+        return mesinicio;
+    }
+
+    public void setMesinicio(String mesinicio) {
+        this.mesinicio = mesinicio;
+    }
+
+    public String getMesfim() {
+        return mesfim;
+    }
+
+    public void setMesfim(String mesfim) {
+        this.mesfim = mesfim;
+    }
+
+    public String getAnoinicio() {
+        return anoinicio;
+    }
+
+    public void setAnoinicio(String anoinicio) {
+        this.anoinicio = anoinicio;
+    }
+
+    public String getAnofim() {
+        return anofim;
+    }
+
+    public void setAnofim(String anofim) {
+        this.anofim = anofim;
     }
 
     public Estado getEstadousuarios() {
@@ -87,10 +142,22 @@ public class Campanhas implements Serializable {
         this.estadousuarios = estadousuarios;
     }
 
+    public Vacina getVacinacampanha() {
+        return vacinacampanha;
+    }
+
+    public void setVacinacampanha(Vacina vacinacampanha) {
+        this.vacinacampanha = vacinacampanha;
+    }
+
+    
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.idcampanha);
+        hash = 59 * hash + Objects.hashCode(this.idcampanha);
         return hash;
     }
 
@@ -112,15 +179,5 @@ public class Campanhas implements Serializable {
         return true;
     }
 
-    public Campanhas(Long idcampanha, String descricaocampanha, String datacampanha, String datacampanhafim, Estado estadousuarios) {
-        this.idcampanha = idcampanha;
-        this.descricaocampanha = descricaocampanha;
-        this.datacampanha = datacampanha;
-        this.datacampanhafim = datacampanhafim;
-        this.estadousuarios = estadousuarios;
-    }
-
-    
-      
     
 }

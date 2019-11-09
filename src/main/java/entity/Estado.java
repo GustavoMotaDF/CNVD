@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @Table(name="tb_estado")
 public class Estado implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_ESTADO")
     private Integer idestado;
     
@@ -38,6 +38,7 @@ public class Estado implements Serializable {
     
     @OneToMany(mappedBy = "estado")
     private List<Usuario> usuarios;
+    
     @OneToMany(mappedBy = "estadousuarios")
     private List<Campanhas> campanha ;
 

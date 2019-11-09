@@ -6,6 +6,7 @@
 package business;
 
 import entity.Estado;
+import entity.Grupo;
 import entity.TipoUsuario;
 import entity.Usuario;
 import java.util.List;
@@ -24,7 +25,7 @@ public class UsuarioBO {
             String email, String localnascimento, String logradouro,
             String nome, String rg, String telefone, String login, String senha, String numerocasa,
             String idtipousuarios, String idestado, String cidade,
-            String sexo, String datanascimento, String tiporesidencia, String tiposanguineo, String alergia
+            String sexo, String dia,String mes, String ano, String tiporesidencia, String tiposanguineo, String alergia, String grupos
     ) {
         EntityManager en = emf.createEntityManager();
 
@@ -113,9 +114,19 @@ public class UsuarioBO {
             System.err.println("erro, nao pode ser nulo CIDADE " + e.getMessage());
         }
         try {
-            usuario.setDatanascimento(datanascimento);
+            usuario.setDia(dia);
         } catch (Exception e) {
-            System.err.println("erro, nao pode ser nulo DATANASCIMENTO " + e.getMessage());
+            System.err.println("erro, nao pode ser nulo DIA " + e.getMessage());
+        }
+        try {
+            usuario.setMes(mes);
+        } catch (Exception e) {
+            System.err.println("erro, nao pode ser nulo mes " + e.getMessage());
+        }
+        try {
+            usuario.setAno(ano);
+        } catch (Exception e) {
+            System.err.println("erro, nao pode ser nulo ANO " + e.getMessage());
         }
         try {
             usuario.setSexo(sexo);
@@ -137,6 +148,12 @@ public class UsuarioBO {
             usuario.setAlergia(alergia);
         } catch (Exception e) {
             System.err.println("erro, nao pode ser nulo ALERGIA " + e.getMessage());
+        }
+        try {
+            Grupo grupo = en.find(Grupo.class, Integer.valueOf(grupos));
+            usuario.setGrupos(grupo);
+        } catch (Exception e) {
+            System.err.println("erro, nao pode ser nulo IDGRUPO " + e.getMessage());
         }
 
         en.persist(usuario);
@@ -193,7 +210,7 @@ public class UsuarioBO {
             String email, String localnascimento, String logradouro,
             String nome, String rg, String telefone, String login, String senha, String numerocasa,
             String idtipousuarios, String idestado, String cidade,
-            String sexo, String datanascimento, String tiporesidencia, String tiposanguineo, String alergia
+            String sexo, String dia,String mes, String ano, String tiporesidencia, String tiposanguineo, String alergia, String grupos
     ) {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
@@ -226,7 +243,11 @@ public class UsuarioBO {
 
         usuario.setCidade(cidade);
 
-        usuario.setDatanascimento(datanascimento);
+        usuario.setDia(dia);
+        
+        usuario.setMes(mes);
+        
+        usuario.setAno(ano);
 
         usuario.setSexo(sexo);
 
@@ -241,6 +262,9 @@ public class UsuarioBO {
         usuario.setTiporesidencia(tiporesidencia);
         usuario.setTiposanguineo(tiposanguineo);
         usuario.setAlergia(alergia);
+        
+        Grupo grupo = en.find(Grupo.class, Integer.valueOf(grupos));
+        usuario.setGrupos(grupo);
 
         en.merge(usuario);
 

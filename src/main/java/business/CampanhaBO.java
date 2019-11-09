@@ -8,6 +8,7 @@ package business;
 import entity.Campanhas;
 import entity.Estado;
 import entity.Usuario;
+import entity.Vacina;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,19 +39,23 @@ public List<Campanhas> getCampanhas(){
         return campanha;
     
     }
-    public void IncluirCampanhas(String descricaocampanha, String estadousuarios, String datacampanha,String datacampanhafim){
+    public void IncluirCampanhas(String descricaocampanha, String estadousuarios, String vacinacampanha, String diainicio, String diafim, String mesinicio, String mesfim, String anoinicio, String anofim){
         EntityManager en = emf.createEntityManager();  
         
         en.getTransaction().begin();
         
         Campanhas campanhas = new Campanhas();
-        campanhas.setDescricaocampanha(descricaocampanha);
-        
-        campanhas.setDatacampanha(datacampanha);
-        campanhas.setDatacampanhafim(datacampanhafim);
+        campanhas.setDescricaocampanha(descricaocampanha);               
         Estado estado = en.find(Estado.class, Integer.valueOf(estadousuarios));
         campanhas.setEstadousuarios(estado);
-        
+        Vacina vacinas = en.find(Vacina.class, Integer.valueOf(vacinacampanha));
+        campanhas.setVacinacampanha(vacinas);
+        campanhas.setDiainicio(diainicio);
+        campanhas.setDiafim(diafim);
+        campanhas.setMesinicio(mesinicio);
+        campanhas.setMesfim(mesfim);
+        campanhas.setAnoinicio(anoinicio);
+        campanhas.setAnofim(anofim);
        
         
         
@@ -97,18 +102,23 @@ public List<Campanhas> getCampanhas(){
         
     }
     
-    public void alterarCampanha(String idcampanha, String descricaocampanha, String estadousuarios, String datacampanha, String datacampanhafim){
+    public void alterarCampanha(String idcampanha,String descricaocampanha, String estadousuarios, String vacinacampanha, String diainicio, String diafim, String mesinicio, String mesfim, String anoinicio, String anofim){
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
        
         Campanhas campanhas = en.find(Campanhas.class, Long.valueOf(idcampanha));
-        campanhas.setDescricaocampanha(descricaocampanha);
-        campanhas.setDatacampanha(datacampanha);
-        campanhas.setDatacampanhafim(datacampanhafim);
+        campanhas.setDescricaocampanha(descricaocampanha);        
         Estado estado = en.find(Estado.class, Integer.valueOf(estadousuarios));
         campanhas.setEstadousuarios(estado);
-       
+        Vacina vacinas = en.find(Vacina.class, Integer.valueOf(vacinacampanha));
+        campanhas.setVacinacampanha(vacinas);
+        campanhas.setDiainicio(diainicio);
+        campanhas.setDiafim(diafim);
+        campanhas.setMesinicio(mesinicio);
+        campanhas.setMesfim(mesfim);
+        campanhas.setAnoinicio(anoinicio);
+        campanhas.setAnofim(anofim);
         
         en.merge(campanhas);
         
@@ -117,20 +127,7 @@ public List<Campanhas> getCampanhas(){
         en.close();
     }
      
-    public static Usuario getEstadoUsuario(String estadousuarios) {
-
-        EntityManager em = emf.createEntityManager();
-
-        em.getTransaction().begin();
-
-        Usuario EstadoUsuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.estado =:estadousuarios").setParameter("estadousuarios", estadousuarios).getSingleResult();
-        
-        em.getTransaction().commit();
-        em.close();
-
-        return EstadoUsuario;
-
-    }
+    
     
     
     

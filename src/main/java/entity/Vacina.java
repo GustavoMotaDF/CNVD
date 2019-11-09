@@ -40,6 +40,17 @@ public class Vacina implements Serializable {
     
     @OneToMany(mappedBy = "vacinas")
     private List<VacinaTomada> cartaovacina ;
+    
+    @OneToMany(mappedBy = "vacinacampanha")
+    private List<Campanhas> campanha ;
+
+    public List<Campanhas> getCampanha() {
+        return campanha;
+    }
+
+    public void setCampanha(List<Campanhas> campanha) {
+        this.campanha = campanha;
+    }
 
     public Integer getIdvacina() {
         return idvacina;
@@ -98,12 +109,15 @@ public class Vacina implements Serializable {
         return true;
     }
 
-    public Vacina(Integer idvacina, String vacina, Doenca doenca, List<VacinaTomada> cartaovacina) {
+    public Vacina(Integer idvacina, String vacina, Doenca doenca, List<VacinaTomada> cartaovacina, List<Campanhas> campanha) {
         this.idvacina = idvacina;
         this.vacina = vacina;
         this.doenca = doenca;
         this.cartaovacina = cartaovacina;
+        this.campanha = campanha;
     }
+
+    
 
     public Vacina() {
     }

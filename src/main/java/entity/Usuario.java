@@ -40,9 +40,13 @@ public class Usuario implements Serializable {
     @Column(name="EMAIL")
     private String email;
     @Column(name="TELEFONE")
-    private Long telefone;
-    @Column(name="DATA_NASCIMENTO")
-    private String datanascimento;
+    private Long telefone;    
+    @Column(name="DIA")
+    private String dia;
+    @Column(name="MES")
+    private String mes;
+    @Column(name="ANO")
+    private String ano;
     @Column(name="LOCAL_NASCIMENTO")
     private String localnascimento;
     @Column(name="CEP")
@@ -68,14 +72,34 @@ public class Usuario implements Serializable {
     @Column(name="ALERGIA")
     private String alergia;
 
-    public Usuario(Integer idusuario, String nome, String cpf, Integer rg, String email, Long telefone, String datanascimento, String localnascimento, Integer cep, String logradouro, Integer numerocasa, String bairro, String login, String senha, String cidade, String sexo, String tiporesidencia, String tiposanguineo, String alergia, Estado estado, TipoUsuario tipousuario, List<Autenticacao> autenticacao, List<VacinaTomada> cartavacina) {
+    @ManyToOne
+    @JoinColumn(name = "ID_ESTADO", referencedColumnName = "ID_ESTADO")
+    private Estado estado;
+    @ManyToOne
+    @JoinColumn(name = "ID_GRUPO", referencedColumnName = "ID_GRUPO")
+    private Grupo grupos;
+    
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_USUARIO", referencedColumnName = "ID_TIPO_USUARIO")
+    private TipoUsuario tipousuario;
+    
+    @OneToMany(mappedBy = "usuarios")
+    private List<Autenticacao> autenticacao ;
+       
+    
+    @OneToMany(mappedBy = "usuario")
+    private List<VacinaTomada> cartavacina ;
+
+    public Usuario(Integer idusuario, String nome, String cpf, Integer rg, String email, Long telefone, String dia, String mes, String ano, String localnascimento, Integer cep, String logradouro, Integer numerocasa, String bairro, String login, String senha, String cidade, String sexo, String tiporesidencia, String tiposanguineo, String alergia, Estado estado, Grupo grupos, TipoUsuario tipousuario, List<Autenticacao> autenticacao, List<VacinaTomada> cartavacina) {
         this.idusuario = idusuario;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.email = email;
         this.telefone = telefone;
-        this.datanascimento = datanascimento;
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
         this.localnascimento = localnascimento;
         this.cep = cep;
         this.logradouro = logradouro;
@@ -89,32 +113,25 @@ public class Usuario implements Serializable {
         this.tiposanguineo = tiposanguineo;
         this.alergia = alergia;
         this.estado = estado;
+        this.grupos = grupos;
         this.tipousuario = tipousuario;
         this.autenticacao = autenticacao;
         this.cartavacina = cartavacina;
     }
+
+    
+    
+    public Grupo getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(Grupo grupos) {
+        this.grupos = grupos;
+    }
+
     
 
-   
     
-    
-    
-    @ManyToOne
-    @JoinColumn(name = "ID_ESTADO", referencedColumnName = "ID_ESTADO")
-    private Estado estado;
-    
-    @ManyToOne
-    @JoinColumn(name = "ID_TIPO_USUARIO", referencedColumnName = "ID_TIPO_USUARIO")
-    private TipoUsuario tipousuario;
-    
-    @OneToMany(mappedBy = "usuarios")
-    private List<Autenticacao> autenticacao ;
-    
-    
-    
-    @OneToMany(mappedBy = "usuario")
-    private List<VacinaTomada> cartavacina ;
-
     public String getTiposanguineo() {
         return tiposanguineo;
     }
@@ -130,7 +147,6 @@ public class Usuario implements Serializable {
     public void setAlergia(String alergia) {
         this.alergia = alergia;
     }
-
     
     
     public Integer getIdusuario() {
@@ -181,14 +197,31 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
-    public String getDatanascimento() {
-        return datanascimento;
+    public String getDia() {
+        return dia;
     }
 
-    public void setDatanascimento(String datanascimento) {
-        this.datanascimento = datanascimento;
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    
     public String getLocalnascimento() {
         return localnascimento;
     }
@@ -327,54 +360,7 @@ public class Usuario implements Serializable {
         return Objects.equals(this.idusuario, other.idusuario);
     }
 
-    /**
-     *
-     * @param idusuario
-     * @param nome
-     * @param cpf
-     * @param rg
-     * @param email
-     * @param telefone
-     * @param datanascimento
-     * @param localnascimento
-     * @param cep
-     * @param logradouro
-     * @param numerocasa
-     * @param bairro
-     * @param login
-     * @param senha
-     * @param cidade
-     * @param sexo
-     * @param tiporesidencia
-     * @param estado
-     * @param tipousuario
-     * @param autenticacao
-     * @param cartavacina
-     */
-    public Usuario(Integer idusuario, String nome, String cpf, Integer rg, String email, Long telefone, String datanascimento, String localnascimento, Integer cep, String logradouro, Integer numerocasa, String bairro, String login, String senha, String cidade, String sexo, String tiporesidencia, Estado estado, TipoUsuario tipousuario, List<Autenticacao> autenticacao,List<VacinaTomada> cartavacina) {
-        this.idusuario = idusuario;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.email = email;
-        this.telefone = telefone;
-        this.datanascimento = datanascimento;
-        this.localnascimento = localnascimento;
-        this.cep = cep;
-        this.logradouro = logradouro;
-        this.numerocasa = numerocasa;
-        this.bairro = bairro;
-        this.login = login;
-        this.senha = senha;
-        this.cidade = cidade;
-        this.sexo = sexo;
-        this.tiporesidencia = tiporesidencia;
-        this.estado = estado;
-        this.tipousuario = tipousuario;
-        this.autenticacao = autenticacao;
-        
-        this.cartavacina = cartavacina;
-    }
+    
 
     public Usuario() {
     }

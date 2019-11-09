@@ -35,54 +35,57 @@
                                 <caption>***Lista de usuários</caption>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="hovercoluna">ID</th>
-                                        <th>Nome</th>
-                                        <th>Sexo</th>
-                                        <th>CPF</th>
-                                        <th>RG</th>
-                                        <th>Tipo Saguineo</th>
-                                        <th>Email</th>
-                                        <th>Telefone</th>
-                                        <th>LocalNascimento</th>
-                                        <th>DataNascimento</th>
-                                        <th>CEP</th>
-                                        <th>Logradouro</th>
-                                        <th>Numero da Casa</th>
-                                        <th>Tipo de Casa</th>
-                                        <th>Bairro</th>
-                                        <th>Cidade</th>
-                                        <th>Estado-UF</th>                                        
-                                        <th>Login</th>
-                                        <th>Senha</th>
-                                        <th>Tipo de Usuario</th>
                                         
+                                        
+                                            <th>Nome</th>
+                                            <th>Sexo</th>
+                                            <th>CPF</th>
+                                            <th>RG</th>
+                                            <th>Tipo Saguineo</th>
+                                            <th>Grupo de risco</th>
+                                            <th>Email</th>
+                                            <th>Telefone</th>
+                                            <th>LocalNascimento</th>
+                                            <th>DataNascimento</th>
+                                            <th>CEP</th>
+                                            <th>Logradouro</th>
+                                            <th>Numero da Casa</th>
+                                            <th>Tipo de Casa</th>
+                                            <th>Bairro</th>
+                                            <th>Cidade</th>
+                                            <th>Estado-UF</th>                                        
+                                            <th>Login</th>
+                                            <th>Senha</th>
+                                            <th>Tipo de Usuario</th>
 
 
-                                    </tr>
-                                </thead>
-                                <body>
-                                <c:forEach var= "usuario" items="${usuarios}">
-                                    <tr>
-                                        <td>${usuario.idusuario}</td>
-                                        <td>${usuario.nome}</td>
-                                        <td>${usuario.sexo}</td>
-                                        <td>${usuario.cpf}</td>
-                                        <td>${usuario.rg}</td>
-                                        <td>${usuario.tiposanguineo}</td>
-                                        <td>${usuario.email}</td>
-                                        <td>${usuario.telefone}</td>
-                                        <td>${usuario.localnascimento}</td>
-                                        <td>${usuario.datanascimento}</td>
-                                        <td>${usuario.cep}</td>
-                                        <td>${usuario.logradouro}</td>
-                                        <td>${usuario.numerocasa}</td>
-                                        <td>${usuario.tiporesidencia}</td>
-                                        <td>${usuario.bairro}</td>
-                                        <td>${usuario.cidade}</td>
-                                        <td>${usuario.estado.estado}, ${usuario.estado.uf}</td>
-                                        <td>${usuario.login}</td>
-                                        <td>${usuario.senha}</td>
-                                        <td>${usuario.tipousuario.tipousuario}</td>
+
+                                        </tr>
+                                    </thead>
+                                    <body>
+                                        <c:forEach var= "usuario" items="${usuarios}">
+                                        <tr>
+                                            
+                                            <td>${usuario.nome}</td>
+                                            <td>${usuario.sexo}</td>
+                                            <td>${usuario.cpf}</td>
+                                            <td>${usuario.rg}</td>
+                                            <td>${usuario.tiposanguineo}</td>
+                                            <td>${usuario.grupos.grupo}</td>
+                                            <td>${usuario.email}</td>
+                                            <td>${usuario.telefone}</td>
+                                            <td>${usuario.localnascimento}</td>
+                                            <td>${usuario.dia}/${usuario.mes}/${usuario.ano}</td>                                        
+                                            <td>${usuario.cep}</td>
+                                            <td>${usuario.logradouro}</td>
+                                            <td>${usuario.numerocasa}</td>
+                                            <td>${usuario.tiporesidencia}</td>
+                                            <td>${usuario.bairro}</td>
+                                            <td>${usuario.cidade}</td>
+                                            <td>${usuario.estado.estado}, ${usuario.estado.uf}</td>
+                                            <td>${usuario.login}</td>
+                                            <td>${usuario.senha}</td>
+                                            <td>${usuario.tipousuario.tipousuario}</td>
                                                                                  
 
                                     </tr>

@@ -19,9 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import business.EstadoBO;
+import business.GrupoBO;
 
 import business.TipoUsuarioBO;
 import business.UsuarioBO;
+import entity.Grupo;
 
 
 /**
@@ -32,17 +34,18 @@ import business.UsuarioBO;
 public class Cadusuario extends HttpServlet {
     
      private final UsuarioBO usuarioBO = new UsuarioBO();
-     private final TipoUsuarioBO tipousuarioBO= new TipoUsuarioBO();
-      
+     private final TipoUsuarioBO tipousuarioBO= new TipoUsuarioBO();      
      private final EstadoBO estadoBO = new EstadoBO();
+     private final GrupoBO grupobo = new GrupoBO();
+     
      
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
         req.setAttribute("usuarios",usuarioBO.getUsuarios());
-        req.setAttribute("tipousuarios", tipousuarioBO.getTipoUsuarios());
-        
+        req.setAttribute("tipousuarios", tipousuarioBO.getTipoUsuarios());        
         req.setAttribute("estados", estadoBO.getEstados());
+        req.setAttribute("grupo", grupobo.getGrupos());
     
         }catch(Exception e){
             req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
@@ -76,10 +79,13 @@ public class Cadusuario extends HttpServlet {
                                          req.getParameter("idestado"),/*estado*/
                                          req.getParameter("cidade"),/*cidade*/
                                          req.getParameter("sexo"),/*sexo*/
-                                         req.getParameter("datanascimento"),
+                                         req.getParameter("dia"),
+                                         req.getParameter("mes"),
+                                         req.getParameter("ano"),
                                          req.getParameter("tiporesidencia"),
                                          req.getParameter("tiposanguineo"),
-                                         req.getParameter("alergia")
+                                         req.getParameter("alergia"),
+                                         req.getParameter("grupos")
                 );/*datanascimento*/
                 
                 
@@ -127,10 +133,13 @@ public class Cadusuario extends HttpServlet {
                                          req.getParameter("idestado"),
                                          req.getParameter("cidade"),
                                          req.getParameter("sexo"),
-                                         req.getParameter("datanascimento"),
+                                         req.getParameter("dia"),
+                                         req.getParameter("mes"),
+                                         req.getParameter("ano"),
                                          req.getParameter("tiporesidencia"),
                                          req.getParameter("tiposanguineo"),
-                                         req.getParameter("alergia"));               
+                                         req.getParameter("alergia"),               
+                                         req.getParameter("grupos"));               
                                          
                 
                                          req.setAttribute("mensagemSucesso", "USUARIO Alterado com sucesso!");                                         
