@@ -31,22 +31,50 @@ String mensagemErro = null;
         try{
             
         tipousuarioBO.IncluirTipousuario(req.getParameter("tipousuario"));
-        req.setAttribute("mensagemSucesso","Tipo de Usuario adicionado com sucesso!" );
+        req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Cadastrado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         
         }catch(Exception e){
-            mensagemErro = "Erro ao adicionar Tipo de Usuario "+e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao cadastrar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
             
         
         
     }else if(Objects.nonNull(req.getParameter("excluir"))){
          //Tratando exclusão
-            if(tipousuarioBO.excluirTipousuario(req.getParameter("idtipousuario"))){
-                req.setAttribute("mensagemSucesso", "Tipo de Usuario Excluido com Sucesso!");
+            try{tipousuarioBO.excluirTipousuario(req.getParameter("idtipousuario"));
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Excluido com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
-            }else{
-                req.setAttribute("mensagemErro", "Erro ao excluir! Verifique se o Tipo de Usuario em questão, está relacionado com algum Usuario!");                
-            }
+            }catch(Exception e){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao excluir! Verifique se o Tipo de Usuario em questão, está relacionado com algum Usuario! "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+                 }
         
     }else if(Objects.nonNull(req.getParameter("editar"))){
             //Tratando editar
@@ -56,16 +84,37 @@ String mensagemErro = null;
             try{
             tipousuarioBO.alterarTipoUsuario(req.getParameter("tipousuario"),                                
                                     req.getParameter("idtipousuario"));
-            req.setAttribute("mensagemSucesso", "Alterado com Sucesso!");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro ao Alterar "+e.getMessage());
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar"+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
     }
         try{
             req.setAttribute("tipousuario", tipousuarioBO.getTipoUsuarios());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Tipos de Usurios "+ e.getMessage();
+           req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadtipodeusuario.jsp").forward(req, resp);
     }
@@ -77,7 +126,14 @@ String mensagemErro = null;
             req.setAttribute("tipousuario", tipousuarioBO.getTipoUsuarios());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Tipos de Usurios "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadtipodeusuario.jsp").forward(req, resp);
     }

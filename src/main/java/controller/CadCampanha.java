@@ -25,6 +25,7 @@ public class CadCampanha extends HttpServlet {
     private final CampanhaBO campanhabo = new CampanhaBO();
     private final VacinaBO vacinabo = new VacinaBO();
     String mensagemErro = null;
+    String mensagemSucesso = null;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(Objects.nonNull  (req.getParameter("cadastrar"))){
@@ -40,11 +41,28 @@ public class CadCampanha extends HttpServlet {
                                     req.getParameter("diafim"),
                                     req.getParameter("mesfim"),
                                     req.getParameter("anofim"));
-        req.setAttribute("mensagemSucesso","Campanha adicionada com sucesso!" );
+        req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Cadastrado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+        
+        
         
         
         }catch(Exception e){
-            mensagemErro = "Erro ao adicionar Campanha "+e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao cadastrar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+
         }
             
         
@@ -52,10 +70,24 @@ public class CadCampanha extends HttpServlet {
     }else if(Objects.nonNull(req.getParameter("excluir"))){
          //Tratando exclusão
             if(campanhabo.excluirCampanha(req.getParameter("idcampanha"))){
-                req.setAttribute("mensagemSucesso", "Campanha Excluida com Sucesso!");
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Excluido com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
             }else{
-                req.setAttribute("mensagemErro", "Erro ao Exclui!");                
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Excluir! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");                
             }
         
     }else if(Objects.nonNull(req.getParameter("editar"))){
@@ -74,9 +106,23 @@ public class CadCampanha extends HttpServlet {
                                         req.getParameter("diafim"),
                                         req.getParameter("mesfim"),
                                         req.getParameter("anofim"));    
-            req.setAttribute("mensagemSucesso", "Alterado com Sucesso!");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro ao Alterar "+e.getMessage());
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar"+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
     }
         try{
@@ -84,7 +130,14 @@ public class CadCampanha extends HttpServlet {
             req.setAttribute("vacinacampanhas",vacinabo.getVacinas());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Campanhas "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadcampanhas.jsp").forward(req, resp);
     }
@@ -98,7 +151,14 @@ public class CadCampanha extends HttpServlet {
 
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Doencas "+ e.getMessage();
+           req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadcampanhas.jsp").forward(req, resp);
     }

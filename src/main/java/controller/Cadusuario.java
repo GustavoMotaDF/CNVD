@@ -48,7 +48,14 @@ public class Cadusuario extends HttpServlet {
         req.setAttribute("grupo", grupobo.getGrupos());
     
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         
         
@@ -89,18 +96,46 @@ public class Cadusuario extends HttpServlet {
                 );/*datanascimento*/
                 
                 
-                                         req.setAttribute("mensagemSucesso", "USUARIO Cadastrado com sucesso!");
+                                         req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Cadastrado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-                req.setAttribute("mensagemErro", "Erro ao cadastrar USUARIO" + e.getCause().getCause()+")");
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Cadastrar"+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }   
             
         }else if(Objects.nonNull(req.getParameter("excluir"))){
             //Tratando exclusão
             try{ usuarioBO.excluirUsuario(req.getParameter("idusuario"));
-                req.setAttribute("mensagemSucesso", "USUARIO Excluido com Sucesso!");
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Excluido com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
             }catch(Exception e){
-                req.setAttribute("mensagemErro", "Erro ao excluir USUARIO!" + e.getCause().getCause()+")");                
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Excluir"+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");                
             }
             
         }else if(Objects.nonNull(req.getParameter("editar"))){
@@ -109,7 +144,14 @@ public class Cadusuario extends HttpServlet {
                 req.setAttribute("usuarioEditando",usuarioBO.getUsuario(req.getParameter("idusuario")));
 
             }catch(Exception e){
-                req.setAttribute("erroBD","Sem resultado para a pesquisa!");
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
         } else if(Objects.nonNull(req.getParameter("alterar"))){
             //Tratando alterar
@@ -142,10 +184,24 @@ public class Cadusuario extends HttpServlet {
                                          req.getParameter("grupos"));               
                                          
                 
-                                         req.setAttribute("mensagemSucesso", "USUARIO Alterado com sucesso!");                                         
+                                         req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");                                         
                                          
             }catch(Exception e){
-                req.setAttribute("mensagemErro", "Erro ao Alterar USUARIO" + e.getMessage()+")");
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }   
         }
         
@@ -158,7 +214,14 @@ public class Cadusuario extends HttpServlet {
         
     
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         
         

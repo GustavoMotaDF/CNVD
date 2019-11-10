@@ -28,8 +28,15 @@ private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
         req.setAttribute("cartaovacinas",vacinatomadabo.RelatorioVacina());
         
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro "+e.getCause().getCause()+")"+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
         
         
         req.getRequestDispatcher("jsp/totalvacinastomada.jsp").forward(req, resp);
@@ -39,8 +46,15 @@ private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
         req.setAttribute("cartaovacinas",vacinatomadabo.RelatorioVacina());
         
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+           req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro "+e.getCause().getCause()+")"+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
         
         
         req.getRequestDispatcher("jsp/totalvacinastomada.jsp").forward(req, resp);

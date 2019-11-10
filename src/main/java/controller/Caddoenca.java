@@ -30,22 +30,51 @@ public class Caddoenca extends HttpServlet {
         try{
             
         doencaBO.IncluirDoenca(req.getParameter("doenca"));
-        req.setAttribute("mensagemSucesso","Doenca adicionada com sucesso!" );
+        req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Cadastrado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         
         
         }catch(Exception e){
-            mensagemErro = "Erro ao adicionar Doenca "+e.getMessage();
+           req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao cadastrar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
             
         
         
     }else if(Objects.nonNull(req.getParameter("excluir"))){
          //Tratando exclusão
-            if(doencaBO.excluirDoenca(req.getParameter("iddoenca"))){
-                req.setAttribute("mensagemSucesso", "Doenca Excluida com Sucesso!");
+            try{doencaBO.excluirDoenca(req.getParameter("iddoenca"));
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Excluido com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
-            }else{
-                req.setAttribute("mensagemErro", "Erro ao excluir! <br>Verifique se a DOENCA em questão, está relacionada com alguma VACINA!");                
+            }catch(Exception e){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao excluir! <br>Verifique se a Doença em questão, está relacionada com alguma Vacina! "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+                               
             }
         
     }else if(Objects.nonNull(req.getParameter("editar"))){
@@ -56,16 +85,37 @@ public class Caddoenca extends HttpServlet {
             try{
             doencaBO.alterarDoenca( req.getParameter("doenca"),                                
                                     req.getParameter("iddoenca"));
-            req.setAttribute("mensagemSucesso", "Alterado com Sucesso!");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro ao Alterar "+e.getMessage());
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
     }
         try{
             req.setAttribute("doenca", doencaBO.getDoencas());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Doencas "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadastrodoenca.jsp").forward(req, resp);
     }
@@ -77,7 +127,14 @@ public class Caddoenca extends HttpServlet {
             req.setAttribute("doenca", doencaBO.getDoencas());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar Doencas "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadastrodoenca.jsp").forward(req, resp);
     }

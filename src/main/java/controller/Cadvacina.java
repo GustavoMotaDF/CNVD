@@ -32,8 +32,15 @@ public class Cadvacina extends HttpServlet {
         req.setAttribute("doencas",doencaBO.getDoencas());
     
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro "+e.getCause().getCause()+")"+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
         
         
         req.getRequestDispatcher("jsp/cadastrovacina.jsp").forward(req, resp);
@@ -46,20 +53,47 @@ public class Cadvacina extends HttpServlet {
            
             vacinaBO.IncluirVacina(req.getParameter("vacina"),
                                     req.getParameter("iddoenca"));
-            req.setAttribute("mensagemSucesso", "Cadastrado com sucesso!");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Cadastrado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }   
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao cadastrar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");}   
             
-            req.setAttribute("mensagemSucesso", "Cadastrado com sucesso!");
+            
             
         }else if(Objects.nonNull(req.getParameter("excluir"))){
             //Tratando exclusão
-            if(vacinaBO.excluirVacina(req.getParameter("idvacina"))){
-                req.setAttribute("mensagemSucesso", "Vacina Excluida com Sucesso!");
+            try{vacinaBO.excluirVacina(req.getParameter("idvacina"));
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Excluida com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
-            }else{
-                req.setAttribute("mensagemErro", "Erro ao excluir!");
+            }catch(Exception e){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Excluir "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
             }
             
@@ -74,9 +108,23 @@ public class Cadvacina extends HttpServlet {
             vacinaBO.alterarVacina( req.getParameter("idvacina"),
                                     req.getParameter("vacina"),                                
                                     req.getParameter("iddoenca"));
-            req.setAttribute("mensagemSucesso", "Alterado com Sucesso!");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro ao Alterar");
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
         }
         
@@ -86,8 +134,15 @@ public class Cadvacina extends HttpServlet {
         req.setAttribute("doencas",doencaBO.getDoencas());
     
         }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro " + e.getMessage()+")");
-        }
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro interno, recarregue a pagina (F5), caso o erro persista, contate o administrator do sistema! (Especificação do erro "+e.getCause().getCause()+")"+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
 
         
         

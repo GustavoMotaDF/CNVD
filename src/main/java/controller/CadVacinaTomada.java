@@ -39,20 +39,47 @@ public class CadVacinaTomada extends HttpServlet {
                                                     req.getParameter("idusuario"), 
                                                     req.getParameter("idvacina"));
                 
-                    req.setAttribute("mensagemSucesso", "Registro salvo com sucesso!");
+                    req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Registro salvo com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e ){
-                    
-                req.setAttribute("mensagemErro", "Erro ao Salvar Vacina, tente novamente, caso o erro persista, contate o administrador do sistema "+ e.getMessage());
-                
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Salvar Vacina, tente novamente, caso o erro persista, contate o administrador do sistema "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+               
             }
         
         }else if(Objects.nonNull(req.getParameter("excluir"))){
          //Tratando exclusão
-            if(vacinatomadaBO.excluirVacinaTomada(req.getParameter("idvacinatomada"))){
-                req.setAttribute("mensagemSucesso", "Registro excluido com sucesso");
+            try{vacinatomadaBO.excluirVacinaTomada(req.getParameter("idvacinatomada"));
+                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Registro Exluido com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
                 
-            }else{
-                req.setAttribute("mensagemErro", "Registro não pode ser excluido!");                
+            }catch(Exception e){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro Excluir registro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");               
             }
                    
         }else if(Objects.nonNull(req.getParameter("editar"))){
@@ -66,9 +93,23 @@ public class CadVacinaTomada extends HttpServlet {
                                                     req.getParameter("dose"), 
                                                     req.getParameter("idusuario"), 
                                                     req.getParameter("idvacina"));
-            req.setAttribute("mensagemSucesso", "Registro Alterado com sucesso");
+            req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
+                    + "<strong> Registro Alterado com Sucesso! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }catch(Exception e){
-            req.setAttribute("mensagemErro", "Erro ao Alterar "+e.getMessage());
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro ao Alterar "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
             }
     }
         try{
@@ -77,7 +118,14 @@ public class CadVacinaTomada extends HttpServlet {
             req.setAttribute("usuario", usuarioBO.getUsuarios());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar registros "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadvacinatomada.jsp").forward(req, resp);
     }
@@ -91,7 +139,14 @@ public class CadVacinaTomada extends HttpServlet {
             req.setAttribute("usuario", usuarioBO.getUsuarios());
             
         }catch(Exception e){
-            mensagemErro = "Erro ao listar registros "+ e.getMessage();
+            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Erro "+e.getCause().getCause()+" </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
         }
         req.getRequestDispatcher("jsp/cadvacinatomada.jsp").forward(req, resp);
         
