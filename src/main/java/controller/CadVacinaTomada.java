@@ -34,10 +34,13 @@ public class CadVacinaTomada extends HttpServlet {
         String mensagemSucesso="";
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try{
-                vacinatomadaBO.IncluirVacinaTomada( req.getParameter("datavacinacao"), 
-                                                    req.getParameter("dose"), 
+                vacinatomadaBO.IncluirVacinaTomada( req.getParameter("dose"), 
                                                     req.getParameter("idusuario"), 
-                                                    req.getParameter("idvacina"));
+                                                    req.getParameter("idvacina"),
+                                                    req.getParameter("dia"),                                                      
+                                                    req.getParameter("mess"), 
+                                                    req.getParameter("ano")
+                                                    );
                 
                     req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Registro salvo com Sucesso! </strong>"
@@ -49,7 +52,7 @@ public class CadVacinaTomada extends HttpServlet {
                         "});</script>");
             }catch(Exception e ){
                 req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao Salvar Vacina, tente novamente, caso o erro persista, contate o administrador do sistema "+e.getCause().getCause()+" </strong>"
+                    + "<strong> Erro ao Salvar Vacina, tente novamente, caso o erro persista, contate o administrador do sistema "+ e.getMessage()+","+ e.getCause() +" </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
@@ -89,10 +92,12 @@ public class CadVacinaTomada extends HttpServlet {
             //Tratando alterar            
             try{
             vacinatomadaBO.alterarVacinaTomada(     req.getParameter("idvacinatomada"),
-                                                    req.getParameter("datavacinacao"), 
                                                     req.getParameter("dose"), 
                                                     req.getParameter("idusuario"), 
-                                                    req.getParameter("idvacina"));
+                                                    req.getParameter("idvacina"),
+                                                    req.getParameter("dia"),                                                      
+                                                    req.getParameter("mess"), 
+                                                    req.getParameter("ano"));
             req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Registro Alterado com Sucesso! </strong>"
                     + "</div>" 

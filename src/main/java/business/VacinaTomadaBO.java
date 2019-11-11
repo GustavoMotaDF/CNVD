@@ -9,11 +9,15 @@ import entity.VacinaTomada;
 import entity.Usuario;
 import entity.Vacina;
 import java.lang.reflect.Array;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import org.hibernate.HibernateException;
+import org.hibernate.QueryParameterException;
 
 /**
  *
@@ -41,27 +45,31 @@ public class VacinaTomadaBO {
         return qtdVacinas;
     
     }
-    public void IncluirVacinaTomada(String datavacinacao, String dose, String idusuario, String idvacina){
+    public void IncluirVacinaTomada( String dose, String idusuario, String idvacina, String dia, String mess, String ano){
         EntityManager en = emf.createEntityManager();
         
         en.getTransaction().begin();
         
-        VacinaTomada cartaovacina = new VacinaTomada();
-        
-        cartaovacina.setDatavacinacao(datavacinacao);
+        VacinaTomada cartaovacina = new VacinaTomada();       
+       
         cartaovacina.setDose(dose);
-        
         Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
         cartaovacina.setUsuario(usuario);
-        
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
         cartaovacina.setVacinas(vacina);
+        cartaovacina.setDia(dia);
+        cartaovacina.setMess(mess);
+        cartaovacina.setAno(ano);
+        
+        
+        
         
         en.persist(cartaovacina);
         
         en.getTransaction().commit();
         en.clear();
         en.close();
+       
     }
     
     public Boolean excluirVacinaTomada(String idvacinatomada){
@@ -100,19 +108,23 @@ public class VacinaTomadaBO {
         
     }
     
-    public void alterarVacinaTomada(String idvacinatomada, String datavacinacao, String dose, String idusuario, String idvacina){
+    public void alterarVacinaTomada(String idvacinatomada, String dose, String idusuario, String idvacina, String dia,  String mess, String ano){
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
        
         VacinaTomada cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));
-        cartavacina.setDatavacinacao(datavacinacao);
-        cartavacina.setDose(dose);
         
+        cartavacina.setDose(dose);
+        Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
+        cartavacina.setUsuario(usuario);
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
         cartavacina.setVacinas(vacina);
+        cartavacina.setDia(dia);
+        cartavacina.setMess(mess);
+        cartavacina.setAno(ano);
         
-        en.merge(cartavacina);
+        en.persist(cartavacina);
         
         en.getTransaction().commit();
         en.clear();
@@ -137,23 +149,25 @@ public class VacinaTomadaBO {
         
         return cartaovacinas;
 }
-public List<VacinaTomada> RelatorioSangue(){
+public List<VacinaTomada> RelatorioSangue(String cpf){
         List<VacinaTomada> cartao;
-       
+      
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
-        
-        cartao= en.createQuery("select u.nome, u.tiposanguineo, u.datanascimento, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose, v.datavacinacao from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado where u.idusuario=14 order by va.vacina").getResultList();
-               
+        cartao = en.createQuery("select u.nome, u.tiposanguineo, u.dia, u.mes, u.ano, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose, v.dia, v.mess, v.ano , gr.grupo from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado join Grupo gr on gr.idgrupo=u.grupos where u.cpf=:cpf order by va.vacina").setParameter("cpf",cpf).getResultList();
         en.getTransaction().commit();
-        
         en.clear();
         en.close();
         
+        
+        
         return cartao;
+       
+        }
         
         
-}
+        
+
     
 }
 

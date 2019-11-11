@@ -27,11 +27,17 @@ public class VacinaTomada implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_VACINA_TOMADA")
-    private Integer idvacinatomada;
-    @Column(name="DATA_VACINACAO")
-    private String datavacinacao;
+    private Integer idvacinatomada;    
     @Column(name="DOSE")
     private String dose;    
+    @Column(name="DIA")
+    private String dia;
+    
+    @Column(name="MESS")
+    private String mess;
+    @Column(name="ANO")
+    private String ano;
+    
     
     @ManyToOne
     @JoinColumn(name="ID_USUARIO")
@@ -43,19 +49,69 @@ public class VacinaTomada implements Serializable {
     public VacinaTomada() {
     }
 
-    public VacinaTomada(Integer idvacinatomada, String datavacinacao, String dose, Usuario usuario, Vacina vacinas) {
+    public Integer getIdvacinatomada() {
+        return idvacinatomada;
+    }
+
+    public void setIdvacinatomada(Integer idvacinatomada) {
         this.idvacinatomada = idvacinatomada;
-        this.datavacinacao = datavacinacao;
+    }
+
+    public String getDose() {
+        return dose;
+    }
+
+    public void setDose(String dose) {
         this.dose = dose;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    
+    
+    public String getMess() {
+        return mess;
+    }
+
+    
+    public void setMess(String mess) {
+        this.mess = mess;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Vacina getVacinas() {
+        return vacinas;
+    }
+
+    public void setVacinas(Vacina vacinas) {
         this.vacinas = vacinas;
     }
-    
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.idvacinatomada);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.idvacinatomada);
         return hash;
     }
 
@@ -77,46 +133,15 @@ public class VacinaTomada implements Serializable {
         return true;
     }
 
-    public Integer getIdvacinatomada() {
-        return idvacinatomada;
-    }
-
-    public void setIdvacinatomada(Integer idvacinatomada) {
+    public VacinaTomada(Integer idvacinatomada, String dose, String dia, String mess, String ano, Usuario usuario, Vacina vacinas) {
         this.idvacinatomada = idvacinatomada;
-    }
-
-    public String getDatavacinacao() {
-        return datavacinacao;
-    }
-
-    public void setDatavacinacao(String datavacinacao) {
-        this.datavacinacao = datavacinacao;
-    }
-
-    public String getDose() {
-        return dose;
-    }
-
-    public void setDose(String dose) {
         this.dose = dose;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
+        this.dia = dia;
+        
+        this.mess = mess;
+        this.ano = ano;
         this.usuario = usuario;
-    }
-
-    public Vacina getVacinas() {
-        return vacinas;
-    }
-
-    public void setVacinas(Vacina vacinas) {
         this.vacinas = vacinas;
     }
-
-   
 
 }

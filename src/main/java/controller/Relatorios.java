@@ -26,13 +26,13 @@ public class Relatorios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
+       // req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
         
          req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
     }
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
+       // req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
         
          req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
     }

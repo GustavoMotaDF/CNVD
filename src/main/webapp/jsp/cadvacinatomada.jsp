@@ -9,9 +9,15 @@
 <%@page contentType="text/html" pageEncoding="iso-8859-1"%>
 <!doctype html>
 <html lang="pt-br">
-     <%-- head --%>
+    <%-- head --%>
     <title>Vacinar Usuário</title>
-    
+    <style>
+        hr{
+            border-color:#aaa;
+            box-sizing:border-box;
+            width:100%;  
+        }
+    </style>
     <jsp:include page="includes/head.jsp"/>
     <%-- desativa o enter na pagina--%>
     <body onKeyDown="AnalizaTeclas()">
@@ -34,8 +40,10 @@
                             <form action="${pageContext.request.contextPath}/cadvacinatomada" method="post" name="formulariocadastro" class="conteudo" onsubmit="return validarform(this)" >
                                 <fieldset id="tabelaconteudo">
                                     <legend>Cadastro de Registro</legend>
+                                    
                                     <%-- USUARio --%>
-                                    <label ><b>Usuário: </b></label><br>
+                                    <hr>
+                                    <h5><i>Usuario que será Vacinado</i></h5>
                                     <select class="usuarios" name ="idusuario" id="idusuario" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="">Selecione o Usuario...</option>   
                                         <c:forEach var="usuario" items="${usuario}">
@@ -43,10 +51,13 @@
                                         </c:forEach>   
                                     </select>
                                     <span class="style1">*</span>
-                                    <br>                                
+                                     <hr>
+                                    
+                                                                   
 
                                     <%-- ID VACINA --%>
-                                    <label ><b>Vacina a ser Tomada:</b></label><br>
+                                    <hr>
+                                    <h5><i>Vacina a ser tomada</i></h5>
                                     <select class="vacinas" name ="idvacina" id="idvacina" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="">Selecione a Vacina...</option>   
                                         <c:forEach var="vacina" items="${vacina}">
@@ -54,9 +65,11 @@
                                         </c:forEach>   
                                     </select>
                                     <span class="style1">*</span>                                
-                                    <br>
+                                    <hr>
+                                    
                                     <%-- DOSE --%>
-                                    <label><b>Dose a ser Tomada:</b></label><br>
+                                    <hr>
+                                    <h5><i>Vacina a ser tomada</i></h5>
                                     <select class="doses" name ="dose" id="dose" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="">Selecione a Dose...</option>   
                                         <option value="Primeira">Primeira</option>   
@@ -66,11 +79,73 @@
 
                                     </select>
                                     <span class="style1">*</span>                                
-                                    <br>
+                                    <hr>
 
-                                    <label><b>Data que está tomando a vacina:</b></label><br>
-                                    <input type="date" name="datavacinacao" id="datavacinacao" style="width: 70%; height: 30px;"/>
+                                    <%-- Data inicio --%>
+                                    <hr> 
+                                    <h5><i>Data em que está tomando a vacina</i></h5>
+                                    <label for="dia" style="font-weight: bold;">Dia: &nbsp;</label>
+                                    <select class="dia" name="dia" id="dia" style="width: 15%; height: 30px;">
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+
+                                    </select>  
+                                    <label for="mes"style="font-weight: bold;">Mês:</label>
+                                    <select class="mes" name="mess" id="mes" style="width: 26%; height: 30px;">
+                                        <option value="">Selecione o mês...</option>                                
+                                        <option value="Janeiro">Janeiro</option>
+                                        <option value="Fevereiro">Fevereiro</option>
+                                        <option value="Março">Março</option>
+                                        <option value="Abril">Abril</option>
+                                        <option value="Maio">Maio</option>
+                                        <option value="Junho">Junho</option>
+                                        <option value="Julho">Julho</option>
+                                        <option value="Agosto">Agosto</option>
+                                        <option value="Setembro">Setembro</option>
+                                        <option value="Outubro">Outubro</option>
+                                        <option value="Novembro">Novembro</option>
+                                        <option value="Dezembro">Dezembro</option>
+
+                                    </select>
+                                    <label for="ano"style="font-weight: bold;" >Ano:</label>
+                                    <select class="ano" name="ano" id="ano" style="width: 12%; height: 30px;">
+                                        <option value="">&nbsp;</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                    </select>  
                                     <span class="style1">*</span>
+                                    <br>
+                                    <hr> 
 
                                     <br>
                                     <br>
@@ -116,22 +191,25 @@
                             <%-- inicio formulario editar--%>
                             <form action="${pageContext.request.contextPath}/cadvacinatomada" method="post" name="formulariocadastro" class="conteudo" onsubmit="return validarform(this)" >
                                 <fieldset id="tabelaconteudo">
-                                    <legend>Alteração de Registro</legend>
-                                    <input type ="hidden" name="idvacinatomada" value="${vacinatomadaEditando.idvacinatomada}"/>
-
+                                    <legend>Cadastro de Registro</legend>
+                                    
                                     <%-- USUARio --%>
-                                    <label ><b>Usuário:</b></label><br>
+                                    <hr>
+                                    <h5><i>Usuario que está sendo Vacinado</i></h5>
                                     <select class="usuarios" name ="idusuario" id="idusuario" required="Selecione!" style="width: 70%; height: 30px;">
-                                        <option value="${vacinatomadaEditando.usuario.idusuario}">${vacinatomadaEditando.usuario.cpf}</option>   
+                                        <option value="${vacinatomadaEditando.usuario.idusuario}">${vacinatomadaEditando.usuario.nome}</option>                                         
                                         <c:forEach var="usuario" items="${usuario}">
                                             <option value="${usuario.idusuario}">${usuario.cpf}</option>
                                         </c:forEach>   
                                     </select>
                                     <span class="style1">*</span>
-                                    <br>                                
+                                     <hr>
+                                    
+                                                                   
 
                                     <%-- ID VACINA --%>
-                                    <label ><b>Vacina a ser Tomada:</b></label><br>
+                                    <hr>
+                                    <h5><i>Vacina a ser tomada</i></h5>
                                     <select class="vacinas" name ="idvacina" id="idvacina" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="${vacinatomadaEditando.vacinas.idvacina}">${vacinatomadaEditando.vacinas.vacina}</option>   
                                         <c:forEach var="vacina" items="${vacina}">
@@ -139,11 +217,14 @@
                                         </c:forEach>   
                                     </select>
                                     <span class="style1">*</span>                                
-                                    <br>
+                                    <hr>
+                                    
                                     <%-- DOSE --%>
-                                    <label ><b>Dose a ser Tomada: </b></label><br>
+                                    <hr>
+                                    <h5><i>Vacina a ser tomada</i></h5>
                                     <select class="doses" name ="dose" id="dose" required="Selecione!" style="width: 70%; height: 30px;">
-                                        <option value="$${vacinatomadaEditando.dose}">${vacinatomadaEditando.dose}</option>   
+                                        <option value="${vacinatomadaEditando.dose}">${vacinatomadaEditando.dose}</option>   
+                                        <option value="">&nbsp;</option>   
                                         <option value="Primeira">Primeira</option>   
                                         <option value="Segunda">Segunda</option>   
                                         <option value="Terceira">Terceira</option>   
@@ -151,21 +232,88 @@
 
                                     </select>
                                     <span class="style1">*</span>                                
-                                    <br>
+                                    <hr>
 
-                                    <label ><b>Data que está tomando a vacina:</b><b></label><br>
-                                    <input type="date" name="datavacinacao" id="datavacinacao" value="${vacinatomadaEditando.datavacinacao}" style="width: 70%; height: 30px;"/>
+                                    <%-- Data inicio --%>
+                                    <hr> 
+                                    <h5><i>Data em que está tomando a vacina</i></h5>
+                                    <label for="dia" style="font-weight: bold;">Dia: &nbsp;</label>
+                                    <select class="dia" name="dia" id="dia" style="width: 15%; height: 30px;">
+                                        <option value="${vacinatomadaEditando.dia}">${vacinatomadaEditando.dia}</option>
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+
+                                    </select>  
+                                    <label for="mes"style="font-weight: bold;">Mês:</label>
+                                    <select class="mes" name="mess" id="mes" style="width: 26%; height: 30px;">
+                                        <option value="${vacinatomadaEditando.mess}">${vacinatomadaEditando.mess}</option>                                
+                                        <option value="">&nbsp;</option>                                
+                                        <option value="Janeiro">Janeiro</option>
+                                        <option value="Fevereiro">Fevereiro</option>
+                                        <option value="Março">Março</option>
+                                        <option value="Abril">Abril</option>
+                                        <option value="Maio">Maio</option>
+                                        <option value="Junho">Junho</option>
+                                        <option value="Julho">Julho</option>
+                                        <option value="Agosto">Agosto</option>
+                                        <option value="Setembro">Setembro</option>
+                                        <option value="Outubro">Outubro</option>
+                                        <option value="Novembro">Novembro</option>
+                                        <option value="Dezembro">Dezembro</option>
+
+                                    </select>
+                                    <label for="ano"style="font-weight: bold;" >Ano:</label>
+                                    <select class="ano" name="ano" id="ano" style="width: 12%; height: 30px;">
+                                        <option value="${vacinatomadaEditando.ano}">${vacinatomadaEditando.ano}</option>
+                                        <option value="">&nbsp;</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                    </select>  
                                     <span class="style1">*</span>
+                                    <br>
+                                    <hr> 
 
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
+
+
                                 </fieldset>
-                                <%-- botao:none acionado via js--%>
-                                <input type="submit"  id="alt" class="escondido" name="alterar" value="Alterar"  />
-                            </form>
+                                <%-- submit none, acionado via js--%>    
+                                <input type="submit" class="escondido "name="alterar" value="alterar" id="alt"/>
+                            
 
                             <%-- inicio modal--%>
                             <div id="myModal" class="modal">
@@ -181,14 +329,14 @@
                                                 document.getElementById('alt').click();
                                             }
                                         </script>
-                                        <input type="submit" value="Confirmar"  name="alterar"class="btn btn-success"/>
+                                        <input type="submit" value="Confirmar"  name="alterar" class="btn btn-success" onclick="alterar()"/>
                                         <%-- fecha modal--%>
                                         <input type="button" value="Revisar"  id="close" name="cancelar"  class="btn btn-danger" onclick="fechar()"/>
                                     </div>                                
                                 </div>
                             </div>    
                             <%-- FIM MODAL--%>
-
+                                </form>
                             <div id="botoes">
                                 <%-- abre modal--%>
                                 <input type="button" value="Alterar" onclick="abrir()" class="btn btn-outline-success"/>
@@ -227,7 +375,7 @@
                                             <td>${vacinatomada.usuario.nome}</td>
                                             <td>${vacinatomada.vacinas.vacina}</td>                                        
                                             <td>${vacinatomada.dose}</td>
-                                            <td>${vacinatomada.datavacinacao}</td>
+                                            <td>${vacinatomada.dia}/${vacinatomada.mess}/${vacinatomada.ano}</td>
                                             <td>
                                                 <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
                                                 <input type ="radio" name="idvacinatomada" value ="${vacinatomada.idvacinatomada}" 
@@ -276,6 +424,9 @@
                 $(".usuarios").select2();
                 $(".vacinas").select2();
                 $(".doses").select2();
+                $(".dia").select2();
+                $(".mes").select2();
+                $(".ano").select2();
             });
         </script>
 

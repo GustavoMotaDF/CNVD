@@ -27,13 +27,9 @@ public class Login extends HttpServlet {
 
 
         try {
-
             LoginBO.getLogin(req.getParameter("login"), req.getParameter("senha"));
-            
-            
+                        
             req.getRequestDispatcher("jsp/inicio.jsp").forward(req, resp);
-            
-          
             
             
         } catch (Exception e) {

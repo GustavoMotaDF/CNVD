@@ -8,6 +8,7 @@ package controller;
 import business.VacinaTomadaBO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,14 +27,17 @@ public class CartaoDeVacina extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
-        
+        if (Objects.nonNull(req.getParameter("pesquisar"))) {
+        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue(req.getParameter("cpf")));
+        }
          req.getRequestDispatcher("jsp/VisualizarCartaoVacina.jsp").forward(req, resp);
     }
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
-        
+        if (Objects.nonNull(req.getParameter("pesquisar"))) {
+        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue(req.getParameter("cpf")));
+        }
          req.getRequestDispatcher("jsp/VisualizarCartaoVacina.jsp").forward(req, resp);
     }
 

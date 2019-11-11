@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
+window.location.reload(true);
+document.location.reload(true);
 function AnalizaTeclas()
 {
     var tecla = window.event.keyCode;
