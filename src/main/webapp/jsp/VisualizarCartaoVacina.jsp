@@ -134,7 +134,7 @@
                                         
                                         <td>${cartao["11"]}</td>
                                         <td>${cartao["12"]}</td>
-                                        <td>${cartao["13"]}-${cartao["14"]}-${cartao["15"]}</td>
+                                        <td>Dia ${cartao["13"]} de ${cartao["14"]} de ${cartao["15"]}</td>
                                         
                                         
                                     </tr>

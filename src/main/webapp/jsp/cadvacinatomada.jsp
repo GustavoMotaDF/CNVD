@@ -47,7 +47,7 @@
                                     <select class="usuarios" name ="idusuario" id="idusuario" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="">Selecione o Usuario...</option>   
                                         <c:forEach var="usuario" items="${usuario}">
-                                            <option value="${usuario.idusuario}">${usuario.cpf}</option>
+                                            <option value="${usuario.idusuario}">${usuario.nome}</option>
                                         </c:forEach>   
                                     </select>
                                     <span class="style1">*</span>
