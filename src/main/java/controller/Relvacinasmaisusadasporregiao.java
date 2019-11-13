@@ -12,29 +12,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import business.DoencaBO;
+import business.EstadoBO;
 import business.VacinaBO;
 import business.VacinaTomadaBO;
+import java.util.Objects;
 
 /**
  *
  * @author gustavo
  */
-@WebServlet(name = "Relatorios", urlPatterns = {"/relatorios"})
-public class Relatorios extends HttpServlet {
+@WebServlet(name = "Relvacinasmaisusadasporregiao", urlPatterns = {"/relvacinasmaisusadasporregiao"})
+public class Relvacinasmaisusadasporregiao extends HttpServlet {
     
     private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-       // req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
-        
-         req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
+        if (Objects.nonNull(req.getParameter("pesquisar"))) {
+        req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados")));
+        }
+         req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
        // req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
         
-         req.getRequestDispatcher("jsp/testeusuario.jsp").forward(req, resp);
+         req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
 
 }

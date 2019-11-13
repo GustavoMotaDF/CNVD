@@ -112,9 +112,7 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-       
-        VacinaTomada cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));
-        
+        VacinaTomada cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));        
         cartavacina.setDose(dose);
         Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
         cartavacina.setUsuario(usuario);
@@ -123,12 +121,13 @@ public class VacinaTomadaBO {
         cartavacina.setDia(dia);
         cartavacina.setMess(mess);
         cartavacina.setAno(ano);
-        
+       
         en.persist(cartavacina);
         
         en.getTransaction().commit();
         en.clear();
         en.close();
+       
     }
     
     //TESTE BUSCAR VACINAS TOMADAS POR ID DE USUARIO; RESULTADO TEM QUE SER LISTA
@@ -163,9 +162,31 @@ public List<VacinaTomada> RelatorioSangue(String cpf){
         
         return cartao;
        
-        }
+}
+        
+public List<VacinaTomada> RelatorioEstado(String estados){
+        List<VacinaTomada> estadoss;
+      
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        estadoss = en.createQuery("select distinct es.estado, va.vacina, count(va.vacina)\n" +
+                                "from Estado es \n" +
+                                "join Usuario us \n" +
+                                "on es.idestado=us.estado\n" +
+                                "join VacinaTomada vt \n" +
+                                "on vt.usuario = us.idusuario \n" +
+                                "join Vacina va\n" +
+                                "on va.idvacina=vt.vacinas\n" +
+                                "where es.idestado =:estados group by va.vacina order by va.vacina").setParameter("estados", Integer.valueOf(estados)).getResultList();
+        en.getTransaction().commit();
+        en.clear();
+        en.close();
+       
         
         
+        return estadoss;
+       
+}        
         
 
     

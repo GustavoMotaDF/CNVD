@@ -37,11 +37,9 @@
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Relatorios</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
+               
                 <li>
-                    <a href="#">Relatorio: Vacinas Mais Usadas</a>
-                </li>
-                <li>
-                    <a href="#">Relatorio: Vacinas Mais Usadas Por Região</a>
+                    <a href="${pageContext.request.contextPath}/relvacinasmaisusadasporregiao">Relatorio: Vacinas Mais Usadas Por Região</a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/relusuario">Relatorio: Usuarios</a>

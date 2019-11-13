@@ -66,7 +66,7 @@ public class CadVacinaTomada extends HttpServlet {
          //Tratando exclusão
             try{vacinatomadaBO.excluirVacinaTomada(req.getParameter("idvacinatomada"));
                 req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
-                    + "<strong> Registro Exluido com Sucesso! </strong>"
+                    + "<strong> Registro Excluido com Sucesso! </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
@@ -108,7 +108,7 @@ public class CadVacinaTomada extends HttpServlet {
                         "});</script>");
             }catch(Exception e){
             req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao Alterar "+e.getCause().getCause()+" </strong>"
+                    + "<strong> Erro ao Alterar  </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +

@@ -192,6 +192,7 @@
                             <form action="${pageContext.request.contextPath}/cadvacinatomada" method="post" name="formulariocadastro" class="conteudo" onsubmit="return validarform(this)" >
                                 <fieldset id="tabelaconteudo">
                                     <legend>Cadastro de Registro</legend>
+                                    <input type ="hidden" name="idvacinatomada" value="${vacinatomadaEditando.idvacinatomada}"/>
                                     
                                     <%-- USUARio --%>
                                     <hr>

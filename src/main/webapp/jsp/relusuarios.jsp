@@ -21,7 +21,7 @@
     <body >
        
         <div class="wrapper">
-            <jsp:include page="includes/menu.jsp"/>
+            
             <div class="container border" style="
                box-shadow: 0 0 1em black;">
             <div class="content">
