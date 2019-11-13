@@ -36,10 +36,7 @@ public class CadVacinaTomada extends HttpServlet {
             try{
                 vacinatomadaBO.IncluirVacinaTomada( req.getParameter("dose"), 
                                                     req.getParameter("idusuario"), 
-                                                    req.getParameter("idvacina"),
-                                                    req.getParameter("dia"),                                                      
-                                                    req.getParameter("mess"), 
-                                                    req.getParameter("ano")
+                                                    req.getParameter("idvacina")
                                                     );
                 
                     req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
@@ -94,10 +91,7 @@ public class CadVacinaTomada extends HttpServlet {
             vacinatomadaBO.alterarVacinaTomada(     req.getParameter("idvacinatomada"),
                                                     req.getParameter("dose"), 
                                                     req.getParameter("idusuario"), 
-                                                    req.getParameter("idvacina"),
-                                                    req.getParameter("dia"),                                                      
-                                                    req.getParameter("mess"), 
-                                                    req.getParameter("ano"));
+                                                    req.getParameter("idvacina"));
             req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Registro Alterado com Sucesso! </strong>"
                     + "</div>" 

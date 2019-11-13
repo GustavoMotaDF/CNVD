@@ -70,10 +70,10 @@
             
             </c:if>
             <c:if test="${not empty estados}">
-            <h3>Relatório: Vacinas aplicadas no Estado: ${estados["0"]["0"]}</h3>
+                <h3>Relatório: Vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
             
                 <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
-                    <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
+                    <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
                         <thead class="thead-light">
                             <tr>                                         
                                 <th class="hovercoluna">Vacinas Aplicadas</th>

@@ -80,76 +80,7 @@
                                     </select>
                                     <span class="style1">*</span>                                
                                     <hr>
-
-                                    <%-- Data inicio --%>
-                                    <hr> 
-                                    <h5><i>Data em que está tomando a vacina</i></h5>
-                                    <label for="dia" style="font-weight: bold;">Dia: &nbsp;</label>
-                                    <select class="dia" name="dia" id="dia" style="width: 15%; height: 30px;">
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select>  
-                                    <label for="mes"style="font-weight: bold;">Mês:</label>
-                                    <select class="mes" name="mess" id="mes" style="width: 26%; height: 30px;">
-                                        <option value="">Selecione o mês...</option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-
-                                    </select>
-                                    <label for="ano"style="font-weight: bold;" >Ano:</label>
-                                    <select class="ano" name="ano" id="ano" style="width: 12%; height: 30px;">
-                                        <option value="">&nbsp;</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>  
-                                    <span class="style1">*</span>
-                                    <br>
-                                    <hr> 
-
-                                    <br>
-                                    <br>
-                                    <br>
+                                    
                                     <br>
                                     <br>
 
@@ -235,78 +166,7 @@
                                     <span class="style1">*</span>                                
                                     <hr>
 
-                                    <%-- Data inicio --%>
-                                    <hr> 
-                                    <h5><i>Data em que está tomando a vacina</i></h5>
-                                    <label for="dia" style="font-weight: bold;">Dia: &nbsp;</label>
-                                    <select class="dia" name="dia" id="dia" style="width: 15%; height: 30px;">
-                                        <option value="${vacinatomadaEditando.dia}">${vacinatomadaEditando.dia}</option>
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select>  
-                                    <label for="mes"style="font-weight: bold;">Mês:</label>
-                                    <select class="mes" name="mess" id="mes" style="width: 26%; height: 30px;">
-                                        <option value="${vacinatomadaEditando.mess}">${vacinatomadaEditando.mess}</option>                                
-                                        <option value="">&nbsp;</option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-
-                                    </select>
-                                    <label for="ano"style="font-weight: bold;" >Ano:</label>
-                                    <select class="ano" name="ano" id="ano" style="width: 12%; height: 30px;">
-                                        <option value="${vacinatomadaEditando.ano}">${vacinatomadaEditando.ano}</option>
-                                        <option value="">&nbsp;</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>  
-                                    <span class="style1">*</span>
-                                    <br>
-                                    <hr> 
-
-                                    <br>
-                                    <br>
-                                    <br>
+                                   
                                     <br>
                                     <br>
 
@@ -376,7 +236,9 @@
                                             <td>${vacinatomada.usuario.nome}</td>
                                             <td>${vacinatomada.vacinas.vacina}</td>                                        
                                             <td>${vacinatomada.dose}</td>
-                                            <td>${vacinatomada.dia}/${vacinatomada.mess}/${vacinatomada.ano}</td>
+                                            <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+                                            <td><fmt:formatDate pattern="dd/MM/yyyy" value="${vacinatomada.dataaplicacao}" /></td>
+                                            
                                             <td>
                                                 <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
                                                 <input type ="radio" name="idvacinatomada" value ="${vacinatomada.idvacinatomada}" 

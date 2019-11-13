@@ -4,7 +4,6 @@
     Author     : gustavo
 --%>
 
-<%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +20,7 @@
                 width: 150px;
                 font-weight: bold; 
                 
+                
             }
             #nomela{                
                 color: #000;
@@ -33,7 +33,7 @@
                 border-color:#aaa;
                 box-sizing: content-box;
                 width:100%;      
-            }          
+            }            
             .jumbotron .btn:focus{
                 outline: thin dotted;
                     outline: 0px auto -webkit-focus-ring-color;
@@ -44,39 +44,19 @@
                     outline: 0px auto -webkit-focus-ring-color;
                     outline-offset: 0px;
                 }
+
         </style>
     </head>
     <body style="background-color: #fff ">
-        <jsp:include page="includes/menusuperior.jsp"/>
+        
         <div class="container"style="background: #A9D0F5;">
             <br>
             <h2 id="nomela">Cartão Nacional de Vacina Digital</h2>           
             <br>
         </div>
        
-        <c:if test="${ empty cartao}">
-            <br>
-        <div class="container" style="
-             box-shadow: 0 0 1em black;">
-            
-                <form action="${pageContext.request.contextPath}/cartaodevacina" method="post">
-                    <div class="container" style="text-align: center">
-                    <br>
-                    <label>CPF do Usuário:</label><br>
-                    <input name="cpf" type="text" style="width: 50%"/><br> <br>                   
-                    <button type="submit" name="pesquisar" class="btn btn-primary" >Pesquisar</button>
-                    <div>
-                        ${mensagemErro}
-                    <br>
-                    <br>
-                    </div>
-                </form>
-        <div>
-        </c:if>
-            
         
-        <c:if test="${ not empty cartao}">
-            <div class="container"style="background: #A9D0F5;" id="botao">
+        <div class="container"style="background: #A9D0F5;" id="botao">
             
             <button id="imprimir" class="btn" type="submit" value="Salvar/Imprimir" 
                style="
@@ -85,7 +65,11 @@
                border-top: solid black 1px;
                " 
                onClick="window.print()">Salvar/Imprimir</button>
-            </div>
+        </div>
+            
+            
+        
+       
             <div class="container" style=" background-color: #E0F8F7;  ">
                 <h3 style="text-align: center">Informações do usuario</h3>
             <div class="row">
@@ -156,10 +140,6 @@
                                         
                                         <td>${cartao["11"]}</td>
                                         <td>${cartao["12"]}</td>
-                                        <%
-                                            SimpleDateFormat ftm=new SimpleDateFormat("dd-MM-yyyy");
-                                            
-                                        %>
                                         <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                                         <fmt:formatDate pattern="dd/MM/yyyy" value="${cartao[13]}" var="dataFormatada" />                                        
                                         <td>${dataFormatada}</td>
@@ -174,7 +154,7 @@
             </div>
             
         </div>
-       </c:if>
+     
     </body>
     <jsp:include page="includes/imports.jsp"/>
 </html>

@@ -10,6 +10,8 @@ import entity.Usuario;
 import entity.Vacina;
 import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.EntityManager;
@@ -45,7 +47,7 @@ public class VacinaTomadaBO {
         return qtdVacinas;
     
     }
-    public void IncluirVacinaTomada( String dose, String idusuario, String idvacina, String dia, String mess, String ano){
+    public void IncluirVacinaTomada( String dose, String idusuario, String idvacina ){
         EntityManager en = emf.createEntityManager();
         
         en.getTransaction().begin();
@@ -53,13 +55,12 @@ public class VacinaTomadaBO {
         VacinaTomada cartaovacina = new VacinaTomada();       
        
         cartaovacina.setDose(dose);
+        
         Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
         cartaovacina.setUsuario(usuario);
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
         cartaovacina.setVacinas(vacina);
-        cartaovacina.setDia(dia);
-        cartaovacina.setMess(mess);
-        cartaovacina.setAno(ano);
+        cartaovacina.setDataaplicacao(Date.from(Instant.now()));
         
         
         
@@ -108,19 +109,18 @@ public class VacinaTomadaBO {
         
     }
     
-    public void alterarVacinaTomada(String idvacinatomada, String dose, String idusuario, String idvacina, String dia,  String mess, String ano){
+    public void alterarVacinaTomada(String idvacinatomada, String dose, String idusuario, String idvacina){
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
         VacinaTomada cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));        
         cartavacina.setDose(dose);
+        
         Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
         cartavacina.setUsuario(usuario);
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
         cartavacina.setVacinas(vacina);
-        cartavacina.setDia(dia);
-        cartavacina.setMess(mess);
-        cartavacina.setAno(ano);
+       cartavacina.setDataaplicacao(Date.from(Instant.now()));
        
         en.persist(cartavacina);
         
@@ -153,12 +153,35 @@ public List<VacinaTomada> RelatorioSangue(String cpf){
       
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
-        cartao = en.createQuery("select u.nome, u.tiposanguineo, u.dia, u.mes, u.ano, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose, v.dia, v.mess, v.ano , gr.grupo from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado join Grupo gr on gr.idgrupo=u.grupos where u.cpf=:cpf order by va.vacina").setParameter("cpf",cpf).getResultList();
+        cartao = en.createQuery("select u.nome, u.tiposanguineo, u.dia, u.mes, u.ano, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose, v.dataaplicacao,  gr.grupo from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado join Grupo gr on gr.idgrupo=u.grupos where u.cpf=:cpf order by va.vacina").setParameter("cpf",cpf).getResultList();
         en.getTransaction().commit();
         en.clear();
         en.close();
         
         
+        
+        return cartao;
+       
+}
+public List<VacinaTomada> CartaoVacinaPronto(String login, String senha){
+        List<VacinaTomada> cartao;
+      
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        cartao = en.createQuery("select u.nome, u.tiposanguineo, u.dia, u.mes, u.ano, u.cpf, u.cidade, es.estado, u.cep, u.logradouro, u.numerocasa, va.vacina, v.dose,v.dataaplicacao,  gr.grupo from Usuario u join VacinaTomada v on u.idusuario = v.usuario join Vacina va on va.idvacina=v.vacinas join Estado es on es.idestado=u.estado join Grupo gr on gr.idgrupo=u.grupos where u.login=:login and u.senha=:senha order by va.vacina").setParameter("login",login).setParameter("senha",senha).getResultList();
+        en.getTransaction().commit();
+        en.clear();
+        en.close();
+        try{
+            if(cartao != null ){
+                    System.out.println("OK");
+                
+            }}catch(Exception e){
+             if(cartao==null){
+                 System.err.println("Erro " +e.getCause().getMessage());
+             }
+             System.err.println("Erro " +e.getCause().getMessage());
+        }        
         
         return cartao;
        

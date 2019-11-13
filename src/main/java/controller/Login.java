@@ -34,9 +34,14 @@ public class Login extends HttpServlet {
             
         } catch (Exception e) {
 
-            Mensagem = "<div class=\"alert alert-danger\">"
-                    + "<strong> Login ou senha incorretos!</strong>"
-                    + "</div>";
+            Mensagem = "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Login ou Senha Incorreto! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "});</script>";
             
             String msg="<style>\n" +
 "body {font-family: Arial, Helvetica, sans-serif;}\n" +
