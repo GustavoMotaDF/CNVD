@@ -16,16 +16,16 @@
     <body>
         <jsp:include page="includes/menusuperior.jsp"/>
 
-        <form method="post" action="${pageContext.request.contextPath}/relatorios" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
+        <form method="post" action="${pageContext.request.contextPath}/relvacinasmaisusadasporregiao" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
             <c:if test="${empty estados}">
             <div class="container" style="
                  box-shadow: 0 0 1em black;">
             
-                <form action="${pageContext.request.contextPath}/cartaodevacina" method="post">
+                <form action="${pageContext.request.contextPath}/relvacinasmaisusadasporregiao" method="post">
                     <div class="container" style="text-align: center">
                     <br>
                     <label>Selecione o Estado</label><br>
-                    <select class="estados"name ="estados" id="estadousuarios" required="Selecione!" style="width: 50%; height: 30px;">
+                    <select class="estados" name="estado" id="estadousuarios" required="Selecione!" style="width: 50%; height: 30px;">
                         <option value="">Selecione o Estado...</option>   
                                         <option value="1">Acre</option>
                                         <option value="2">Alagoas</option>
@@ -55,7 +55,9 @@
                                         <option value="25">Sergipe</option>
                                         <option value="27">Tocantins</option>
 
-                    </select>   
+                    </select>   <br>
+                    <input type="date" name="datainicio"/>
+                    <input type="date" name="datafim" />
                     <br>
                     <br>
                     <button type="submit" name="pesquisar" class="btn btn-primary" >Pesquisar</button>

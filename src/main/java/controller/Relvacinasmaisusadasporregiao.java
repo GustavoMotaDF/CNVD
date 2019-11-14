@@ -11,9 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import business.DoencaBO;
-import business.EstadoBO;
-import business.VacinaBO;
 import business.VacinaTomadaBO;
 import java.util.Objects;
 
@@ -30,14 +27,17 @@ public class Relvacinasmaisusadasporregiao extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         if (Objects.nonNull(req.getParameter("pesquisar"))) {
-        req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados")));
+        req.setAttribute("estados",vacinatomadabo.RelatorioEstadossss(req.getParameter("datainicio"),
+                                                                     req.getParameter("datafim"), 
+                                                                    req.getParameter("estado")));
         }
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-       // req.setAttribute("cartao",vacinatomadabo.RelatorioSangue());
+               //req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados"), req.getParameter("datainicio"),req.getParameter("datafim")));
+
         
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }

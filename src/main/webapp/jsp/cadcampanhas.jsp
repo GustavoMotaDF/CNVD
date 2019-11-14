@@ -505,8 +505,9 @@
                                             <td>${campanha.descricaocampanha}</td>
                                             <td>${campanha.estadousuarios.estado}-${campanha.estadousuarios.uf}</td>
                                             <td>${campanha.vacinacampanha.vacina}</td>
-                                            <td>${campanha.diainicio},${campanha.anoinicio},${campanha.mesinicio} </td>
+                                           
                                             <td>${campanha.mesfim},${campanha.diafim},${campanha.anofim}</td>
+                                             <td>${campanha.diainicio},${campanha.anoinicio},${campanha.mesinicio} </td>
 
                                             <td>
                                                 <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>

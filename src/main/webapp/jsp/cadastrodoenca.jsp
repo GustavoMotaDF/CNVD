@@ -25,6 +25,8 @@
                 <%-- FIM MENU --%>
                 <%-- conteudo --%>
                 <div class="formulario">
+                <div style="color: green" id="msgerro">${mensagemSucesso}</div>
+                <div style="color: red">${mensagemErro}</div>
                     <c:if test="${empty doencaEditando}">
                         <%-- if PARA SABER SE O USUARIO ESTÁ EDITANDO ALGUMA DOENÇA --%>
                         <%-- FORMULARIO DE CADASTRO DE DOENÇA --%>
@@ -165,8 +167,7 @@
                 </div>
 
                 <%-- MENSAGENS ERRO OU SUCESSO --%>
-                <div style="color: green" id="msgerro"><h1>${mensagemSucesso} </h1> </div>
-                <div style="color: red"><h1> ${mensagemErro}</h1></div>
+               
                 <%-- fim conteudo --%>
             </div>
             </div>

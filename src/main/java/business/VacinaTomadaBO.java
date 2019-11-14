@@ -187,7 +187,10 @@ public List<VacinaTomada> CartaoVacinaPronto(String login, String senha){
        
 }
         
-public List<VacinaTomada> RelatorioEstado(String estados){
+
+        
+
+public List<VacinaTomada> RelatorioEstadossss(String datainicio, String datafim, String estado ){
         List<VacinaTomada> estadoss;
       
         EntityManager en = emf.createEntityManager();
@@ -200,7 +203,11 @@ public List<VacinaTomada> RelatorioEstado(String estados){
                                 "on vt.usuario = us.idusuario \n" +
                                 "join Vacina va\n" +
                                 "on va.idvacina=vt.vacinas\n" +
-                                "where es.idestado =:estados group by va.vacina order by va.vacina").setParameter("estados", Integer.valueOf(estados)).getResultList();
+                                "where vt.dataaplicacao BETWEEN ':datainicio' and ':datafim' and es.idestado =:estado group by va.vacina order by va.vacina")
+                                .setParameter("datainicio", datainicio)
+                                .setParameter("datafim", datafim)
+                                .setParameter("estado", Integer.valueOf(estado))
+                                .getResultList();
         en.getTransaction().commit();
         en.clear();
         en.close();
@@ -210,7 +217,6 @@ public List<VacinaTomada> RelatorioEstado(String estados){
         return estadoss;
        
 }        
-        
 
     
 }
