@@ -30,5 +30,17 @@ public class GrupoBO {
         
         return grupo;
     }
+    public List<Grupo> EstadoeGrupo(String estado){
+        List<Grupo> grupo;
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        grupo = en.createQuery("select distinct es.estado , gr.grupo, count(gr.grupo) from Grupo gr join Usuario us on gr.idgrupo=us.grupos join Estado es on es.idestado = us.estado where es.idestado=:estado group by gr.grupo order by gr.grupo").setParameter("estado", Integer.valueOf(estado)).getResultList();
+        en.getTransaction().commit();
+        en.clear();
+        en.close();
+        
+        return grupo;
+    }
 }
 

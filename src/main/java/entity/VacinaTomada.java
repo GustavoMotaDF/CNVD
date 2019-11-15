@@ -6,7 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +33,6 @@ public class VacinaTomada implements Serializable {
     @Column(name="DOSE")
     private String dose;    
     @Column(name="DATA_APLICACAO")
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataaplicacao;
    
     

@@ -13,69 +13,46 @@
         <title>JSP Page</title>
         <jsp:include page="includes/head.jsp"/>
     </head>
-    <body>
+    <body style="background-color: #fff">
         <jsp:include page="includes/menusuperior.jsp"/>
-        
-        <form method="post" action="${pageContext.request.contextPath}/totalvacinastomada" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>
-          
-            <%--<script>
-                function enviarpesq() {
-                    document.form01.action = '${pageContext.request.contextPath}/pesqusuario';                    
-                    document.form01.submit();
-                }
-                function enviaruser() {
-                    document.form01.action = '${pageContext.request.contextPath}/usuario';
-                    document.form01.submit();
-                }
-                
-                
-                function enviar() {
-                    var formulario = document.getElementById('formulario');
-                    if(document.getElementById('pesqusuario').checked === true) {
-                        formulario.action = "${pageContext.request.contextPath}/usuario";
+        <div class="container">
+            <form method="post" action="${pageContext.request.contextPath}/totalvacinastomada" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>          
+
+                <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
+                    <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="hovercoluna">Nome Vacina</th>
+                                <th class="hovercoluna">Quantidade</th>
+                            </tr>
+                        </thead>
+
+                        <c:forEach var="cartaovacinas" items="${cartaovacinas}">
+                            <tr>
+
+                                <td>${cartaovacinas["0"].vacinas.vacina}</td>
+                                <td>${cartaovacinas["1"]}</td>
+
+                            </tr>
+                        </c:forEach>
+
+
+                    </table>  
+                </div>
+                <style>
+                    .form-control:hover > [class*=form-control] {
+                        background-color:#A9F5F2;
+                        border: 0;
+
                     }
-                     else {
-                        formulario.action = "${pageContext.request.contextPath}/pesqusuario";
-                    }		
-                    formulario.submit();
-                    }
+                </style>
 
-            </script>
-            
-            
-            <h3>Relatório: Vacinas Mais usadas</h3>
-            
-            <input type="radio" name="pesqusuario" id="pesqusuario" value="PesqUsuario" />
-            <input type="radio" name="user" value="User" id="user"/> --%>
-            <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px; margin-left:50px; float: right;">
-                            <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 10px" border="1" >
-
-                                <thead class="thead-light">
-                                    <tr>
-                                        
-                                        
-                                        <th class="hovercoluna">Nome Vacina</th>
-                                        <th class="hovercoluna">Quantidade</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <body>
-                                <c:forEach var="cartaovacinas" items="${cartaovacinas}">
-                                    <tr>
-                                        
-                                        <td>${cartaovacinas["0"].vacinas.vacina}</td>
-                                        <td>${cartaovacinas["1"]}</td>
-                                        
-                                    </tr>
-                                </c:forEach>
-                                </body>
-
-                            </table>  
-                        </div> 
-                    </form>
-                    <form>
-                    <input id="imprimir" type="button" value="Salvar/Imprimir" style="" onClick="window.print()"/>
-                    </form>
+                <form style="width: 100%" >
+                    <div  class="form-control" style="width: 100%">   
+                        <input class="form-control"  id="imprimir" type="button" value="Salvar/Imprimir" style="width: 100%; border: 0;" onClick="window.print()"/>
+                    </div>
+                </form>
+        </div>
     </body>
     <jsp:include page="includes/imports.jsp"/>
 </html>

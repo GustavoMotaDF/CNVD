@@ -10,32 +10,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Relatório: Usuarios cadastrados por Estado</title>
+        <title>Relatorio: Usuarios cadastrados por Grupo e por Estado</title>
         <jsp:include page="includes/head.jsp"/>
     </head>
     <body style="background-color: #fff" >
         <jsp:include page="includes/menusuperior.jsp"/>
 
         <br>
-        <c:if test="${empty estados}">
+        <c:if test="${empty grupo}">
 
             <div class="container"style="background: #A9D0F5;">
                 <br>
-                <h2 id="nomela">Relatorio: Vacinas tomadas por Estado</h2>           
+                <h2 id="nomela">Relatorio: Usuarios cadastrados por Grupo e por Estado</h2>           
                 <br>
             </div>
             <br>
             <div class="container" style="
                  box-shadow: 0 0 1em black;">
 
-                <form action="${pageContext.request.contextPath}/relestadoporRegiao" method="post">
-                    <div class="container" style="text-align: center">
-                        <br>
-                        <label>Data inicio:</label>
-                        <input class="form-control" type="date" name="datainicios" id="datainicio" />
-                        <br>
-                        <label>Data fim:</label>
-                        <input class="form-control" type="date" name="datafim" id="datafim" />
+                <form action="${pageContext.request.contextPath}/relestadoeGrupo" method="post">
+                    <div class="container" style="text-align: center">                       
                         <br>
 
                         <select class="form-control"  name="estado" id="estado" required="Selecione!" >
@@ -86,26 +80,26 @@
                 </div>
 
                 </c:if>
-                <c:if test="${not empty estados}">
+                <c:if test="${not empty grupo}">
                     <div class="container">
-                    <h3>Relatório: Vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
+                    <h3>Relatório: Usuarios cadastrados no Grupo <label style="color: #4e555b"><i>'${grupo["0"]["1"]}'</i></label>, do estado <label style="color: #4e555b"><i>'${grupo["0"]["0"]}'</i></label></h3>
 
                     <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
                         <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
                             <thead class="thead-light">
                                 <tr>                                         
-                                    <th class="hovercoluna">Vacinas Aplicadas</th>
-                                    <th class="hovercoluna">Numero de Vacinas Aplicadas</th>
+                                    <th class="hovercoluna">Grupo de Risco</th>
+                                    <th class="hovercoluna">Quantidade de pessoas no Grupo de Risco</th>
                                 </tr>
                             </thead>
-                            <body
-                                <c:forEach var="estados" items="${estados}">
+                            
+                                <c:forEach var="grupo" items="${grupo}">
                             <tr>
-                                <td>${estados["1"]}</td>
-                                <td>${estados["2"]}</td>
+                                <td>${grupo["1"]}</td>
+                                <td>${grupo["2"]}</td>
                             </tr>
-                        </c:forEach>
-                        </body>
+                                </c:forEach>
+                        
 
                     </table>  
                 </div>

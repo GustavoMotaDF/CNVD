@@ -39,7 +39,7 @@
             <ul class="collapse list-unstyled" id="pageSubmenu">
                
                 <li>
-                    <a href="${pageContext.request.contextPath}/relvacinasmaisusadasporregiao">Relatorio: Vacinas Mais Usadas Por Região</a>
+                    <a href="${pageContext.request.contextPath}/relestadoporRegiao">Relatorio: Vacinas Mais Usadas Por Região</a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/relusuario">Relatorio: Usuarios</a>
@@ -49,6 +49,9 @@
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/totalvacinastomada">Relatorio: Numero de Vacinas aplicadas</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/relestadoeGrupo">Relatorio: Usuarios cadastrados por Grupo e por Estado</a>
                 </li>
             </ul> 
         </li>
