@@ -8,20 +8,13 @@ package business;
 import entity.VacinaTomada;
 import entity.Usuario;
 import entity.Vacina;
-import java.lang.reflect.Array;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import org.hibernate.HibernateException;
-import org.hibernate.QueryParameterException;
 
 /**
  *
@@ -62,7 +55,7 @@ public class VacinaTomadaBO {
         cartaovacina.setUsuario(usuario);
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
         cartaovacina.setVacinas(vacina);
-        cartaovacina.setDataaplicacao((java.sql.Date) Date.from(Instant.now()));
+        cartaovacina.setDataaplicacao(Date.from(Instant.now()));
 
         en.persist(cartaovacina);
 
@@ -72,24 +65,6 @@ public class VacinaTomadaBO {
 
     }
 
-    public Boolean excluirVacinaTomada(String idvacinatomada) {
-        try {
-            EntityManager en = emf.createEntityManager();
-            en.getTransaction().begin();
-
-            VacinaTomada cartavacina = en.getReference(VacinaTomada.class, Integer.valueOf(idvacinatomada));
-            en.remove(cartavacina);
-
-            en.getTransaction().commit();
-            en.clear();
-            en.close();
-            return true;
-        } catch (Exception e) {
-
-            System.err.println("Erro ao excluir Cartão de Vacina: Erro " + e.getMessage());
-            return false;
-        }
-    }
 
     public VacinaTomada getVacinaTomada(String idvacinatomada) {
 
@@ -109,17 +84,23 @@ public class VacinaTomadaBO {
     }
 
     public void alterarVacinaTomada(String idvacinatomada, String dose, String idusuario, String idvacina) {
+       VacinaTomada cartavacina;
+        
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
-
-        VacinaTomada cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));
+        
+        cartavacina = en.find(VacinaTomada.class, Integer.valueOf(idvacinatomada));
+        
         cartavacina.setDose(dose);
-
+        
+        
         Usuario usuario = en.find(Usuario.class, Integer.valueOf(idusuario));
         cartavacina.setUsuario(usuario);
+  
         Vacina vacina = en.find(Vacina.class, Integer.valueOf(idvacina));
-        cartavacina.setVacinas(vacina);
-        cartavacina.setDataaplicacao((java.sql.Date) Date.from(Instant.now()));
+        cartavacina.setVacinas(vacina);        
+        
+       cartavacina.setDataaplicacao(Date.from(Instant.now()));
 
         en.persist(cartavacina);
 
@@ -171,7 +152,7 @@ public class VacinaTomadaBO {
         en.close();
         try {
             if (cartao != null) {
-                System.out.println("OK");
+                System.out.println("Cidadão " + login + " logado");
 
             }
         } catch (Exception e) {

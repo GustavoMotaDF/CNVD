@@ -75,10 +75,12 @@
                             <fieldset id="tabelaconteudo">
                                 <legend>Alteração de Doenca</legend>
                                 <input type ="hidden" name="iddoenca" value="${doencaEditando.iddoenca}"/>
+                                
                                 <%-- Doenca --%>
                                 <label for="doenca" class="alinhamento">Doenca:</label>
                                 <input type="text" name="doenca" value="${doencaEditando.doenca}" id="doenca" placeholder="Placebo"/>
                                 <span class="style1">*</span>
+                                <input type ="hidden" name="ativo" value="${doencaEditando.ativo}"/>
                                 <br>
                             </fieldset>
                             <input type="submit" class="escondido "name="alterar" value="Alterar" id="alterar"/>

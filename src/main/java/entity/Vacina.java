@@ -19,12 +19,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 /**
  *
  * @author gustavo
  */
 @Entity
+
+@SQLDelete(sql = "update tb_vacinas tv join tb_doenca td on td.id_doenca=tv.id_doenca set tv.ativo = 0, td.STATUSDO = 0 where tv.id_doenca = ?")
+
 @Table(name="tb_vacinas")
 public class Vacina implements Serializable {
     @Id

@@ -69,7 +69,7 @@
                                     
                                     <%-- DOSE --%>
                                     <hr>
-                                    <h5><i>Vacina a ser tomada</i></h5>
+                                    <h5><i>Dose a ser tomada</i></h5>
                                     <select class="doses" name ="dose" id="dose" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="">Selecione a Dose...</option>   
                                         <option value="Primeira">Primeira</option>   
@@ -153,7 +153,7 @@
                                     
                                     <%-- DOSE --%>
                                     <hr>
-                                    <h5><i>Vacina a ser tomada</i></h5>
+                                    <h5><i>Dose a ser tomada</i></h5>
                                     <select class="doses" name ="dose" id="dose" required="Selecione!" style="width: 70%; height: 30px;">
                                         <option value="${vacinatomadaEditando.dose}">${vacinatomadaEditando.dose}</option>   
                                         <option value="">&nbsp;</option>   
@@ -252,27 +252,7 @@
                             <%-- botao editar--%>
                             <button type="submit" name="editar" class="btn btn-info" value="Editar" style="font-size: 10px;                                
                                     width: 60px; margin: 0 auto; float: right;" disabled="disabled" id="1"><i class="fa fa-edit"></i>Editar</button>
-                            <%-- abre modal excluit--%>
-                            <button type="button" onclick="abrir1()" class="btn btn-danger"  value="Excluir" style="font-size: 10px;
-                                    width: 60px; margin: 0 auto; float: right;" disabled="disabled" id="2"><i class="fa fa-edit"></i>Excluir</button>  
-                            <input type="submit" class="escondido" name="excluir" value="Excluir" id="excluir1"/>
-
-                            <%--inicio modal --%>
-                            <div id="myModal1" class="modal1">
-                                <!-- Modal conteudo --> 
-                                <div class="modal-content1">
-                                    <span class="close1" onclick="fechar1()">&times;</span>
-                                    <p>Tem certeza que deseja excluir?</p>
-                                    <%--botao confirmar excluir --%>
-                                    <input type="submit" value="Confirmar Excluir" name="excluir" class="btn btn-success" style=" border: 1px solid black;
-                                           border-radius: 4px;
-                                           width: 20%;
-                                           top: -500px;"/>
-                                    <%-- fechar modal--%>
-                                    <input type="button" value="Revisar"   name="cancelar"  class="btn btn-danger " onclick="fechar1()"/>
-                                </div>
-                            </div>
-                            <%-- fim modal--%>
+                         
                         </form>
                     </div>
 

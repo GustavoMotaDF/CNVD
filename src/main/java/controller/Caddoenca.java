@@ -55,7 +55,7 @@ public class Caddoenca extends HttpServlet {
         
     }else if(Objects.nonNull(req.getParameter("excluir"))){
          //Tratando exclusão
-            try{doencaBO.excluirDoenca(req.getParameter("iddoenca"));
+            try{doencaBO.excluirdoenca(req.getParameter("iddoenca"));
                 req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Excluido com Sucesso! </strong>"
                     + "</div>" 
@@ -67,7 +67,7 @@ public class Caddoenca extends HttpServlet {
                 
             }catch(Exception e){
                 req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao excluir! <br>Verifique se a Doença em questão, está relacionada com alguma Vacina! "+e.getCause().getCause()+" </strong>"
+                    + "<strong> Erro ao excluir! <br>Verifique se a Doença em questão, está relacionada com alguma Vacina! "+e.getCause()+" </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +

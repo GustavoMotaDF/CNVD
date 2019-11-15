@@ -29,7 +29,7 @@ public class VacinaBO {
             EntityManager en = emf.createEntityManager();
             en.getTransaction().begin();
 
-            vacinas = en.createQuery("from Vacina").getResultList();
+            vacinas = en.createQuery("from Vacina where ativo=1").getResultList();
             en.getTransaction().commit();
 
             en.clear();

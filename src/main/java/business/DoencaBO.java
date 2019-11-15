@@ -30,7 +30,7 @@ public class DoencaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-        doencas = en.createQuery("from Doenca ").getResultList();
+        doencas = en.createQuery("select d from Doenca d where d.ativo=true").getResultList();
         en.getTransaction().commit();
         
         en.clear();
@@ -47,6 +47,7 @@ public class DoencaBO {
         Doenca doencas = new Doenca();
         
         doencas.setDoenca(doenca);
+        doencas.setAtivo(true);
         
         
         en.persist(doencas);
@@ -57,23 +58,7 @@ public class DoencaBO {
         en.close();
     }
     
-    public Boolean excluirDoenca(String iddoenca){
-        try{
-            EntityManager en = emf.createEntityManager();
-            en.getTransaction().begin();
-            
-            Doenca doenca = en.getReference(Doenca.class, Integer.valueOf(iddoenca));
-            en.remove(doenca);
-            
-            en.getTransaction().commit();
-            en.clear();
-            en.close();
-            return true;
-        }catch(Exception e){
-            System.err.println("Erro ao excluir doenca de id "+iddoenca +" :"+ e.getMessage() );
-            return false;            
-        }
-    }
+    
     
     public Doenca getDoenca(String iddoenca){
         
@@ -122,5 +107,22 @@ public class DoencaBO {
         en.close();
         
         return doencas;
+    }
+    public Boolean excluirdoenca(String iddoenca){
+        try{
+            EntityManager en = emf.createEntityManager();
+            en.getTransaction().begin();
+            
+            Doenca doenca = en.getReference(Doenca.class, Integer.valueOf(iddoenca));
+            en.remove(doenca);
+            
+            en.getTransaction().commit();
+            en.clear();
+            en.close();
+            return true;
+        }catch(Exception e){
+            System.err.println("Erro ao excluir vacina de id "+iddoenca +" :"+ e.getMessage() );
+            return false;            
+        }
     }
 }

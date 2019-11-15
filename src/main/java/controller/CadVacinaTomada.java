@@ -59,28 +59,7 @@ public class CadVacinaTomada extends HttpServlet {
                
             }
         
-        }else if(Objects.nonNull(req.getParameter("excluir"))){
-         //Tratando exclusão
-            try{vacinatomadaBO.excluirVacinaTomada(req.getParameter("idvacinatomada"));
-                req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
-                    + "<strong> Registro Excluido com Sucesso! </strong>"
-                    + "</div>" 
-                    +"<script>$().ready(function() {\n" +
-                        "	setTimeout(function () {\n" +
-                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
-                        "});</script>");
-                
-            }catch(Exception e){
-                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro Excluir registro "+e.getCause().getCause()+" </strong>"
-                    + "</div>" 
-                    +"<script>$().ready(function() {\n" +
-                        "	setTimeout(function () {\n" +
-                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
-                        "});</script>");               
-            }
+        
                    
         }else if(Objects.nonNull(req.getParameter("editar"))){
             //Tratando editar
@@ -89,7 +68,7 @@ public class CadVacinaTomada extends HttpServlet {
             //Tratando alterar            
             try{
             vacinatomadaBO.alterarVacinaTomada(     req.getParameter("idvacinatomada"),
-                                                    req.getParameter("dose"), 
+                                                    req.getParameter("dose"),
                                                     req.getParameter("idusuario"), 
                                                     req.getParameter("idvacina"));
             req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
@@ -102,7 +81,7 @@ public class CadVacinaTomada extends HttpServlet {
                         "});</script>");
             }catch(Exception e){
             req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao Alterar  </strong>"
+                    + "<strong> Erro ao Alterar "+e.getCause().getLocalizedMessage()+" </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
