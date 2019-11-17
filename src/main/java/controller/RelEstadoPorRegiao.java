@@ -5,6 +5,7 @@
  */
 package controller;
 
+import business.CampanhaBO;
 import business.VacinaTomadaBO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "RelEstadoPorRegiao", urlPatterns = {"/relestadoporRegiao"})
 public class RelEstadoPorRegiao extends HttpServlet {
  private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
-    
+    private final CampanhaBO campanhabo = new CampanhaBO();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      
@@ -45,6 +46,7 @@ public class RelEstadoPorRegiao extends HttpServlet {
                 req.setAttribute("mensagemErro", "Sem resultado para os parametros informados "+e.getMessage());
             }
         }
+        req.setAttribute("campanha", campanhabo.getCampanhas());  
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
     @Override
@@ -57,7 +59,7 @@ public class RelEstadoPorRegiao extends HttpServlet {
         } 
                //req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados"), req.getParameter("datainicio"),req.getParameter("datafim")));
 
-        
+        req.setAttribute("campanha", campanhabo.getCampanhas()); 
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
 }

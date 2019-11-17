@@ -5,6 +5,7 @@
  */
 package controller;
 
+import business.CampanhaBO;
 import business.UsuarioBO;
 import business.VacinaTomadaBO;
 import java.io.IOException;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "relatorioEstadoUsuario", urlPatterns = {"/relatorioEstadoUsuario"})
 public class RelatorioEstadoUsuario extends HttpServlet {
         private final UsuarioBO usuariobo = new UsuarioBO();
-        private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
+        
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,7 +35,9 @@ public class RelatorioEstadoUsuario extends HttpServlet {
         if (usuario == null) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } 
+        
          req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
+
         
         req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);
     
@@ -48,13 +51,12 @@ public class RelatorioEstadoUsuario extends HttpServlet {
         String usuario = (String) sessao.getAttribute("login");
         if (usuario == null) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
-        } 
+        } else{
         
         req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
-          
+     
         req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);
     }
-    
-    
-    
+    }
+
 }

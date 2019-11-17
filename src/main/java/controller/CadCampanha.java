@@ -36,15 +36,16 @@ public class CadCampanha extends HttpServlet {
         
         try{
             
-        campanhabo.IncluirCampanhas(req.getParameter("descricaocampanha"),
-                                    req.getParameter("estadousuarios"),                                                                       
-                                    req.getParameter("vacinacampanha"),
-                                    req.getParameter("diainicio"),
-                                    req.getParameter("mesinicio"),
-                                    req.getParameter("anoinicio"),
-                                    req.getParameter("diafim"),
-                                    req.getParameter("mesfim"),
-                                    req.getParameter("anofim"));
+        campanhabo.IncluirCampanhas(
+                                        req.getParameter("descricaocampanha"),
+                                        req.getParameter("estadousuarios"),                                                                       
+                                        req.getParameter("vacinacampanha"),
+                                        req.getParameter("diainicio"),
+                                        req.getParameter("diafim"),
+                                        req.getParameter("mesinicio"),
+                                        req.getParameter("mesfim"),
+                                        req.getParameter("anoinicio"), 
+                                        req.getParameter("anofim"));    
         req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Cadastrado com Sucesso! </strong>"
                     + "</div>" 
@@ -105,10 +106,10 @@ public class CadCampanha extends HttpServlet {
                                         req.getParameter("estadousuarios"),                                                                       
                                         req.getParameter("vacinacampanha"),
                                         req.getParameter("diainicio"),
-                                        req.getParameter("mesinicio"),
-                                        req.getParameter("anoinicio"),
                                         req.getParameter("diafim"),
+                                        req.getParameter("mesinicio"),
                                         req.getParameter("mesfim"),
+                                        req.getParameter("anoinicio"), 
                                         req.getParameter("anofim"));    
             req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Alterado com Sucesso! </strong>"

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Relatório: Usuarios cadastrados por Estado</title>
+        <title>Relatório: Vacinas tomadas por Estado</title>
         <jsp:include page="includes/head.jsp"/>
     </head>
     <body style="background-color: #fff" >
@@ -81,58 +81,88 @@
                     </div>
 
                 </form>
+            </div>
+
+            <div class="container">
+
+                <table  class="table table-hover" style="border: 1px solid black; border-collapse: collapse; margin-top: 20px;  width:100%; font-size: 15px" border="1" >
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Descrição Campanha</th>
+                            <th>Estado da Campanha</th>
+                            <th>Vacina Campanha</th>                                        
+                            <th>Data da Campanha inicio</th>
+                            <th>Data da Campanha fim</th>
 
 
-                </div>
+                        </tr>
+                    </thead>
 
-                </c:if>
-                <c:if test="${not empty estados}">
-                    <div class="container">
-                    <h3>Relatório: Vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
+                    <c:forEach var= "campanha" items="${campanha}">
+                        <tr>
+                            <td>${campanha.idcampanha}</td>
+                            <td>${campanha.descricaocampanha}</td>
+                            <td>${campanha.estadousuarios.estado}-${campanha.estadousuarios.uf}</td>
+                            <td>${campanha.vacinacampanha.vacina}</td>   
+                            <td>${campanha.diainicio} de ${campanha.mesinicio} de ${campanha.anoinicio}</td>
+                            <td>${campanha.diafim} de ${campanha.mesfim} de ${campanha.anofim}</td>
 
-                    <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
-                        <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
-                            <thead class="thead-light">
-                                <tr>                                         
-                                    <th class="hovercoluna">Vacinas Aplicadas</th>
-                                    <th class="hovercoluna">Numero de Vacinas Aplicadas</th>
-                                </tr>
-                            </thead>
-                            <body
-                                <c:forEach var="estados" items="${estados}">
-                            <tr>
-                                <td>${estados["1"]}</td>
-                                <td>${estados["2"]}</td>
+                        </tr>
+                    </c:forEach>
+                </table>  
+            </div>
+
+
+        </c:if>
+        <c:if test="${not empty estados}">
+            <div class="container">
+                <h3>Relatório: Vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
+
+                <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
+                    <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
+                        <thead class="thead-light">
+                            <tr>                                         
+                                <th class="hovercoluna">Vacinas Aplicadas</th>
+                                <th class="hovercoluna">Numero de Vacinas Aplicadas</th>
                             </tr>
-                        </c:forEach>
-                        </body>
+                        </thead>
+                        <body
+                            <c:forEach var="estados" items="${estados}">
+                        <tr>
+                            <td>${estados["1"]}</td>
+                            <td>${estados["2"]}</td>
+                        </tr>
+                    </c:forEach>
+                    </body>
 
-                    </table>  
+                </table>  
+            </div>
+            <style>
+                .form-control:hover > [class*=form-control] {
+                    background-color:#A9F5F2;
+                    border: 0;
+
+                }
+            </style>
+
+            <form style="width: 100%" >
+                <div  class="form-control" style="width: 100%">   
+                    <input class="form-control"  id="imprimir" type="button" value="Salvar/Imprimir" style="width: 100%; border: 0;" onClick="window.print()"/>
                 </div>
-                    <style>
-                        .form-control:hover > [class*=form-control] {
-                         background-color:#A9F5F2;
-                         border: 0;
+            </form>
+        </div>
+    </c:if> 
 
-}
-                    </style>
 
-                    <form style="width: 100%" >
-                    <div  class="form-control" style="width: 100%">   
-                        <input class="form-control"  id="imprimir" type="button" value="Salvar/Imprimir" style="width: 100%; border: 0;" onClick="window.print()"/>
-                    </div>
-                </form>
-                    </div>
-                </c:if> 
-                    
-            <script>
-                $(document).ready(function () {
-                    $("#estado").select2();
+    <script>
+        $(document).ready(function () {
+            $("#estado").select2();
 
 
 
-                });
-            </script>
-            </body>
-            <jsp:include page="includes/imports.jsp"/>
-            </html>
+        });
+    </script>
+</body>
+<jsp:include page="includes/imports.jsp"/>
+</html>
