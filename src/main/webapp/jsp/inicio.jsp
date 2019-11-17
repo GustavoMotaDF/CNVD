@@ -11,7 +11,7 @@
     <title>Início</title>
     <jsp:include page="includes/head.jsp"/>
     <body >
-        ${mensagem1}
+        
         ${login1}
         
         <div class="wrapper">
@@ -20,6 +20,8 @@
                box-shadow: 0 0 1em black;">
             <div class="content">
                 <jsp:include page="includes/menusuperior.jsp"/>
+                
+               
                 
                 <%-- conteudo --%>
                     <div style="color: green" id="msgerro"> ${mensagemSucesso} </div>

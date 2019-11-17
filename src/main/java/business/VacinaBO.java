@@ -56,6 +56,8 @@ public class VacinaBO {
             
             Doenca doencas = en.find(Doenca.class, Integer.valueOf(iddoenca));
             vacinas.setDoenca(doencas);
+            
+            vacinas.setAtivo(true);
 
             en.persist(vacinas);
 

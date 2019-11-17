@@ -13,7 +13,18 @@
         <a href="${pageContext.request.contextPath}/Login"> <img src="jsp/imagens/Logo.png" alt="Cartão Nacional de Vacina Digital" width=160 height=85></a>
     </div>
     <ul class="list-unstyled components">
-        <p>Cartão Nacional de Vacina Digital</p> 	
+        <p><%
+
+                  String usuario = (String) session.getAttribute("login");
+
+                        if(usuario==null){
+                            response.sendRedirect("index.jsp");
+                           
+                        }else{
+                            out.print("Olá "+usuario);
+                        }
+
+        %></p> 	
         <li >
             <a href="${pageContext.request.contextPath}/Login">Página Inicial</a>
         </li>

@@ -21,6 +21,9 @@
                             <li class="nav-item">
                                <a class="nav-link" href="jsp/vercampanhasAtivas.jsp">Campanhas</a>
                             </li>
+                            <li class="nav-item">
+                               <a class="nav-link" href="${pageContext.request.contextPath}/Deslogar">Deslogar</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,11 +22,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Relusuario", urlPatterns = {"/relusuario"})
 public class Relusuario extends HttpServlet {
     
+    
+    
     private final UsuarioBO usuarioBO = new UsuarioBO();
     
     @Override
      protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
+     HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+         
+         
+         try{
         req.setAttribute("usuarios",usuarioBO.getUsuarios());
         
         }catch(Exception e){
@@ -35,7 +46,7 @@ public class Relusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
         

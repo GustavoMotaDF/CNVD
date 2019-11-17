@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,7 +27,12 @@ public class RelEstadoeGrupo extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         HttpSession sessao = req.getSession();
         
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
         if (Objects.nonNull(req.getParameter("pesquisar"))) {
             try{
         req.setAttribute("grupo", grupobo.EstadoeGrupo(req.getParameter("estado")));
@@ -41,7 +47,12 @@ public class RelEstadoeGrupo extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
                //req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados"), req.getParameter("datainicio"),req.getParameter("datafim")));
-
+        HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
         
          req.getRequestDispatcher("jsp/relestadoegrupo.jsp").forward(req, resp);
     }

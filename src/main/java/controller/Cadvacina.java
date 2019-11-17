@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import business.VacinaBO;
 import business.DoencaBO;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,6 +28,14 @@ public class Cadvacina extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        
         try{
         req.setAttribute("vacinas",vacinaBO.getVacinas());
         req.setAttribute("doencas",doencaBO.getDoencas());
@@ -38,7 +47,7 @@ public class Cadvacina extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
         
@@ -48,6 +57,13 @@ public class Cadvacina extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
         try{
            
@@ -68,7 +84,7 @@ public class Cadvacina extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");}   
             
             
@@ -92,7 +108,7 @@ public class Cadvacina extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
                 
             }
@@ -123,7 +139,7 @@ public class Cadvacina extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
         }
@@ -140,7 +156,7 @@ public class Cadvacina extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
 

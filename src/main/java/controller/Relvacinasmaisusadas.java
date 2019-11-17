@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,7 +27,15 @@ public class Relvacinasmaisusadas extends HttpServlet {
     @Override
     
      protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try{
+       
+          HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+         
+         try{
             
             
         req.setAttribute("vacinas",vacinasBO.getVacinas());
@@ -40,7 +49,7 @@ public class Relvacinasmaisusadas extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
         

@@ -24,6 +24,7 @@ import business.GrupoBO;
 import business.TipoUsuarioBO;
 import business.UsuarioBO;
 import entity.Grupo;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -41,6 +42,14 @@ public class Cadusuario extends HttpServlet {
      
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        
         try{
         req.setAttribute("usuarios",usuarioBO.getUsuarios());
         req.setAttribute("tipousuarios", tipousuarioBO.getTipoUsuarios());        
@@ -54,7 +63,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         
@@ -65,7 +74,12 @@ public class Cadusuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String mensagemErro = "";
+         HttpSession sessao = req.getSession();
         
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
         
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
             try{
@@ -111,7 +125,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }   
             
@@ -134,7 +148,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");                
             }
             
@@ -150,7 +164,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
         } else if(Objects.nonNull(req.getParameter("alterar"))){
@@ -200,7 +214,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }   
         }
@@ -220,7 +234,7 @@ public class Cadusuario extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         

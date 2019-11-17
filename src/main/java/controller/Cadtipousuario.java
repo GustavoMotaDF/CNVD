@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import business.TipoUsuarioBO;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,6 +27,14 @@ String mensagemErro = null;
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        
         if(Objects.nonNull  (req.getParameter("cadastrar"))){
         
         try{
@@ -47,7 +56,7 @@ String mensagemErro = null;
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
             
@@ -72,7 +81,7 @@ String mensagemErro = null;
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
                  }
         
@@ -99,7 +108,7 @@ String mensagemErro = null;
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
     }
@@ -113,7 +122,7 @@ String mensagemErro = null;
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         req.getRequestDispatcher("jsp/cadtipodeusuario.jsp").forward(req, resp);
@@ -122,6 +131,15 @@ String mensagemErro = null;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+         HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        
         try{
             req.setAttribute("tipousuario", tipousuarioBO.getTipoUsuarios());
             
@@ -132,7 +150,7 @@ String mensagemErro = null;
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         req.getRequestDispatcher("jsp/cadtipodeusuario.jsp").forward(req, resp);

@@ -22,7 +22,7 @@ import org.hibernate.annotations.Where;
 @Entity
 
 
-@SQLDelete(sql = "update tb_doenca set STATUSDO = 0 where id_doenca = ?")
+@SQLDelete(sql = "update tb_doenca set ativo = 0 where id_doenca = ?")
 @Table(name="tb_doenca")
 public class Doenca implements Serializable {
     @Id
@@ -31,7 +31,7 @@ public class Doenca implements Serializable {
     private Integer iddoenca;
     @Column(name="DOENCA")
     private String doenca;
-    @Column(name="STATUSDO")
+    @Column(name="ativo")
     private Boolean ativo;
     
     @OneToMany(mappedBy = "doenca")

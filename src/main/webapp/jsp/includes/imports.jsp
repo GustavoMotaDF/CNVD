@@ -23,6 +23,7 @@
 <script type="text/javascript" src="jsp/js/modal.js"></script>   
 <link rel="stylesheet" href="jsp/css/style.css">
 <link rel="stylesheet" href="jsp/css/conteudo.css">      
+<link rel="stylesheet" href="jsp/css/print.css" media="print">      
 <script type="text/javascript" src="jsp/js/Cadastro.js"></script>
 <script type="text/javascript" src="jsp/js/Enter.js"></script>
 

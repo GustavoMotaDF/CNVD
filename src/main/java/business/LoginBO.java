@@ -6,6 +6,8 @@
 package business;
 
 import entity.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -33,20 +35,5 @@ public class LoginBO {
         return Login;
 
     }
-    public static Usuario getNome(String login){
-        
-        Usuario usuario;
-       
-            EntityManager en = emf.createEntityManager();
-        
-            en.getTransaction().begin();
-
-            usuario = en.find(Usuario.class,Integer.valueOf(login));
-            
-            en.getTransaction().commit();
-            
-            en.close();
-            return usuario;
-        
-    }
+    
 }

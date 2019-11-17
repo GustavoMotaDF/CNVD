@@ -29,11 +29,11 @@
     <div class="content">      
       <!--FORMULÁRIO DE LOGIN-->
       <div id="login">
-        <form method="post" action="" name="formulario" id="formulario">             
-            <script>
-                
-                
-                
+        <form method="post" action="" name="formulario" id="formulario">       
+            
+            
+            
+            <script>            
                 function enviar() {
                     var formulario = document.getElementById('formulario');
                     if(document.getElementById('Funcionario').checked === true) {
@@ -44,7 +44,6 @@
                     }		
                     formulario.submit();
                     }
-
             </script>   
             
         <h1>Login</h1>  
@@ -74,7 +73,6 @@
                 setTimeout(function(){
                     $('#test').fadeIn('slow');
                 },5000);
-
             });
           </script>
           
@@ -87,7 +85,9 @@
         </form>
       </div>      
     </div>
-  </div>  
+  </div> 
+          
+          
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 </body>
 </html>

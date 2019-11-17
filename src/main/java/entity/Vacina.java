@@ -28,8 +28,8 @@ import org.hibernate.annotations.Where;
  */
 @Entity
 
-@SQLDelete(sql = "update tb_vacinas tv join tb_doenca td on td.id_doenca=tv.id_doenca set tv.ativo = 0, td.STATUSDO = 0 where tv.id_doenca = ?")
-
+//@SQLDelete(sql = "update tb_vacinas tv join tb_doenca td on td.id_doenca=tv.id_doenca set tv.ativo = 0, td.STATUSDO = 0 where tv.id_doenca = ?")
+@SQLDelete(sql = "update tb_vacinas set ativo = 0 where id_vacina = ?")
 @Table(name="tb_vacinas")
 public class Vacina implements Serializable {
     @Id
@@ -49,6 +49,9 @@ public class Vacina implements Serializable {
     @OneToMany(mappedBy = "vacinacampanha")
     private List<Campanhas> campanha ;
 
+    @Column(name="ativo")
+    private Boolean ativo;
+    
     public List<Campanhas> getCampanha() {
         return campanha;
     }
@@ -89,6 +92,14 @@ public class Vacina implements Serializable {
         this.cartaovacina = cartaovacina;
     }
 
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -114,13 +125,16 @@ public class Vacina implements Serializable {
         return true;
     }
 
-    public Vacina(Integer idvacina, String vacina, Doenca doenca, List<VacinaTomada> cartaovacina, List<Campanhas> campanha) {
+    public Vacina(Integer idvacina, String vacina, Doenca doenca, List<VacinaTomada> cartaovacina, List<Campanhas> campanha, Boolean ativo) {
         this.idvacina = idvacina;
         this.vacina = vacina;
         this.doenca = doenca;
         this.cartaovacina = cartaovacina;
         this.campanha = campanha;
+        this.ativo = ativo;
     }
+
+   
 
     
 

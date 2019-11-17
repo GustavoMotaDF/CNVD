@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,7 +28,12 @@ public class RelatorioEstadoUsuario extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         HttpSession sessao = req.getSession();
         
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
          req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
         
         req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);
@@ -36,6 +42,14 @@ public class RelatorioEstadoUsuario extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+     
+         HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
         req.setAttribute("userEstado",usuariobo.RelatorioUsuarioEstado());
           
         req.getRequestDispatcher("jsp/relatorioEstadoUsuario.jsp").forward(req, resp);

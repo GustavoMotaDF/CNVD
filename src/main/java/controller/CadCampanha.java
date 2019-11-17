@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,6 +29,9 @@ public class CadCampanha extends HttpServlet {
     String mensagemSucesso = null;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+        
+        
         if(Objects.nonNull  (req.getParameter("cadastrar"))){
         
         try{
@@ -60,7 +64,7 @@ public class CadCampanha extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
 
         }
@@ -86,7 +90,7 @@ public class CadCampanha extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");                
             }
         
@@ -121,7 +125,7 @@ public class CadCampanha extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
     }
@@ -136,7 +140,7 @@ public class CadCampanha extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         req.getRequestDispatcher("jsp/cadcampanhas.jsp").forward(req, resp);
@@ -145,6 +149,15 @@ public class CadCampanha extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+         HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        
         try{
             req.setAttribute("campanha", campanhabo.getCampanhas());
                         req.setAttribute("vacinacampanhas",vacinabo.getVacinas());
@@ -157,10 +170,13 @@ public class CadCampanha extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
-        req.getRequestDispatcher("jsp/cadcampanhas.jsp").forward(req, resp);
+        
+ req.getRequestDispatcher("jsp/cadcampanhas.jsp").forward(req, resp);
+       
+        
     }
 
 

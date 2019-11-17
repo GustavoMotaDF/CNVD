@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import business.VacinaTomadaBO;
 import business.UsuarioBO;
 import business.VacinaBO;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,6 +31,14 @@ public class CadVacinaTomada extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       
+         HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
         String mensagemErro = "";
         String mensagemSucesso="";
         if (Objects.nonNull(req.getParameter("cadastrar"))) {
@@ -54,7 +63,7 @@ public class CadVacinaTomada extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
                
             }
@@ -86,7 +95,7 @@ public class CadVacinaTomada extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
             }
     }
@@ -102,7 +111,7 @@ public class CadVacinaTomada extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         req.getRequestDispatcher("jsp/cadvacinatomada.jsp").forward(req, resp);
@@ -110,7 +119,16 @@ public class CadVacinaTomada extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       String mensagemErro = "";
+      
+        
+         HttpSession sessao = req.getSession();
+        
+        String usuario = (String) sessao.getAttribute("login");
+        if (usuario == null) {
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        } 
+        
+        String mensagemErro = "";
         try{
             req.setAttribute("vacinatomada", vacinatomadaBO.getVacinasTomadas());
             req.setAttribute("vacina", vacinaBO.getVacinas());
@@ -123,7 +141,7 @@ public class CadVacinaTomada extends HttpServlet {
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 5000); // O valor é representado em milisegundos.\n" +
+                        "	}, 10000); // O valor é representado em milisegundos.\n" +
                         "});</script>");
         }
         req.getRequestDispatcher("jsp/cadvacinatomada.jsp").forward(req, resp);
