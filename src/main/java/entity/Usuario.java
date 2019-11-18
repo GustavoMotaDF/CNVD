@@ -364,5 +364,9 @@ public class Usuario implements Serializable {
 
     public Usuario() {
     }
+
+    public boolean isEmpty() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

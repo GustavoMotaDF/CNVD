@@ -27,19 +27,23 @@ private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
         String Mensagem = "";
 
         if (Objects.nonNull(req.getParameter("Entrar"))) {
+            try{
         req.setAttribute("cartao",vacinatomadabo.CartaoVacinaPronto(req.getParameter("login"),req.getParameter("senha")));
-        }
-        else{           
-
-           Mensagem = "<div class=\"alert alert-success\" id=\"foo\">"
-                    + "<strong> Login ou Senha Incorreto! </strong>"
+        
+       
+            }catch(Exception erro){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Sem resultado para o CPF informado! </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
                         "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
-                        "	}, 10000); // O valor é representado em milisegundos.\n" +
-                        "});</script>";
+                        "	}, 15000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+                        req.getRequestDispatcher("index.jsp").forward(req, resp);
+            }
 
+           
         }
          req.getRequestDispatcher("jsp/Cidadao.jsp").forward(req, resp);
     }
@@ -47,9 +51,21 @@ private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         if (Objects.nonNull(req.getParameter("Entrar"))) {
+             try{
         req.setAttribute("cartao",vacinatomadabo.CartaoVacinaPronto(req.getParameter("login"), req.getParameter("senha")));
-        }
+        }catch(Exception erro){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Sem resultado para o CPF informado! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 15000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+                        req.getRequestDispatcher("index.jsp").forward(req, resp);
+            }
          req.getRequestDispatcher("jsp/Cidadao.jsp").forward(req, resp);
     }
 
+    }
 }

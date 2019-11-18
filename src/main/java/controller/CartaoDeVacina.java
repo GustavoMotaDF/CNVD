@@ -7,7 +7,6 @@ package controller;
 
 import business.VacinaTomadaBO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +34,18 @@ public class CartaoDeVacina extends HttpServlet {
         } 
         
         if (Objects.nonNull(req.getParameter("pesquisar"))) {
+            try{
         req.setAttribute("cartao",vacinatomadabo.RelatorioSangue(req.getParameter("cpf")));
+            }catch(Exception erro){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Sem resultado para o CPF informado! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 15000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
         }
          req.getRequestDispatcher("jsp/VisualizarCartaoVacina.jsp").forward(req, resp);
     }
@@ -48,7 +58,20 @@ public class CartaoDeVacina extends HttpServlet {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } 
         if (Objects.nonNull(req.getParameter("pesquisar"))) {
-        req.setAttribute("cartao",vacinatomadabo.RelatorioSangue(req.getParameter("cpf")));
+            
+            try{
+            req.setAttribute("cartao",vacinatomadabo.RelatorioSangue(req.getParameter("cpf")));         
+            }catch(Exception erro){
+                req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
+                    + "<strong> Sem resultado para o CPF informado! </strong>"
+                    + "</div>" 
+                    +"<script>$().ready(function() {\n" +
+                        "	setTimeout(function () {\n" +
+                        "		$('#foo').hide(); // \"foo\" é o id do elemento que seja manipular.\n" +
+                        "	}, 15000); // O valor é representado em milisegundos.\n" +
+                        "});</script>");
+            }
+        
         }
          req.getRequestDispatcher("jsp/VisualizarCartaoVacina.jsp").forward(req, resp);
     }

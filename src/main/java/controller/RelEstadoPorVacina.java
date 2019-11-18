@@ -6,6 +6,7 @@
 package controller;
 
 import business.CampanhaBO;
+import business.VacinaBO;
 import business.VacinaTomadaBO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,10 +22,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author Gusta
  */
-@WebServlet(name = "RelEstadoPorRegiao", urlPatterns = {"/relestadoporRegiao"})
-public class RelEstadoPorRegiao extends HttpServlet {
+@WebServlet(name = "RelEstadoPorVacina", urlPatterns = {"/relestadoporVacina"})
+public class RelEstadoPorVacina extends HttpServlet {
  private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
     private final CampanhaBO campanhabo = new CampanhaBO();
+    VacinaBO vacinaBO = new VacinaBO();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      
@@ -37,15 +39,17 @@ public class RelEstadoPorRegiao extends HttpServlet {
         
         if (Objects.nonNull(req.getParameter("pesquisar"))) {
             try{
-        req.setAttribute("estados",vacinatomadabo.RelatorioEstadoss(req.getParameter("datainicios"),
+        req.setAttribute("estados",vacinatomadabo.RelatorioCampanha(req.getParameter("datainicios"),
                                                                     req.getParameter("datafim"),
-                                                                    req.getParameter("estado")
+                                                                    req.getParameter("estado"),
+                                                                    req.getParameter("vacina")
                                                                     ));
         
             }catch(Exception e){
-                req.setAttribute("mensagemErro", "Sem resultado para os parametros informados "+e.getMessage());
+                req.setAttribute("mensagemErro", "Sem resultado para os parametros informados ");
             }
         }
+        req.setAttribute("vacina", vacinaBO.getVacinas());
         req.setAttribute("campanha", campanhabo.getCampanhas());  
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
@@ -60,6 +64,7 @@ public class RelEstadoPorRegiao extends HttpServlet {
                //req.setAttribute("estados",vacinatomadabo.RelatorioEstado(req.getParameter("estados"), req.getParameter("datainicio"),req.getParameter("datafim")));
 
         req.setAttribute("campanha", campanhabo.getCampanhas()); 
+        req.setAttribute("vacina", vacinaBO.getVacinas());
          req.getRequestDispatcher("jsp/relvacinasmaisusadasporregiao.jsp").forward(req, resp);
     }
 }

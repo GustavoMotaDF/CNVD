@@ -1,4 +1,10 @@
 <%-- 
+    Document   : relatorioporEstado
+    Created on : 18/11/2019, 16:46:53
+    Author     : Gusta
+--%>
+
+<%-- 
     Document   : Teste
     Created on : 25/10/2019, 23:06:40
     Author     : gustavo
@@ -10,7 +16,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Relatorio: Estado, Vacina e Campanha</title>
+        <title>Relatorio: Quantidade de Vacinas por Estado</title>
         <jsp:include page="includes/head.jsp"/>
     </head>
     <body style="background-color: #fff" >
@@ -21,14 +27,14 @@
 
             <div class="container"style="background: #A9D0F5;">
                 <br>
-                <h2 id="nomela">Relatorio: Estado, Vacina e Campanha</h2>           
+                <h2 id="nomela">Relatorio: Quantidade de Vacinas por Estado</h2>           
                 <br>
             </div>
             <br>
             <div class="container" style="
                  box-shadow: 0 0 1em black;">
 
-                <form action="${pageContext.request.contextPath}/relestadoporVacina" method="post">
+                <form action="${pageContext.request.contextPath}/relporEstado" method="post">
                     <div class="container" style="text-align: center">
                         <br>
                         <label>Data inicio:</label>
@@ -70,13 +76,7 @@
 
                         </select>   
                         <br>
-                        <br>
-                        <select class="form-control"  name="vacina" id="vacina" required="Selecione!" >
-                           <option value="">Selecione a Vacina...</option> 
-                            <c:forEach var="vacina" items="${vacina}">                               
-                                <option value="${vacina.idvacina}">${vacina.vacina}</option>
-                            </c:forEach>
-                        </select>
+                        
 
                         <br>
                         <br>
@@ -91,52 +91,11 @@
                 </form>
             </div>
 
-            <div class="container">
-
-                <table  class="table table-hover" style="border: 1px solid black; border-collapse: collapse; margin-top: 20px;  width:100%; font-size: 15px" border="1" >
-                    <thead class="thead-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Descrição Campanha</th>
-                            <th>Estado da Campanha</th>
-                            <th>Vacina Campanha</th>                                        
-                            <th>Data da Campanha inicio</th>
-                            <th>Data da Campanha fim</th>
-
-
-                        </tr>
-                    </thead>
-
-                    <c:forEach var= "campanha" items="${campanha}">
-                        <tr>
-                            <td>${campanha.idcampanha}</td>
-                            <td>${campanha.descricaocampanha}</td>
-                            <td>${campanha.estadousuarios.estado}-${campanha.estadousuarios.uf}</td>
-                            <td>${campanha.vacinacampanha.vacina}</td> 
-                            <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>                                            
-                            <fmt:parseDate value="${campanha.datainicio}" pattern="yyyy-MM-dd" var="parsedDateinicio" type="date" />
-                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDateinicio}" var="dataInicio" /> 
-                            <td>${dataInicio}</td>
-                            <fmt:parseDate value="${campanha.datafim}" pattern="yyyy-MM-dd" var="parsedDatefim" type="date" />
-                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDatefim}" var="dataFim" /> 
-                            <td>${dataFim}</td>
-                            <td>
-                                <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
-                                <input type ="radio" name="idcampanha" value ="${campanha.idcampanha}" 
-                                       onclick="habilitar(1); habilitar(2)" required="Selecione">
-                            </td>     
-                        </tr>
-                    </c:forEach>
-
-
-                </table>  
-            </div>
-
 
         </c:if>
         <c:if test="${not empty estados}">
             <div class="container">
-                <h3>Relatório: Vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
+                <h3>Relatório: Total de vacinas aplicadas no estado <label style="color: #4e555b"><i>${estados["0"]["0"]}</i></label></h3>
 
                 <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
                     <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >

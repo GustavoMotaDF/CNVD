@@ -22,6 +22,8 @@
 </head>
 <body onKeyDown="AnalizaTeclas()" style="background-image: linear-gradient( #819FF7, #CEE3F6);">
     
+          
+          
   <div class="container" >
      <a class="links" id="paralogin"></a>
       
@@ -29,10 +31,7 @@
     <div class="content">      
       <!--FORMULÁRIO DE LOGIN-->
       <div id="login">
-        <form method="post" action="" name="formulario" id="formulario">       
-            
-            
-            
+        <form method="post" action="" name="formulario" id="formulario"> 
             <script>            
                 function enviar() {
                     var formulario = document.getElementById('formulario');
@@ -66,6 +65,12 @@
           <p> 
               <input type="submit"  class="botao" value="Entrar" name="Entrar" onclick="enviar()" > 
           </p>
+          <div style="text-align: center; background: #F3E2A9; color: #424242; padding: 5px; margin: 3px" >
+              ${mensagemErro}
+          </div>
+          
+          
+          
           <script>$(function(){
 
                 $('#test').hide();
@@ -87,7 +92,7 @@
     </div>
   </div> 
           
-          
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 </body>
 </html>

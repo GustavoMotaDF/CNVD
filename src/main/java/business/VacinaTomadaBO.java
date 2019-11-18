@@ -8,6 +8,8 @@ package business;
 import entity.VacinaTomada;
 import entity.Usuario;
 import entity.Vacina;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
@@ -127,7 +129,7 @@ public class VacinaTomadaBO {
         return cartaovacinas;
     }
 
-    public List<VacinaTomada> RelatorioSangue(String cpf) {
+    public List<VacinaTomada> RelatorioSangue(String cpf) throws Exception {
         List<VacinaTomada> cartao;
 
         EntityManager en = emf.createEntityManager();
@@ -136,12 +138,16 @@ public class VacinaTomadaBO {
         en.getTransaction().commit();
         en.clear();
         en.close();
-
+        
+        if(cartao == null || cartao.isEmpty()){
+                    throw new Exception("Sem resultado");
+                    
+                }
         return cartao;
 
     }
 
-    public List<VacinaTomada> CartaoVacinaPronto(String login, String senha) {
+    public List<VacinaTomada> CartaoVacinaPronto(String login, String senha) throws Exception {
         List<VacinaTomada> cartao;
 
         EntityManager en = emf.createEntityManager();
@@ -150,23 +156,16 @@ public class VacinaTomadaBO {
         en.getTransaction().commit();
         en.clear();
         en.close();
-        try {
-            if (cartao != null) {
-                System.out.println("Cidadão " + login + " logado");
-
-            }
-        } catch (Exception e) {
-            if (cartao == null) {
-                System.err.println("Erro " + e.getCause().getMessage());
-            }
-            System.err.println("Erro " + e.getCause().getMessage());
-        }
+        if(cartao == null || cartao.isEmpty()){
+          throw new Exception("Sem resultado");
+                    
+         }
 
         return cartao;
 
     }
 
-    public List<VacinaTomada> RelatorioEstadoss(String datainicios, String datafim, String estado) {
+    public List<VacinaTomada> RelatorioEstadoss(String datainicios, String datafim, String estado) throws Exception {
         List<VacinaTomada> estadoss = null;
 
         EntityManager en = emf.createEntityManager();
@@ -180,9 +179,8 @@ public class VacinaTomadaBO {
                 + "on vt.usuario = us.idusuario \n"
                 + "join Vacina va\n"
                 + "on va.idvacina=vt.vacinas\n"
-                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim) "
-                + "and es.idestado =:estado "
-                + "and va.idvacina =:vacina"
+                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim)\n "
+                + "and es.idestado =:estado\n "                
                 + "group by va.vacina order by va.vacina")
                 .setParameter("datainicios", datainicios)
                 .setParameter("datafim", datafim)
@@ -192,16 +190,21 @@ public class VacinaTomadaBO {
         en.getTransaction().commit();
         en.clear();
         en.close();
+        if(estadoss == null || estadoss.isEmpty()){
+                    throw new Exception("Sem resultado");
+                    
+                }
 
         return estadoss;
 
     }
-    public List<VacinaTomada> RelatorioCampanha(String datainicios, String datafim, String estado) {
+    public List<VacinaTomada> RelatorioCampanha(String datainicios, String datafim, String estado, String vacina) throws IOException, Exception{
         List<VacinaTomada> estadoss = null;
 
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
-
+        
+        
         estadoss = en.createQuery("select distinct es.estado, va.vacina, count(va.vacina)\n"
                 + "from Estado es \n"
                 + "join Usuario us \n"
@@ -210,15 +213,23 @@ public class VacinaTomadaBO {
                 + "on vt.usuario = us.idusuario \n"
                 + "join Vacina va\n"
                 + "on va.idvacina=vt.vacinas\n"
-                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim) "
-                + "and es.idestado =:estado "
-                + "and va.idvacina =:vacina"
+                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim)\n "
+                + "and es.idestado =:estado\n "
+                + "and va.idvacina =:vacina\n "
                 + "group by va.vacina order by va.vacina")
                 .setParameter("datainicios", datainicios)
                 .setParameter("datafim", datafim)
                 .setParameter("estado", Integer.valueOf(estado))
+                .setParameter("vacina", Integer.valueOf(vacina))
                 .getResultList();
-
+        
+                if(estadoss == null || estadoss.isEmpty()){
+                    throw new Exception("Sem resultado");
+                    
+                }
+       
+            
+        
         en.getTransaction().commit();
         en.clear();
         en.close();
@@ -226,5 +237,40 @@ public class VacinaTomadaBO {
         return estadoss;
 
     }
+    
+    public List<VacinaTomada> RelatorioTotalEstados() throws IOException, Exception{
+        List<VacinaTomada> estadoss;
+
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+        
+        
+        estadoss = en.createQuery("select distinct es.estado, count(va.vacina), (select count(idvacinatomada) from VacinaTomada idvacinatomada)\n"
+                + "from Estado es \n"
+                + "join Usuario us \n"
+                + "on es.idestado=us.estado\n"
+                + "join VacinaTomada vt \n"
+                + "on vt.usuario = us.idusuario \n"
+                + "join Vacina va\n"
+                + "on va.idvacina=vt.vacinas\n"                
+                + "group by es.estado order by es.estado")
+                
+                .getResultList();
+        
+                if(estadoss == null || estadoss.isEmpty()){
+                    throw new Exception("Sem resultado");
+                    
+                }
+       
+            
+        
+        en.getTransaction().commit();
+        en.clear();
+        en.close();
+
+        return estadoss;
+
+    }
+    
 
 }

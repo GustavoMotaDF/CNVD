@@ -50,19 +50,22 @@
             <ul class="collapse list-unstyled" id="pageSubmenu">
                
                 <li>
-                    <a href="${pageContext.request.contextPath}/relestadoporRegiao">Relatorio: Vacinas Mais Usadas Por Região</a>
+                    <a href="${pageContext.request.contextPath}/relestadoporVacina">Relatorio: Estado, Vacina e Campanha</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/relusuario">Relatorio: Usuarios</a>
+                    <a href="${pageContext.request.contextPath}/relporEstado">Relatorio: Quantidade de Vacinas por Estado</a>
+                </li>     
+                <li>
+                    <a href="${pageContext.request.contextPath}/totalvacinastomada">Relatorio: Numero de Vacinas aplicadas Total - Vacinas</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/relatorioEstadoUsuario">Relatorio: Usuarios cadastrados por Estado</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/totalvacinastomada">Relatorio: Numero de Vacinas aplicadas</a>
+                    <a href="${pageContext.request.contextPath}/totalVacinasEstados">Relatorio: Numero de Vacinas aplicadas Total - Estados</a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/relestadoeGrupo">Relatorio: Usuarios cadastrados por Grupo e por Estado</a>
+                </li>
+                 <li>
+                    <a href="${pageContext.request.contextPath}/relatorioEstadoUsuario">Relatorio: Usuarios cadastrados por Estado</a>
                 </li>
             </ul> 
         </li>

@@ -60,17 +60,21 @@
                  box-shadow: 0 0 1em black;">
 
                 <form action="${pageContext.request.contextPath}/cartaodevacina" method="post">
-                    <div class="container" style="text-align: center">
+                <div class="container" style="text-align: center">
                         <br>
                         <label>CPF do Usuário:</label><br>
                         <input name="cpf" type="text" style="width: 50%"/><br> <br>                   
                         <button type="submit" name="pesquisar" class="btn btn-primary" >Pesquisar</button>
+                        <br>
+                        <br>
                         <div>
                             ${mensagemErro}
                             <br>
                             <br>
                         </div>
                 </form>
+                    
+                
                 <div>
                 </c:if>
 

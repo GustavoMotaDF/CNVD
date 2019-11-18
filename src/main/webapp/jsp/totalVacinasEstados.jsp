@@ -16,29 +16,31 @@
     <body style="background-color: #fff">
         <jsp:include page="includes/menusuperior.jsp"/>
         <div class="container">
-            <form method="post" action="${pageContext.request.contextPath}/totalvacinastomada" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>          
+            <form method="post" action="${pageContext.request.contextPath}/totalVacinasEstados" name="form01" id="formulario" onsubmit="return validarform1(this)"><br>          
 
                 <div id="tabelalista" style="overflow: auto; width: 100%; height: auto; border:solid 1px;  float: right;">
-                  <h3>Relatório: Total de vacinas aplicadas no <label style="color: #4e555b"><i>Brasil</i></label></h3>
-
+                  <h3>Relatório: Total de <label style="color: #4e555b"><i>${cartaovacinas["2"]["2"]}</i></label> vacinas aplicadas no <label style="color: #4e555b"><i>Brasil</i></label></h3>
+                     
                     <table class="table table-hover table-sm"style="border: 1px solid black; border-collapse: collapse; margin-top: 20px; width:100%; font-size: 15px" border="1" >
+                    
                         <thead class="thead-light">
                             <tr>
                                 <th class="hovercoluna">Nome Vacina</th>
                                 <th class="hovercoluna">Quantidade</th>
+                                
                             </tr>
                         </thead>
 
                         <c:forEach var="cartaovacinas" items="${cartaovacinas}">
                             <tr>
-
-                                <td>${cartaovacinas["0"].vacinas.vacina}</td>
+                                <td>${cartaovacinas["0"]}</td>
                                 <td>${cartaovacinas["1"]}</td>
-
+                                                              
                             </tr>
                         </c:forEach>
+                                
 
-
+                            
                     </table>  
                 </div>
                 <style>

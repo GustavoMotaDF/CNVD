@@ -300,7 +300,7 @@
                                             <br>
                                             <%-- CEP--%>
                                             <label for="cep" class="alinhamento">CEP:</label>
-                                            <input type="text" id="cep" onkeypress="return sonumeros(event)" name="cep" maxlength="8" pattern="[0-9]{8}" placeholder="99.999-999" />
+                                            <input type="text" id="cep" onkeypress="return sonumeros(event)" name="cep" maxlength="8" pattern="[0-9]{6-8}" placeholder="99.999-999" />
                                             <span class="style1">*</span>
 
                                             <br>
@@ -703,7 +703,7 @@
                                             <br>
                                             <%-- CEP--%>
                                             <label for="cep" class="alinhamento">CEP:</label>
-                                            <input type="text" id="cep" name="cep" maxlength="8" value="${usuarioEditando.cep}" pattern="[0-9]{8}" placeholder="99.999-999" />
+                                            <input type="text" id="cep" name="cep" maxlength="8" value="${usuarioEditando.cep}" pattern="[0-9]{6-8}" placeholder="99.999-999" />
                                             <span class="style1">*</span>
 
                                             <br>

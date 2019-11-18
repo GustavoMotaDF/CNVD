@@ -6,6 +6,7 @@
 package controller;
 
 import business.UsuarioBO;
+import business.VacinaTomadaBO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,13 +20,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author gustavo
  */
-@WebServlet(name = "Relusuario", urlPatterns = {"/relusuario"})
-public class Relusuario extends HttpServlet {
-    
-    
-    
-    private final UsuarioBO usuarioBO = new UsuarioBO();
-    
+@WebServlet(name = "TotalVacinasEstados", urlPatterns = {"/totalVacinasEstados"})
+public class TotalVacinasEstados extends HttpServlet {
+    private final VacinaTomadaBO vacinatomadabo = new VacinaTomadaBO();
     @Override
      protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      HttpSession sessao = req.getSession();
@@ -37,7 +34,7 @@ public class Relusuario extends HttpServlet {
          
          
          try{
-        req.setAttribute("usuarios",usuarioBO.getUsuarios());
+        req.setAttribute("cartaovacinas", vacinatomadabo.RelatorioTotalEstados());
         
         }catch(Exception e){
            req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
@@ -51,7 +48,7 @@ public class Relusuario extends HttpServlet {
             }
         
         
-        req.getRequestDispatcher("jsp/relusuarios.jsp").forward(req, resp);
+        req.getRequestDispatcher("jsp/totalVacinasEstados.jsp").forward(req, resp);
     }
 
 
