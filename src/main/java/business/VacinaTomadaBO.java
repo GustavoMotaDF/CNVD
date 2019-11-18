@@ -180,7 +180,40 @@ public class VacinaTomadaBO {
                 + "on vt.usuario = us.idusuario \n"
                 + "join Vacina va\n"
                 + "on va.idvacina=vt.vacinas\n"
-                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim) and es.idestado =:estado group by va.vacina order by va.vacina")
+                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim) "
+                + "and es.idestado =:estado "
+                + "and va.idvacina =:vacina"
+                + "group by va.vacina order by va.vacina")
+                .setParameter("datainicios", datainicios)
+                .setParameter("datafim", datafim)
+                .setParameter("estado", Integer.valueOf(estado))
+                .getResultList();
+
+        en.getTransaction().commit();
+        en.clear();
+        en.close();
+
+        return estadoss;
+
+    }
+    public List<VacinaTomada> RelatorioCampanha(String datainicios, String datafim, String estado) {
+        List<VacinaTomada> estadoss = null;
+
+        EntityManager en = emf.createEntityManager();
+        en.getTransaction().begin();
+
+        estadoss = en.createQuery("select distinct es.estado, va.vacina, count(va.vacina)\n"
+                + "from Estado es \n"
+                + "join Usuario us \n"
+                + "on es.idestado=us.estado\n"
+                + "join VacinaTomada vt \n"
+                + "on vt.usuario = us.idusuario \n"
+                + "join Vacina va\n"
+                + "on va.idvacina=vt.vacinas\n"
+                + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim) "
+                + "and es.idestado =:estado "
+                + "and va.idvacina =:vacina"
+                + "group by va.vacina order by va.vacina")
                 .setParameter("datainicios", datainicios)
                 .setParameter("datafim", datafim)
                 .setParameter("estado", Integer.valueOf(estado))

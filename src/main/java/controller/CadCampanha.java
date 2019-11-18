@@ -40,12 +40,8 @@ public class CadCampanha extends HttpServlet {
                                         req.getParameter("descricaocampanha"),
                                         req.getParameter("estadousuarios"),                                                                       
                                         req.getParameter("vacinacampanha"),
-                                        req.getParameter("diainicio"),
-                                        req.getParameter("diafim"),
-                                        req.getParameter("mesinicio"),
-                                        req.getParameter("mesfim"),
-                                        req.getParameter("anoinicio"), 
-                                        req.getParameter("anofim"));    
+                                        req.getParameter("datainicio"),
+                                        req.getParameter("datafim"));    
         req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Cadastrado com Sucesso! </strong>"
                     + "</div>" 
@@ -60,7 +56,7 @@ public class CadCampanha extends HttpServlet {
         
         }catch(Exception e){
             req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao cadastrar "+e.getCause().getCause()+" </strong>"
+                    + "<strong> Erro ao cadastrar "+e.getMessage()+" </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +
@@ -105,12 +101,8 @@ public class CadCampanha extends HttpServlet {
                                         req.getParameter("descricaocampanha"),
                                         req.getParameter("estadousuarios"),                                                                       
                                         req.getParameter("vacinacampanha"),
-                                        req.getParameter("diainicio"),
-                                        req.getParameter("diafim"),
-                                        req.getParameter("mesinicio"),
-                                        req.getParameter("mesfim"),
-                                        req.getParameter("anoinicio"), 
-                                        req.getParameter("anofim"));    
+                                        req.getParameter("datainicio"),
+                                        req.getParameter("datafim"));   
             req.setAttribute("mensagemSucesso", "<div class=\"alert alert-success\" id=\"foo\">"
                     + "<strong> Alterado com Sucesso! </strong>"
                     + "</div>" 
@@ -121,7 +113,7 @@ public class CadCampanha extends HttpServlet {
                         "});</script>");
             }catch(Exception e){
             req.setAttribute("mensagemErro", "<div class=\"alert alert-danger\" id=\"foo\">"
-                    + "<strong> Erro ao Alterar"+e.getCause().getCause()+" </strong>"
+                    + "<strong> Erro ao Alterar"+e.getMessage()+" </strong>"
                     + "</div>" 
                     +"<script>$().ready(function() {\n" +
                         "	setTimeout(function () {\n" +

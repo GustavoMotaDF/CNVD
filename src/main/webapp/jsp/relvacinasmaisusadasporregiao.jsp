@@ -104,12 +104,23 @@
                             <td>${campanha.idcampanha}</td>
                             <td>${campanha.descricaocampanha}</td>
                             <td>${campanha.estadousuarios.estado}-${campanha.estadousuarios.uf}</td>
-                            <td>${campanha.vacinacampanha.vacina}</td>   
-                            <td>${campanha.diainicio} de ${campanha.mesinicio} de ${campanha.anoinicio}</td>
-                            <td>${campanha.diafim} de ${campanha.mesfim} de ${campanha.anofim}</td>
-
+                            <td>${campanha.vacinacampanha.vacina}</td> 
+                            <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>                                            
+                            <fmt:parseDate value="${campanha.datainicio}" pattern="yyyy-MM-dd" var="parsedDateinicio" type="date" />
+                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDateinicio}" var="dataInicio" /> 
+                            <td>${dataInicio}</td>
+                            <fmt:parseDate value="${campanha.datafim}" pattern="yyyy-MM-dd" var="parsedDatefim" type="date" />
+                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDatefim}" var="dataFim" /> 
+                            <td>${dataFim}</td>
+                            <td>
+                                <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
+                                <input type ="radio" name="idcampanha" value ="${campanha.idcampanha}" 
+                                       onclick="habilitar(1); habilitar(2)" required="Selecione">
+                            </td>     
                         </tr>
                     </c:forEach>
+
+
                 </table>  
             </div>
 

@@ -74,64 +74,7 @@
                                     <%-- Data inicio --%>
                                     <hr> 
                                     <h5><i>Data Inicio da Campanha</i></h5>
-                                    <label for="diainicio" style="font-weight: bold;">Dia Inicio: &nbsp;</label>
-                                    <select class="diainicio" name="diainicio" id="diainicio" style="width: 20%; height: 30px;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select>                             
-                                    <br>
-                                    <label for="mesinicio"style="font-weight: bold;">Mês Inicio:</label>
-                                    <select class="mesinicio" name="mesinicio" id="mesinicio" style="width: 20%; height: 30px;">
-                                        <option value="">Selecione o mês...</option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-
-                                    </select><br>
-                                    <label for="anoinicio"style="font-weight: bold;" >Ano Inicio:</label>
-                                    <select class="anoinicio" name="anoinicio" id="anoinicio" style="width: 20%; height: 30px;">
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>  
+                                    <input type="date" name="datainicio"/>
                                     <span class="style1">*</span>
                                     <br>
                                     <hr> 
@@ -149,67 +92,14 @@
                                             <option value="${vacinacampanha.idvacina}">${vacinacampanha.vacina}</option>
                                         </c:forEach>
                                     </select>
+                                    <span class="style1">*</span>
                                     <hr> 
                                     <hr>
                                     <h5><i>Data final da Campanha</i></h5>
                                     <%-- Data fim --%>
-                                    <label for="diafim" style="font-weight: bold;" >Dia Final: &nbsp;</label>
-                                    <select class="diafim" name="diafim" id="diafim" style="width: 20%; height: 30px;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select> <br>
-                                    <label for="mesfim" style="font-weight: bold;">Mês Final:</label>
-                                    <select class="mesfim" name="mesfim" id="mesfim" style="width: 20%; height: 30px;">
-                                        <option value="">Selecione o mês...</option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-                                    </select><br>
-                                    <label for="anofim" style="font-weight: bold;" >Ano Final:</label>
-                                    <select class="anofim" name="anofim" id="anofim" style="width: 20%; height: 30px;">
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>    
-
+                                    <input type="date" name="datafim"/>
+                                   
+                                   
                                     <span class="style1">*</span>
                                     <hr>
                                     <br>
@@ -293,69 +183,8 @@
                                     <%-- Data inicio --%>
                                     <hr> 
                                     <h5><i>Data Inicio da Campanha</i></h5>
-                                    <label for="diainicio" style="font-weight: bold;">Dia Inicio: &nbsp;</label>
-                                    <select class="diainicio" name="diainicio" id="diainicio" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.diainicio}">${campanhaEditando.diainicio}</option>
-                                        <option value=""></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select>                             
-                                    <br>
-                                    <label for="mesinicio"style="font-weight: bold;">Mês Inicio:</label>
-                                    <select class="mesinicio" name="mesinicio" id="mesinicio" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.mesinicio}">${campanhaEditando.mesinicio}</option>                                
-                                        <option value=""></option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-
-                                    </select><br>
-                                    <label for="anoinicio"style="font-weight: bold;" >Ano Inicio:</label>
-                                    <select class="anoinicio" name="anoinicio" id="anoinicio" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.anoinicio}">${campanhaEditando.anoinicio}</option>
-                                        <option value=""></option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>  
+                                    <input type="date" name="datainicio" id="datainicio" value="${campanhaEditando.datainicio}"/>
+                                    
                                     <span class="style1">*</span>
                                     <hr>
                                     <hr> 
@@ -378,67 +207,7 @@
                                     <hr>
                                     <h5><i>Data final da Campanha</i></h5>
                                     <%-- Data fim --%>
-                                    <label for="diafim" style="font-weight: bold;" >Dia Final: &nbsp;</label>
-                                    <select class="diafim" name="diafim" id="diafim" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.diafim}">${campanhaEditando.diafim}</option>
-                                        <option value=""></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-
-                                    </select> <br>
-                                    <label for="mesfim" style="font-weight: bold;">Mês Final:</label>
-                                    <select class="mesfim" name="mesfim" id="mesfim" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.mesfim}">${campanhaEditando.mesfim}</option>                                
-                                        <option value=""></option>                                
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-                                    </select><br>
-                                    <label for="anofim" style="font-weight: bold;" >Ano Final:</label>
-                                    <select class="anofim" name="anofim" id="anofim" style="width: 20%; height: 30px;">
-                                        <option value="${campanhaEditando.anofim}">${campanhaEditando.anofim}</option>
-                                        <option value=""></option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>    
+                                    <input type="date" name="datafim" id="datafim" value="${campanhaEditando.datafim}"/>
 
                                     <span class="style1">*</span>
                                     <hr>
@@ -504,11 +273,14 @@
                                             <td>${campanha.idcampanha}</td>
                                             <td>${campanha.descricaocampanha}</td>
                                             <td>${campanha.estadousuarios.estado}-${campanha.estadousuarios.uf}</td>
-                                            <td>${campanha.vacinacampanha.vacina}</td>   
-                                            <td>${campanha.diainicio} de ${campanha.mesinicio} de ${campanha.anoinicio}</td>
-                                            <td>${campanha.diafim} de ${campanha.mesfim} de ${campanha.anofim}</td>
-                                            
-
+                                            <td>${campanha.vacinacampanha.vacina}</td> 
+                                            <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>                                            
+                                            <fmt:parseDate value="${campanha.datainicio}" pattern="yyyy-MM-dd" var="parsedDateinicio" type="date" />
+                                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDateinicio}" var="dataInicio" /> 
+                                            <td>${dataInicio}</td>
+                                            <fmt:parseDate value="${campanha.datafim}" pattern="yyyy-MM-dd" var="parsedDatefim" type="date" />
+                                            <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDatefim}" var="dataFim" /> 
+                                            <td>${dataFim}</td>
                                             <td>
                                                 <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
                                                 <input type ="radio" name="idcampanha" value ="${campanha.idcampanha}" 

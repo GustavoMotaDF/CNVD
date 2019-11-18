@@ -9,6 +9,8 @@ import entity.Campanhas;
 import entity.Estado;
 import entity.Usuario;
 import entity.Vacina;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,7 +32,7 @@ public List<Campanhas> getCampanhas(){
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
-       campanha  = en.createQuery("from Campanhas").getResultList();
+       campanha  = en.createQuery("from Campanhas where ativo = 1").getResultList();
         en.getTransaction().commit();
         
         en.clear();
@@ -39,7 +41,7 @@ public List<Campanhas> getCampanhas(){
         return campanha;
     
     }
-    public void IncluirCampanhas(String descricaocampanha, String estadousuarios, String vacinacampanha, String diainicio, String diafim, String mesinicio, String mesfim, String anoinicio, String anofim){
+    public void IncluirCampanhas(String descricaocampanha, String estadousuarios, String vacinacampanha, String datainicio, String datafim){
         EntityManager en = emf.createEntityManager();  
         
         en.getTransaction().begin();
@@ -50,12 +52,13 @@ public List<Campanhas> getCampanhas(){
         campanhas.setEstadousuarios(estado);
         Vacina vacinas = en.find(Vacina.class, Integer.valueOf(vacinacampanha));
         campanhas.setVacinacampanha(vacinas);
-        campanhas.setDiainicio(diainicio);
-        campanhas.setDiafim(diafim);
-        campanhas.setMesinicio(mesinicio);
-        campanhas.setMesfim(mesfim);
-        campanhas.setAnoinicio(anoinicio);
-        campanhas.setAnofim(anofim);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
+        LocalDate dataInicio = LocalDate.parse(datainicio, formato );
+        LocalDate dataFim = LocalDate.parse(datafim, formato );
+        campanhas.setDatainicio(dataInicio);
+        campanhas.setDatafim(dataFim);
+        campanhas.setAtivo(true);
+       
        
         
         
@@ -102,7 +105,7 @@ public List<Campanhas> getCampanhas(){
         
     }
     
-    public void alterarCampanha(String idcampanha,String descricaocampanha, String estadousuarios, String vacinacampanha, String diainicio, String diafim, String mesinicio, String mesfim, String anoinicio, String anofim){
+    public void alterarCampanha(String idcampanha,String descricaocampanha, String estadousuarios, String vacinacampanha, String datainicio, String datafim){
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
         
@@ -113,12 +116,11 @@ public List<Campanhas> getCampanhas(){
         campanhas.setEstadousuarios(estado);
         Vacina vacinas = en.find(Vacina.class, Integer.valueOf(vacinacampanha));
         campanhas.setVacinacampanha(vacinas);
-        campanhas.setDiainicio(diainicio);
-        campanhas.setDiafim(diafim);
-        campanhas.setMesinicio(mesinicio);
-        campanhas.setMesfim(mesfim);
-        campanhas.setAnoinicio(anoinicio);
-        campanhas.setAnofim(anofim);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
+        LocalDate dataInicio = LocalDate.parse(datainicio, formato );
+        LocalDate dataFim = LocalDate.parse(datafim, formato );
+        campanhas.setDatainicio(dataInicio);
+        campanhas.setDatafim(dataFim);
         
         en.merge(campanhas);
         
