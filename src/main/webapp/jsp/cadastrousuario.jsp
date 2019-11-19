@@ -100,8 +100,8 @@
 
                                             <br>
                                             <%-- DATANASCIMENTO--%>
-                                            <label for="dia"style="font-weight:bold;" >DaNasc:</label>
-                                            <label for="dia" style="font-weight:bold;">Dia:</label>
+                                            <label for="dia" class="alinhamento" style="font-weight:bold;" >DaNasc:</label>
+                                           
                                             <select class="dia" name="dia" id="dia" style="width: 10%; height: 30px;">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -136,8 +136,8 @@
                                                 <option value="31">31</option>
 
                                             </select> 
-                                            <label for="mes" style="font-weight:bold;">Mês:</label>
-                                            <select class="mes" name="mes" id="mes" style="width: 30%; height: 30px;">
+                                           
+                                            <select class="mes" name="mes" id="mes" style="width: 40%; height: 30px;">
                                                 <option value="">Selecione o mês...</option>                                
                                                 <option value="Janeiro">Janeiro</option>
                                                 <option value="Fevereiro">Fevereiro</option>
@@ -153,8 +153,8 @@
                                                 <option value="Dezembro">Dezembro</option>
 
                                             </select>
-                                            <label for="ano" style="font-weight:bold;">Ano:</label>
-                                            <select class="ano" name="ano" id="ano" style="width: 20%; height: 30px;">
+                                           
+                                            <select class="ano" name="ano" id="ano" style="width: 19%; height: 30px;">
                                                 <option value="2019">2019</option>
                                                 <option value="2018">2018</option>
                                                 <option value="2017">2017</option>
@@ -378,7 +378,7 @@
                                             <br>
 
                                             <%-- TIPOUSUARIO --%>
-                                            <label for="idtipousuario" class="alinhamento">Tipo Usuarios:</label>
+                                            <label for="idtipousuario" class="alinhamento">Tipo de permissão:</label>
                                             <select class="tiposdeusuarios" name ="idtipousuarios" id="idtipousuario" style="width: 70%; height: 30px;">
                                                 <option value="">Selecione o Tipo...</option>   
                                                 <c:forEach var="tipousuario" items="${tipousuarios}">
@@ -500,8 +500,7 @@
 
                                             <%-- DATANASCIMENTO--%>
                                             <%-- DATANASCIMENTO--%>
-                                            <label for="dia" style="font-weight:bold;" >DaNasc:</label>
-                                            <label for="dia" style="font-weight:bold;" >Dia:</label>
+                                            <label for="dia" class="alinhamento" style="font-weight:bold;" >DaNasc:</label>
                                             <select class="dia" name="dia" id="dia" style="width: 10%; height: 30px;">
                                                 <option value="${usuarioEditando.dia}">${usuarioEditando.dia}</option>
                                                 <option value="1">1</option>
@@ -537,8 +536,7 @@
                                                 <option value="31">31</option>
 
                                             </select> 
-                                            <label for="mes" style="font-weight:bold;">Mês:</label>
-                                            <select class="mes" name="mes" id="mes" style="width: 30%; height: 30px;">
+                                            <select class="mes" name="mes" id="mes" style="width: 40%; height: 30px;">
                                                 <option value="${usuarioEditando.mes}">${usuarioEditando.mes}</option>                                
                                                 <option value=""></option>
                                                 <option value="Janeiro">Janeiro</option>
@@ -555,8 +553,7 @@
                                                 <option value="Dezembro">Dezembro</option>
 
                                             </select>
-                                            <label for="ano" style="font-weight:bold;">Ano:</label>
-                                            <select class="ano" name="ano" id="ano" style="width: 20%; height: 30px;">
+                                            <select class="ano" name="ano" id="ano" style="width: 19%; height: 30px;">
                                                 <option value="${usuarioEditando.ano}">${usuarioEditando.ano}</option>
                                                 <option value="2019">2019</option>
                                                 <option value="2018">2018</option>
