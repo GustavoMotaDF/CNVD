@@ -37,7 +37,7 @@
 
                                     <%-- Estado do Usuario --%>
 
-                                    <select class="estadousuarios"name ="estadousuarios" id="estadousuarios" required="Selecione!" style="width: 70%; height: 30px;">
+                                    <select class="form-control" style="width: 70%!important" name ="estadousuarios" id="estadousuarios" required="Selecione!" >
                                         <option value="">Selecione o Estado...</option>   
                                         <option value="1">Acre</option>
                                         <option value="2">Alagoas</option>
@@ -74,20 +74,20 @@
                                     <%-- Data inicio --%>
                                     <hr> 
                                     <h5><i>Data Inicio da Campanha</i></h5>
-                                    <input type="date" name="datainicio"/>
+                                    <input class="form-control" style="width: 70%!important" type="date" name="datainicio"/>
                                     <span class="style1">*</span>
                                     <br>
                                     <hr> 
                                     <hr> 
                                     <h5><i>Descrição da Campanha</i></h5>
                                     <%-- Descrição da campanha --%>
-                                    <textarea style="width: 70%!important" name="descricaocampanha" id="descricaocampanha" placeholder="Descrição da campanha" required="Preencha o campo!"></textarea>
+                                    <textarea class="form-control" style="width: 70%!important" name="descricaocampanha" id="descricaocampanha" placeholder="Descrição da campanha" required="Preencha o campo!"></textarea>
                                     <span class="style1">*</span>
                                     <hr>
                                     <%-- Vacina da campanha --%> 
                                     <hr> 
                                     <h5><i>Vacina da Campanha</i></h5>
-                                    <select class="vacinacampanha" name="vacinacampanha" id="vacinacampanha" style="width: 70%; height: 30px;">
+                                    <select class="form-control" style="width: 70%!important" name="vacinacampanha" id="vacinacampanha" >
                                         <c:forEach var="vacinacampanha" items="${vacinacampanhas}">
                                             <option value="${vacinacampanha.idvacina}">${vacinacampanha.vacina}</option>
                                         </c:forEach>
@@ -97,7 +97,7 @@
                                     <hr>
                                     <h5><i>Data final da Campanha</i></h5>
                                     <%-- Data fim --%>
-                                    <input type="date" name="datafim"/>
+                                    <input class="form-control" style="width: 70%!important" type="date"  name="datafim"/>
                                    
                                    
                                     <span class="style1">*</span>
@@ -147,7 +147,7 @@
                                     <br>
                                     <hr> 
                                     <h5><i>Estado da Campanha</i></h5> 
-                                    <select name ="estadousuarios" id="estadousuarios" required="Selecione!" style="width: 70%; height: 30px;">
+                                    <select class="form-control" style="width: 70%!important" name ="estadousuarios" id="estadousuarios" required="Selecione!" >
                                         <option value="${campanhaEditando.estadousuarios.idestado}">${campanhaEditando.estadousuarios.estado}-${campanhaEditando.estadousuarios.uf}</option>   
                                          <option value="1">Acre</option>
                                         <option value="2">Alagoas</option>
@@ -183,14 +183,13 @@
                                     <%-- Data inicio --%>
                                     <hr> 
                                     <h5><i>Data Inicio da Campanha</i></h5>
-                                    <input type="date" name="datainicio" id="datainicio" value="${campanhaEditando.datainicio}"/>
-                                    
+                                    <input  class="form-control" style="width: 70%!important" type="date" name="datainicio" id="datainicio" value="${campanhaEditando.datainicio}"/>                                    
                                     <span class="style1">*</span>
                                     <hr>
                                     <hr> 
                                     <h5><i>Descrição da Campanha</i></h5>
                                     <%-- Descrição da campanha --%>
-                                    <textarea style="width: 70%!important" name="descricaocampanha"  id="descricaocampanha" required="Preencha o campo!">${campanhaEditando.descricaocampanha}</textarea>
+                                    <textarea class="form-control" style="width: 70%!important" name="descricaocampanha" id="descricaocampanha" placeholder="Descrição da campanha" required="Preencha o campo!">${campanhaEditando.descricaocampanha}</textarea>
                                     <span class="style1">*</span>
                                     <hr>
                                     <%-- Vacina da campanha --%> 
@@ -207,7 +206,7 @@
                                     <hr>
                                     <h5><i>Data final da Campanha</i></h5>
                                     <%-- Data fim --%>
-                                    <input type="date" name="datafim" id="datafim" value="${campanhaEditando.datafim}"/>
+                                    <input class="form-control" style="width: 70%!important" type="date" name="datafim" id="datafim" value="${campanhaEditando.datafim}"/>
 
                                     <span class="style1">*</span>
                                     <hr>
@@ -333,8 +332,8 @@
                 $(".mesfim").select2();
                 $(".diainicio").select2();
                 $(".diafim").select2();
-                $(".estadousuarios").select2();
-                $(".vacinacampanha").select2();
+                $("#estadousuarios").select2();
+                $("#vacinacampanha").select2();
 
 
             });

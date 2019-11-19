@@ -25,6 +25,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="hovercoluna">Nome Vacina</th>
+                                <th class="hovercoluna">Dose</th>
                                 <th class="hovercoluna">Quantidade</th>
                             </tr>
                         </thead>
@@ -34,6 +35,7 @@
 
                                 <td>${cartaovacinas["0"].vacinas.vacina}</td>
                                 <td>${cartaovacinas["1"]}</td>
+                                <td>${cartaovacinas["2"]}</td>
 
                             </tr>
                         </c:forEach>

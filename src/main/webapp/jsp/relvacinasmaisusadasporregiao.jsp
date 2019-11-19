@@ -100,8 +100,8 @@
                             <th>Descrição Campanha</th>
                             <th>Estado da Campanha</th>
                             <th>Vacina Campanha</th>                                        
-                            <th>Data da Campanha inicio</th>
-                            <th>Data da Campanha fim</th>
+                            <th>Data inicio</th>
+                            <th>Data fim</th>
 
 
                         </tr>
@@ -120,11 +120,7 @@
                             <fmt:parseDate value="${campanha.datafim}" pattern="yyyy-MM-dd" var="parsedDatefim" type="date" />
                             <fmt:formatDate pattern="dd/MM/yyyy" value="${parsedDatefim}" var="dataFim" /> 
                             <td>${dataFim}</td>
-                            <td>
-                                <%-- botao radio seleciona o item a ser editado ou excluido, ativa botao editar e excluir--%>
-                                <input type ="radio" name="idcampanha" value ="${campanha.idcampanha}" 
-                                       onclick="habilitar(1); habilitar(2)" required="Selecione">
-                            </td>     
+                            
                         </tr>
                     </c:forEach>
 
@@ -143,6 +139,7 @@
                         <thead class="thead-light">
                             <tr>                                         
                                 <th class="hovercoluna">Vacinas Aplicadas</th>
+                                <th class="hovercoluna">Dose Aplicada</th>
                                 <th class="hovercoluna">Numero de Vacinas Aplicadas</th>
                             </tr>
                         </thead>
@@ -151,6 +148,7 @@
                         <tr>
                             <td>${estados["1"]}</td>
                             <td>${estados["2"]}</td>
+                            <td>${estados["3"]}</td>
                         </tr>
                     </c:forEach>
                     </body>

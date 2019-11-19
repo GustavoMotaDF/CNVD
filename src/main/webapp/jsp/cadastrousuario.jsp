@@ -57,7 +57,7 @@
 
                                             <%-- CPF--%>
                                             <label for="cpf" class="alinhamento">CPF:</label>
-                                            <input type="text"  onkeypress="return sonumeros(event)" class ="cpf" id="cpf" name="cpf"maxlength="14" pattern="[0-9]{11}" title="Digite apenas numeros!"placeholder="Apenas Numeros"/>
+                                            <input type="text"  onkeypress="return sonumeros(event)" class ="cpf" id="cpf" name="cpf"maxlength="11" pattern="[0-9]{11}" title="Digite apenas numeros!"placeholder="Apenas Numeros"/>
                                             <span class="style1">*</span>
 
                                             <br>
@@ -100,7 +100,8 @@
 
                                             <br>
                                             <%-- DATANASCIMENTO--%>
-                                            <label for="dia" class="alinhamento" >Dia:</label>
+                                            <label for="dia"style="font-weight:bold;" >DaNasc:</label>
+                                            <label for="dia" style="font-weight:bold;">Dia:</label>
                                             <select class="dia" name="dia" id="dia" style="width: 10%; height: 30px;">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -135,7 +136,7 @@
                                                 <option value="31">31</option>
 
                                             </select> 
-                                            <label for="mes" >Mês:</label>
+                                            <label for="mes" style="font-weight:bold;">Mês:</label>
                                             <select class="mes" name="mes" id="mes" style="width: 30%; height: 30px;">
                                                 <option value="">Selecione o mês...</option>                                
                                                 <option value="Janeiro">Janeiro</option>
@@ -152,7 +153,7 @@
                                                 <option value="Dezembro">Dezembro</option>
 
                                             </select>
-                                            <label for="ano" >Ano:</label>
+                                            <label for="ano" style="font-weight:bold;">Ano:</label>
                                             <select class="ano" name="ano" id="ano" style="width: 20%; height: 30px;">
                                                 <option value="2019">2019</option>
                                                 <option value="2018">2018</option>
@@ -282,15 +283,14 @@
                                             <%-- TELEFONE--%>
 
                                             <label for="telefone" class="alinhamento">Telefone:</label>
-                                            <input type="text"  onkeypress="return sonumeros(event)" name="telefone"  id="telefone" pattern="[0-9]{11}" title="Digite apenas numeros!" maxlength="11" placeholder="(ddd) 9 seu - numero"/>
+                                            <input type="text"  onkeypress="return sonumeros(event)" name="telefone"  id="telefone" maxlength="11"  pattern="[0-9]{11}" title="Digite apenas numeros!" maxlength="11" placeholder="(ddd) 9 seu - numero"/>
                                             <span class="style1">*</span>
 
                                             <br>
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
-
+                                    
 
                                     <div class="form-group" >
                                         <div style="margin: 10px"> <br>
@@ -355,7 +355,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
+                                    
 
 
                                     <div class="form-group" >
@@ -367,13 +367,13 @@
 
                                             <%-- LOGIN--%>
                                             <label for="login" class="alinhamento">Login:</label>
-                                            <input type="text" name="login" onkeypress="return sonumeros(event)" id="login" placeholder="Por padrão será o CPF"/>
+                                            <input type="text" name="login" onkeypress="return sonumeros(event)" id="login" maxlength="11"  pattern="[0-9]{11}"placeholder="Por padrão será o CPF"/>
                                             <span class="style1">*</span>
                                             <br>
 
                                             <%-- SENHA--%>
                                             <label for="senha" class="alinhamento">Senha:</label>
-                                            <input type="password" name="senha" onkeypress="return sonumeros(event)" id="senha" placeholder="Por padrão será o CPF"/>
+                                            <input type="password" name="senha" onkeypress="return sonumeros(event)" id="senha" maxlength="11"  pattern="[0-9]{11}" placeholder="Por padrão será o CPF"/>
                                             <span class="style1">*</span>
                                             <br>
 
@@ -500,7 +500,8 @@
 
                                             <%-- DATANASCIMENTO--%>
                                             <%-- DATANASCIMENTO--%>
-                                            <label for="dia" class="alinhamento" >Dia:</label>
+                                            <label for="dia" style="font-weight:bold;" >DaNasc:</label>
+                                            <label for="dia" style="font-weight:bold;" >Dia:</label>
                                             <select class="dia" name="dia" id="dia" style="width: 10%; height: 30px;">
                                                 <option value="${usuarioEditando.dia}">${usuarioEditando.dia}</option>
                                                 <option value="1">1</option>
@@ -536,7 +537,7 @@
                                                 <option value="31">31</option>
 
                                             </select> 
-                                            <label for="mes" >Mês:</label>
+                                            <label for="mes" style="font-weight:bold;">Mês:</label>
                                             <select class="mes" name="mes" id="mes" style="width: 30%; height: 30px;">
                                                 <option value="${usuarioEditando.mes}">${usuarioEditando.mes}</option>                                
                                                 <option value=""></option>
@@ -554,7 +555,7 @@
                                                 <option value="Dezembro">Dezembro</option>
 
                                             </select>
-                                            <label for="ano" >Ano:</label>
+                                            <label for="ano" style="font-weight:bold;">Ano:</label>
                                             <select class="ano" name="ano" id="ano" style="width: 20%; height: 30px;">
                                                 <option value="${usuarioEditando.ano}">${usuarioEditando.ano}</option>
                                                 <option value="2019">2019</option>
@@ -685,13 +686,13 @@
                                             <%-- TELEFONE--%>
 
                                             <label for="telefone" class="alinhamento">Telefone:</label>
-                                            <input type="text"  onkeypress="return sonumeros(event)" name="telefone" value="${usuarioEditando.telefone}"  id="telefone" pattern="[0-9]{11}" title="Digite apenas numeros!" maxlength="11" placeholder="(ddd) 9 seu - numero"/>
+                                            <input type="text"  onkeypress="return sonumeros(event)" name="telefone" value="${usuarioEditando.telefone}"  id="telefone" maxlength="11"  pattern="[0-9]{11}" title="Digite apenas numeros!" maxlength="11" placeholder="(ddd) 9 seu - numero"/>
                                             <span class="style1">*</span>
 
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
+                                    
 
 
                                     <div class="form-group" >
@@ -758,7 +759,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
+                                    
 
 
                                     <div class="form-group" >
@@ -772,13 +773,13 @@
 
                                             <%-- LOGIN--%>
                                             <label for="login" class="alinhamento">Login:</label>
-                                            <input type="text" name="login" name="senha"value="${usuarioEditando.login}"  onkeypress="return sonumeros(event)" id="login" placeholder="Por padrão será o CPF"/>
+                                            <input type="text" name="login" name="senha"value="${usuarioEditando.login}"  onkeypress="return sonumeros(event)" id="login" maxlength="11"  pattern="[0-9]{11}"placeholder="Por padrão será o CPF"/>
                                             <span class="style1">*</span>
                                             <br>
 
                                             <%-- SENHA--%>
                                             <label for="senha" class="alinhamento">Senha:</label>
-                                            <input type="password" name="senha" value="${usuarioEditando.senha}"  onkeypress="return sonumeros(event)" id="senha" placeholder="Por padrão será o CPF"/>
+                                            <input type="password" name="senha" value="${usuarioEditando.senha}"  onkeypress="return sonumeros(event)" id="senha" maxlength="11"  pattern="[0-9]{11}"placeholder="Por padrão será o CPF"/>
                                             <span class="style1">*</span>
                                             <br>
 

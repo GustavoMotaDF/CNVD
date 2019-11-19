@@ -119,7 +119,7 @@ public class VacinaTomadaBO {
         EntityManager en = emf.createEntityManager();
         en.getTransaction().begin();
 
-        cartaovacinas = en.createQuery("select distinct id_vacina as Vacinas, count(id_vacina) as qtd from VacinaTomada id_vacina group by vacinas order by qtd desc ").getResultList();
+        cartaovacinas = en.createQuery("select distinct id_vacina, dose, count(id_vacina) as qtd from VacinaTomada id_vacina group by dose, vacinas order by vacinas").getResultList();
 
         en.getTransaction().commit();
 
@@ -205,7 +205,7 @@ public class VacinaTomadaBO {
         en.getTransaction().begin();
         
         
-        estadoss = en.createQuery("select distinct es.estado, va.vacina, count(va.vacina)\n"
+        estadoss = en.createQuery("select distinct es.estado, va.vacina, vt.dose, count(va.vacina)\n"
                 + "from Estado es \n"
                 + "join Usuario us \n"
                 + "on es.idestado=us.estado\n"
@@ -216,7 +216,7 @@ public class VacinaTomadaBO {
                 + "where vt.dataaplicacao BETWEEN DATE(:datainicios) and DATE(:datafim)\n "
                 + "and es.idestado =:estado\n "
                 + "and va.idvacina =:vacina\n "
-                + "group by va.vacina order by va.vacina")
+                + "group by vt.dose order by es.estado")
                 .setParameter("datainicios", datainicios)
                 .setParameter("datafim", datafim)
                 .setParameter("estado", Integer.valueOf(estado))

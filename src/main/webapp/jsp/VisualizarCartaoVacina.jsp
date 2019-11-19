@@ -63,7 +63,7 @@
                 <div class="container" style="text-align: center">
                         <br>
                         <label>CPF do Usuário:</label><br>
-                        <input name="cpf" type="text" style="width: 50%"/><br> <br>                   
+                        <input name="cpf" type="text" maxlength="11" pattern="[0-9]{11}" style="width: 50%"/><br> <br>                   
                         <button type="submit" name="pesquisar" class="btn btn-primary" >Pesquisar</button>
                         <br>
                         <br>

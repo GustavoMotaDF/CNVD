@@ -20,25 +20,13 @@
                box-shadow: 0 0 1em black;">
             <div class="content">
                 <jsp:include page="includes/menusuperior.jsp"/>
-                
-               
-                
                 <%-- conteudo --%>
-                    <div style="color: green" id="msgerro"> ${mensagemSucesso} </div>
-                    <div style="color: red">${mensagemErro}</div>
+                  
 
-                    <div id="conteudopropriamentedito" style="background-color: #A9E2F3">
-                        
-                    </div>
+                    <iframe style="border: 0;" src="http://saude.gov.br/" width=400px" height="500px" frameborder="0" scrolling="yes"></iframe>
+                    <iframe style="border: 0;" src="http://saude.gov.br/saude-de-a-z/vacinacao/" width=400px" height="500px" frameborder="0" scrolling="yes"></iframe>
                     
-                    <div id="imgtext" style=" position:fixed; top : 75%;right: 1%;text-align: center;">                        
-                        <div>                            
-                            <span>Desde 2019<br>
-                                Ajudando a população!</span>
-                        </div>
-                            
-                        <img id="imgtelainicial"src="jsp/imagens/Logo.png" alt="Cartão Nacional de Vacina Digital" >                   
-                    </div>
+                    
                
                 <%-- fim conteudo --%>
             </div>
